@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+<!--
+    Java веб-приложения используют файл дескриптора развертывания
+    для определения какие URL будут передаваться определенному сервлету, какие URL требуют аутентификации и др.
+    Web.xml — часть стандарта сервлета для веб-приложений.
+
+        Дескриптор развертывания веб-приложений описывает классы, ресурсы и конфигурацию приложения,
+    а так же как сервер будет использовать их для выполнения веб-запросов.
+        Когда сервер получает запрос для приложения, он использует дескриптор развертывания для отображения URL запроса к коду,
+    который должен этот запрос обработать.
+-->
+
+    <mvc:view-controller path="/home.html" />
+    <mvc:view-controller path="/info/about.html" />
+
+</beans>
