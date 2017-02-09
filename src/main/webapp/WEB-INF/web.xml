@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
 
-    <!-- Дускриптор развертывнаия -->
+    <!-- Дескриптор развертывнаия -->
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>
@@ -15,9 +15,11 @@
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
+    <!--
     <listener>
         <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
     </listener>
+    -->
 
     <servlet>
         <servlet-name>dispatcherServlet</servlet-name>
