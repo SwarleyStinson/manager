@@ -21,7 +21,7 @@
     </context-param>
 
     <welcome-file-list>
-        <welcome-file>/WEB-INF/home.jsp</welcome-file>
+        <welcome-file>/WEB-INF/views/home.jsp</welcome-file>
     </welcome-file-list>
 
     <!-- /Gateway servlet -->
@@ -36,7 +36,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>dispatcherServlet</servlet-name>
-        <url-pattern>*.do</url-pattern>
+        <url-pattern>/</url-pattern>
     </servlet-mapping>
     <!-- /Gateway servlet -->
 
