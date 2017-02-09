@@ -4,29 +4,43 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
 
+    <!-- Дускриптор развертывнаия -->
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>classpath:application-context.xml</param-value>
+        <param-value>
+            WEB-INF/config/application-context.xml
+        </param-value>
     </context-param>
 
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
+    <listener>
+        <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+    </listener>
 
     <servlet>
-        <servlet-name>dispatcher</servlet-name>
+        <servlet-name>dispatcherServlet</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>/WEB-INF/config/dispatcherServlet-config.xml</param-value>
+        </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>dispatcher</servlet-name>
-        <url-pattern>*.form</url-pattern>
-    </servlet-mapping>
-
-    <servlet-mapping>
-        <servlet-name>dispatcher</servlet-name>
+        <servlet-name>dispatcherServlet</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
+
+    <welcome-file-list>
+        <welcome-file>/WEB-INF/views/home.html</welcome-file>
+    </welcome-file-list>
+
+    <error-page>
+        <error-code>404</error-code>
+        <location>/WEB-INF/views/error.html</location>
+    </error-page>
 
 </web-app>
