@@ -4,11 +4,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <groupId>com.cardpay</groupId>
-        <artifactId>cardpay-parent</artifactId>
-        <version>1.5.34</version>
-    </parent>
+    <!--<parent>-->
+        <!--<groupId>com.cardpay</groupId>-->
+        <!--<artifactId>cardpay-parent</artifactId>-->
+        <!--<version>1.5.34</version>-->
+    <!--</parent>-->
 
     <groupId>ru.stepanov</groupId>
     <artifactId>TestWebSpringApp</artifactId>
@@ -101,6 +101,11 @@
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjrt</artifactId>
             <version>1.8.10</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>5.0.0.BUILD-SNAPSHOT</version>
         </dependency>
 
     </dependencies>
