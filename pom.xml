@@ -3,18 +3,18 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>ru.stepanov</groupId>
-    <artifactId>TestWebSpringApp</artifactId>
-    <version>0.1.0</version>
-    <name>Test spring Framework Web Application</name>
 
-    <!--
     <parent>
         <groupId>com.cardpay</groupId>
         <artifactId>cardpay-parent</artifactId>
         <version>1.5.34</version>
     </parent>
-    -->
+
+    <groupId>ru.stepanov</groupId>
+    <artifactId>TestWebSpringApp</artifactId>
+    <version>0.1.0</version>
+    <name>Test spring Framework Web Application</name>
+    <packaging>war</packaging>
 
     <properties>
         <jdk.version>1.8</jdk.version>
@@ -49,6 +49,13 @@
             <artifactId>spring-webmvc</artifactId>
             <version>${spring.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+            <version>${spring.version}</version>
+            <scope>compile</scope>
+        </dependency>
+
 
         <!-- Spring Core Container (Buisness Logic Container) -->
         <!--
@@ -76,13 +83,8 @@
             <version>${spring.version}</version>
             <scope>compile</scope>
         </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context-support</artifactId>
-            <version>${spring.version}</version>
-            <scope>compile</scope>
-        </dependency>
         -->
+
 
         <!-- Spring AOP -->
         <dependency>
