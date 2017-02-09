@@ -21,7 +21,7 @@
     </context-param>
 
     <welcome-file-list>
-        <welcome-file>/WEB-INF/views/home.html</welcome-file>
+        <welcome-file>/WEB-INF/home.jsp</welcome-file>
     </welcome-file-list>
 
     <!-- /Gateway servlet -->
