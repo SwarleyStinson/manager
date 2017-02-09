@@ -14,7 +14,7 @@
 <body>
 <h1>Welcome to Home Page!</h1>
 
-<p>Click <a href="login.jsp">here</a> to see a greeting.</p>
+<p>Click <a href="login">here</a> to see a greeting.</p>
 
 </body>
 </html>

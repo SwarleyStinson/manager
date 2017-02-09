@@ -16,13 +16,9 @@
         <param-value>
             classpath:application-context.xml
             classpath:dataSource-context.xml
-            classpath:persistance-context.xml
         </param-value>
     </context-param>
 
-    <welcome-file-list>
-        <welcome-file>/WEB-INF/views/home.jsp</welcome-file>
-    </welcome-file-list>
 
     <!-- /Gateway servlet -->
     <servlet>
@@ -39,6 +35,10 @@
         <url-pattern>/</url-pattern>
     </servlet-mapping>
     <!-- /Gateway servlet -->
+
+    <welcome-file-list>
+        <welcome-file>/WEB-INF/views/home.jsp</welcome-file>
+    </welcome-file-list>
 
     <error-page>
         <error-code>404</error-code>

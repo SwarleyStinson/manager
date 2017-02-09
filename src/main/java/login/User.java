@@ -1,12 +1,17 @@
 package login;
 
 public class User {
-    private String name;
-    private String password;
+    private String name = "user";
+    private String password = "user";
+    private Role role = Role.USER;
 
-    public User(String name, String password) {
+    public User() {
+    }
+
+    public User(String name, String password, Role role) {
         this.name = name;
         this.password = password;
+        this.role = role;
     }
 
     public String getName() {
