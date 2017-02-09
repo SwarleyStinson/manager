@@ -10,7 +10,7 @@ public class HomeController extends HttpServlet{
 
     @RequestMapping(value = {"/", "/home"})
     public String gateway() {
-        return "hello";
+        return "home";
     }
 
     @RequestMapping("/login")

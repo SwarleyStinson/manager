@@ -10,6 +10,7 @@
 <head>
     <title>Spring Security Example</title>
 </head>
+
 <body>
 <h1>Welcome to Home Page!</h1>
 
