@@ -11,8 +11,8 @@
     <!--</parent>-->
 
     <groupId>ru.stepanov</groupId>
-    <artifactId>TestWebSpringApp</artifactId>
-    <version>0.1.0</version>
+    <artifactId>test</artifactId>
+    <version>1</version>
     <name>Test spring Framework Web Application</name>
     <packaging>war</packaging>
 
