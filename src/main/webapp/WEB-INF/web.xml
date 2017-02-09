@@ -6,16 +6,22 @@
 
     <display-name>Spring MVC Application</display-name>
 
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+
     <!-- Дескриптор развертывнаия -->
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>
             classpath:application-context.xml
+            classpath:dataSource-context.xml
+            classpath:persistance-context.xml
         </param-value>
     </context-param>
 
     <welcome-file-list>
-        <welcome-file>home.html</welcome-file>
+        <welcome-file>/WEB-INF/views/home.html</welcome-file>
     </welcome-file-list>
 
     <!-- /Gateway servlet -->
@@ -33,14 +39,6 @@
         <url-pattern>*.do</url-pattern>
     </servlet-mapping>
     <!-- /Gateway servlet -->
-
-    <listener>
-        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-    </listener>
-
-    <!--<listener>-->
-    <!--<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>-->
-    <!--</listener>-->
 
     <error-page>
         <error-code>404</error-code>
