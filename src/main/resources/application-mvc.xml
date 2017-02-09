@@ -23,9 +23,9 @@
 
     <mvc:annotation-driven/>
 
-    <mvc:default-servlet-handler/>
+    <!--<mvc:default-servlet-handler/>-->
 
-    <mvc:view-controller path="/home/**" view-name="/home/"/>
+    <!--<mvc:view-controller path="/home/**" view-name="/home/"/>-->
 
     <!--<mvc:view-controller path="/login.jsp" view-name="login"/>-->
     <!--<mvc:view-controller path="/" view-name="home"/>-->
