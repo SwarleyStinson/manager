@@ -3,7 +3,7 @@ package login;
 public class User {
     private String name = "user";
     private String password = "user";
-    private Role role = Role.USER;
+    private Role role = Role.ROLE_USER;
 
     public User() {
     }
