@@ -12,21 +12,21 @@ public class HelloController extends HttpServlet{
     public String hello(){
 
 
-        return "hello";
+        return "hello/hello";
     }
 
     @RequestMapping("/AllHello")
     public String allHello(){
 
 
-        return "AllHello";
+        return "hello/AllHello";
     }
 
     @RequestMapping("/AdminHello")
     public String AdminHello(){
 
 
-        return "AdminHello";
+        return "hello/admin/AdminHello";
     }
 
 
