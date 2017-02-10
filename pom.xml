@@ -18,8 +18,8 @@
 
     <properties>
         <jdk.version>1.8</jdk.version>
-        <spring.version>4.2.4.RELEASE</spring.version>
-        <spring.security.version>4.0.3.RELEASE</spring.security.version>
+        <spring.version>4.2.1.RELEASE</spring.version>
+        <spring.security.version>4.2.1.RELEASE</spring.security.version>
         <servlet.version>3.1.0</servlet.version>
     </properties>
 
