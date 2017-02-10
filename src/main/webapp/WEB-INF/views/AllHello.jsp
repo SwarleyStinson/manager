@@ -12,6 +12,7 @@
 </head>
 <body>
 <h1> Hello everybody!</h1>
+<h1 >Access to this page free for all user and "ROLE_ADMIN", and "ROLE_USER". </h1>
 
 <form action="login" method="post">
     <input type="submit" value="Sign Out"/>

@@ -12,7 +12,7 @@
 </head>
 <body>
 <h1 >Hello ...</h1>
-<h1 >Access to this page only for user with "ADMIN Role". </h1>
+<h1 >Access to this page only for user with "ROLE_ADMIN". </h1>
 <form action="login" method="post">
     <input type="submit" value="Sign Out"/>
 </form>
