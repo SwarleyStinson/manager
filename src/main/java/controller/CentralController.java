@@ -10,15 +10,11 @@ public class CentralController extends HttpServlet{
 
     @RequestMapping(value = {"/", "/home"})
     public String gateway() {
-
-
         return "home";
 }
 
     @RequestMapping("/login")
     public String login(){
-
-
         return "login";
     }
 
