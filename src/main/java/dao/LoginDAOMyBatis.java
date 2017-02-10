@@ -1,7 +1,9 @@
 package dao;
 
-public class LoginDAOMyBatis implements LoginDAO {
+public class LoginDAOMyBatis {
     public boolean checkUser(String name, String password) {
+
+
         return false;
     }
 
