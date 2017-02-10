@@ -36,10 +36,6 @@
     </servlet-mapping>
     <!-- /Gateway servlet -->
 
-    <welcome-file-list>
-        <welcome-file>/WEB-INF/views/home.jsp</welcome-file>
-    </welcome-file-list>
-
     <error-page>
         <error-code>404</error-code>
         <location>/WEB-INF/views/error.html</location>

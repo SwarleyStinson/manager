@@ -8,11 +8,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Hello World!</title>
+    <title>Hello!</title>
 </head>
 <body>
-<h1> Hello ...</h1>
-<form action="login.jsp" method="post">
+<h1> Hello everybody!</h1>
+
+<form action="login" method="post">
     <input type="submit" value="Sign Out"/>
 </form>
 

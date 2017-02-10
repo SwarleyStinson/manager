@@ -6,13 +6,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.http.HttpServlet;
 
 @Controller
-public class HomeController extends HttpServlet{
+public class LoginController extends HttpServlet{
+    @RequestMapping("/login")
+    public String login(){
 
-    @RequestMapping(value = {"/", "/home"})
-    public String gateway() {
 
-
-        return "home";
+        return "login";
     }
-
 }

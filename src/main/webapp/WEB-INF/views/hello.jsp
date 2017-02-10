@@ -10,9 +10,12 @@
 <head>
     <title>Hello World!</title>
 </head>
+
 <body>
 
-<form action="login.jsp" method="post">
+<h1>Success authentication!</h1>
+
+<form action="login" method="post">
     <input type="submit" value="Sign Out"/>
 </form>
 </body>

@@ -12,8 +12,8 @@
 </head>
 <body>
 <h1 >Hello ...</h1>
-<h1 >This page only for Admin</h1>
-<form action="login.jsp" method="post">
+<h1 >Access to this page only for user with "ADMIN Role". </h1>
+<form action="login" method="post">
     <input type="submit" value="Sign Out"/>
 </form>
 </body>
