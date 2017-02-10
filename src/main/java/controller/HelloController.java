@@ -19,7 +19,7 @@ public class HelloController extends HttpServlet{
     public String allHello(){
 
 
-        return "hello";
+        return "AllHello";
     }
 
     @RequestMapping("/AdminHello")
