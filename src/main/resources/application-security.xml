@@ -4,19 +4,5 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 
-    <!--<http auto-config="true">-->
-        <!--<intercept-url pattern="/admin**" access="ROLE_ADMIN" />-->
-        <!--<intercept-url pattern="/dba**" access="ROLE_ADMIN,ROLE_DBA" />-->
-    <!--</http>-->
-
-    <!--<authentication-manager>-->
-        <!--<authentication-provider>-->
-            <!--<user-service>-->
-                <!--<user name="mkyong" password="123456" authorities="ROLE_USER" />-->
-                <!--<user name="admin" password="123456" authorities="ROLE_ADMIN" />-->
-                <!--<user name="dba" password="123456" authorities="ROLE_DBA" />-->
-            <!--</user-service>-->
-        <!--</authentication-provider>-->
-    <!--</authentication-manager>-->
 
 </beans>

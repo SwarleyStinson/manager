@@ -6,13 +6,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.http.HttpServlet;
 
 @Controller
-public class HelloController extends HttpServlet{
+public class CentralController extends HttpServlet{
+
+    @RequestMapping(value = {"/", "/home"})
+    public String gateway() {
+
+
+        return "home";
+    }
+    @RequestMapping("/login")
+    public String login(){
+
+
+        return "login";
+    }
 
     @RequestMapping("/hello")
     public String hello(){
 
 
-        return "hello/hello";
+        return "/hello/hello";
     }
 
     @RequestMapping("/AllHello")

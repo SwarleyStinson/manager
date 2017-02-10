@@ -16,6 +16,9 @@
          and also resolves @Autowired and @Qualifier -->
     <context:component-scan base-package="controller" />
 
+    <!-- maps request URLs to Controller names -->
+    <bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"/>
+
     <!-- ViewResolver bean config for mapping strings to htmls views -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"
           p:viewClass="org.springframework.web.servlet.view.JstlView"
