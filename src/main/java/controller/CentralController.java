@@ -13,7 +13,8 @@ public class CentralController extends HttpServlet{
 
 
         return "home";
-    }
+}
+
     @RequestMapping("/login")
     public String login(){
 
