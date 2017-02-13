@@ -15,8 +15,7 @@
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>
-            classpath:application-context.xml
-            classpath:dataSource-context.xml
+            classpath:application-security.xml
         </param-value>
     </context-param>
 
@@ -36,10 +35,5 @@
         <url-pattern>/</url-pattern>
     </servlet-mapping>
     <!-- /Gateway servlet -->
-
-    <error-page>
-        <error-code>404</error-code>
-        <location>/WEB-INF/views/error.html</location>
-    </error-page>
 
 </web-app>

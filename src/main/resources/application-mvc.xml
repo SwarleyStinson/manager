@@ -14,7 +14,7 @@
 
     <!-- context:component-scan This tag will scan @Component, @Repository, @Service, @Controller
          and also resolves @Autowired and @Qualifier -->
-    <context:component-scan base-package="controller" />
+    <context:component-scan base-package="mvc.*" />
 
     <!-- maps request URLs to Controller names -->
     <bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"/>
@@ -22,11 +22,7 @@
     <!-- ViewResolver bean config for mapping strings to htmls views -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"
           p:viewClass="org.springframework.web.servlet.view.JstlView"
-          p:prefix="/WEB-INF/views/"
+          p:prefix="/WEB-INF/pages/"
           p:suffix=".jsp"/>
-
-    <mvc:annotation-driven/>
-
-
 
 </beans>
