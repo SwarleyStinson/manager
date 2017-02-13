@@ -13,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServlet;
 
 @Controller
-public class CentralController extends HttpServlet{
+public class MainController extends HttpServlet{
 
     @RequestMapping(value = { "/", "/welcome**" }, method = RequestMethod.GET)
     public ModelAndView defaultPage() {
@@ -60,7 +60,7 @@ public class CentralController extends HttpServlet{
     public ModelAndView hello(){
         ModelAndView model = new ModelAndView();
         model.addObject("title", "This is Hello Page");
-        model.addObject("message", "Hello, Cardpay's developer!");
+        model.addObject("message", "Hello, Cardpay developer!");
 
         return model;
     }
