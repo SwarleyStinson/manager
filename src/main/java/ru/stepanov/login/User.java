@@ -1,8 +1,12 @@
-package login;
+package ru.stepanov.login;
 
 public class User {
-    private String name;
-    private String password;
+    private String name = "user";
+    private String password = "user";
+
+
+    public User() {
+    }
 
     public User(String name, String password) {
         this.name = name;

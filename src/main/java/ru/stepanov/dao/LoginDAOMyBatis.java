@@ -1,7 +1,9 @@
-package dao;
+package ru.stepanov.dao;
 
-public class LoginDAOJDBC implements LoginDAO {
+public class LoginDAOMyBatis {
     public boolean checkUser(String name, String password) {
+
+
         return false;
     }
 
