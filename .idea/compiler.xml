@@ -9,7 +9,7 @@
         <module name="TestWebSpringApp" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="1.8">
+    <bytecodeTargetLevel>
       <module name="TestWebSpringApp" target="1.8" />
     </bytecodeTargetLevel>
   </component>
