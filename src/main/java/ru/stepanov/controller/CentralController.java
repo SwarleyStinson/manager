@@ -1,4 +1,4 @@
-package mvc.controller;
+package ru.stepanov.controller;
 
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -19,7 +19,7 @@ public class CentralController extends HttpServlet{
     public ModelAndView defaultPage() {
 
         ModelAndView model = new ModelAndView();
-        model.addObject("title", "Spring Security Login Form - Database Authentication");
+        model.addObject("title", "Test Web Spring Application");
         model.addObject("message", "This is default page!");
         model.setViewName("hello");
         return model;
@@ -30,7 +30,7 @@ public class CentralController extends HttpServlet{
     public ModelAndView adminPage() {
 
         ModelAndView model = new ModelAndView();
-        model.addObject("title", "Spring Security Login Form - Database Authentication");
+        model.addObject("title", "Test Web Spring Application");
         model.addObject("message", "This page is for ROLE_ADMIN only!");
         model.setViewName("admin");
 
@@ -66,7 +66,7 @@ public class CentralController extends HttpServlet{
     }
     //for 403 access denied page
     @RequestMapping(value = "/403", method = RequestMethod.GET)
-    public ModelAndView accesssDenied() {
+    public ModelAndView accessDenied() {
 
         ModelAndView model = new ModelAndView();
 

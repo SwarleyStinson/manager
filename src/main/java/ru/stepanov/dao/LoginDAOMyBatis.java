@@ -1,4 +1,4 @@
-package dao;
+package ru.stepanov.dao;
 
 public class LoginDAOMyBatis {
     public boolean checkUser(String name, String password) {

@@ -1,17 +1,16 @@
-package login;
+package ru.stepanov.login;
 
 public class User {
     private String name = "user";
     private String password = "user";
-    private Role role = Role.ROLE_USER;
+
 
     public User() {
     }
 
-    public User(String name, String password, Role role) {
+    public User(String name, String password) {
         this.name = name;
         this.password = password;
-        this.role = role;
     }
 
     public String getName() {
