@@ -18,7 +18,7 @@ public class MainController {
 
         ModelAndView model = new ModelAndView();
         model.addObject("title", "Test Web Spring Application");
-        model.addObject("message", "This is default page!");
+        model.addObject("message", "This is default page! This page are available for all user's.");
         model.setViewName("hello");
         return model;
 
@@ -29,7 +29,7 @@ public class MainController {
 
         ModelAndView model = new ModelAndView();
         model.addObject("title", "Test Web Spring Application");
-        model.addObject("message", "This page is for ROLE_ADMIN only!");
+        model.addObject("message", "This page is for user's with ROLE_ADMIN only! I am say it!");
         model.setViewName("admin");
 
         return model;
@@ -48,6 +48,8 @@ public class MainController {
         if (logout != null) {
             model.addObject("msg", "You've been logged out successfully.");
         }
+
+        model.addObject("message", "This is Login page!");
         model.setViewName("login");
 
         return model;
