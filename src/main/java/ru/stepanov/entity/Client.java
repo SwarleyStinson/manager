@@ -1,16 +1,16 @@
-package ru.stepanov.login;
+package ru.stepanov.entity;
 
-public class User {
-    private String name = "user";
-    private String password = "user";
+public class Client {
+    private String name;
+    private String password;
+    private String email;
+    private TypeOfClient type;
 
-
-    public User() {
-    }
-
-    public User(String name, String password) {
+    public Client(String name, String password, String email, TypeOfClient type) {
         this.name = name;
         this.password = password;
+        this.email = email;
+        this.type = type;
     }
 
     public String getName() {

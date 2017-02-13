@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import ru.stepanov.entity.Bank;
+import ru.stepanov.entity.PaySystem;
 
 @Controller
 public class MainController {
@@ -19,6 +21,8 @@ public class MainController {
         ModelAndView model = new ModelAndView();
         model.addObject("title", "Test Web Spring Application");
         model.addObject("message", "This is default page! This page are available for all user's.");
+        Bank bank = new Bank("SberHren", "aca", PaySystem.values());
+        model.addObject(bank);
         model.setViewName("hello");
         return model;
 
@@ -70,7 +74,7 @@ public class MainController {
 
         ModelAndView model = new ModelAndView();
 
-        //check if user is login
+        //check if user is entity
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (!(auth instanceof AnonymousAuthenticationToken)) {
             UserDetails userDetail = (UserDetails) auth.getPrincipal();
