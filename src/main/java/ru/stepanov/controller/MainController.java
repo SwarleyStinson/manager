@@ -10,10 +10,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpServlet;
-
 @Controller
-public class MainController extends HttpServlet{
+public class MainController {
 
     @RequestMapping(value = { "/", "/welcome**" }, method = RequestMethod.GET)
     public ModelAndView defaultPage() {
