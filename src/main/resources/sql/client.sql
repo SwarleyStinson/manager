@@ -1,0 +1,1 @@
+CREATE TABLE CLIENT (id INT PRIMARY KEY, name varchar(40), login varchar(40), password varchar(40), email varchar(40), type varchar(40))

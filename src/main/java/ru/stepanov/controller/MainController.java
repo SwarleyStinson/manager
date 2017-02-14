@@ -20,7 +20,6 @@ public class MainController {
         ModelAndView model = new ModelAndView();
         model.addObject("title", "Test Web Spring Application");
         model.addObject("message", "This is default page! This page are available for all user's.");
-
         model.setViewName("hello");
         return model;
 
@@ -38,10 +37,18 @@ public class MainController {
 
     @RequestMapping(value = "/admin**", method = RequestMethod.POST)
     public String admin(Client client){
-
         System.out.println("Name: " + client.getName());
 
         return "admin";
+    }
+
+    @RequestMapping(value = "/hello", method = RequestMethod.GET)
+    public ModelAndView hello(){
+        ModelAndView model = new ModelAndView();
+        model.addObject("title", "This is Hello Page");
+        model.addObject("message", "Hello, Cardpay's developer!");
+
+        return model;
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
@@ -62,15 +69,6 @@ public class MainController {
 
         return model;
 
-    }
-
-    @RequestMapping(value = "/hello", method = RequestMethod.GET)
-    public ModelAndView hello(){
-        ModelAndView model = new ModelAndView();
-        model.addObject("title", "This is Hello Page");
-        model.addObject("message", "Hello, Cardpay's developer!");
-
-        return model;
     }
     //for 403 access denied page
     @RequestMapping(value = "/403", method = RequestMethod.GET)

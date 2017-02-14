@@ -1,0 +1,1 @@
+CREATE TABLE ORDER (id INT PRIMARY KEY, number INT , firstContrAgent varchar(40), firstContrAgentType varchar(40), secondContrAgent varchar(40), secondContrAgentType varchar(40), dateOfStart DATE, dateOfFinish DATE ,type varchar(40), overdue boolean)
