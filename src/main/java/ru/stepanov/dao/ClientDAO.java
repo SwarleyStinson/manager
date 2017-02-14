@@ -1,32 +1,50 @@
 package ru.stepanov.dao;
 
-import ru.stepanov.entity.TypeOfClient;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.transaction.annotation.Transactional;
+import ru.stepanov.entity.Client;
 
 public class ClientDAO {
-    public String addClient (String name, String password, String email, TypeOfClient type){
+    private static final String SQL_INSERT_CLIENT =
+            "insert into public.CLIENT (id, name, login, password, email, type) values (?,?,?,?,?)";
+    private static final String SQL_UPDATE_CLIENT =
+            "update public.CLIENT (id, name, login, password, email, type) values (?,?,?,?,?)";
+    private JdbcTemplate jdbcTemplate;
 
-        return "Клиент " + name + " успешно добавлен!";
+    public ClientDAO(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
     }
 
-    public String deleteClient (String name){
+    public static void addFrog(){
+        System.out.println("Frog added!");
+    }
+
+    public ClientDAO() {    }
+
+    @Transactional
+    public String addClient(Client client) {
+
+        jdbcTemplate.update(SQL_INSERT_CLIENT,
+                client.getId(),
+                client.getName(),
+                client.getLogin(),
+                client.getPassword(),
+                client.getEmail(),
+                client.getType());
+
+        return "Клиент " + client.getName() + " успешно добавлен!";
+    }
+
+    @Transactional
+    public String deleteClient(String name) {
 
         return "Клиент " + name + " успешно удален!";
     }
 
-    public String setClientName(String name){
+    @Transactional
+    public String setClient(Client client) {
 
-        return "Имя клиента успешно изменено!";
-    }
-    public String setClientPassword(String password){
 
-        return "Пароль клиента успешно изменено!";
-    }
-    public String setClientEmail(String email){
-
-        return "E-mail клиента успешно изменено!";
-    }
-    public String setClientType(TypeOfClient type){
-
-        return "Ну и как вы себе это представляете? )))";
+        return "Клиент " + client.getName() + " успешно изменен!";
     }
 }

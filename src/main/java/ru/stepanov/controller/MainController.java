@@ -9,20 +9,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-import ru.stepanov.entity.Bank;
-import ru.stepanov.entity.PaySystem;
+import ru.stepanov.entity.Client;
 
 @Controller
 public class MainController {
 
-    @RequestMapping(value = { "/", "/welcome**" }, method = RequestMethod.GET)
+    @RequestMapping(value = { "/"}, method = RequestMethod.GET)
     public ModelAndView defaultPage() {
 
         ModelAndView model = new ModelAndView();
         model.addObject("title", "Test Web Spring Application");
         model.addObject("message", "This is default page! This page are available for all user's.");
-        Bank bank = new Bank("SberHren", "aca", PaySystem.values());
-        model.addObject(bank);
+
         model.setViewName("hello");
         return model;
 
@@ -30,14 +28,20 @@ public class MainController {
 
     @RequestMapping(value = "/admin**", method = RequestMethod.GET)
     public ModelAndView adminPage() {
+        ModelAndView modelAndView = new ModelAndView();
 
-        ModelAndView model = new ModelAndView();
-        model.addObject("title", "Test Web Spring Application");
-        model.addObject("message", "This page is for user's with ROLE_ADMIN only! I am say it!");
-        model.setViewName("admin");
 
-        return model;
 
+        return modelAndView;
+    }
+
+
+    @RequestMapping(value = "/admin**", method = RequestMethod.POST)
+    public String admin(Client client){
+
+        System.out.println("Name: " + client.getName());
+
+        return "admin";
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
@@ -64,7 +68,7 @@ public class MainController {
     public ModelAndView hello(){
         ModelAndView model = new ModelAndView();
         model.addObject("title", "This is Hello Page");
-        model.addObject("message", "Hello, Cardpay developer!");
+        model.addObject("message", "Hello, Cardpay's developer!");
 
         return model;
     }

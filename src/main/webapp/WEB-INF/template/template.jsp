@@ -12,6 +12,9 @@
 </head>
 <body>
 
+<div class id="lga">
+    <img alt="Cardpay Acquirer" height="100" width="536" src="cardpay-aq-logo.png" title="Cardpay" style="padding-top: 115px;">
+</div>
 
 </body>
 </html>

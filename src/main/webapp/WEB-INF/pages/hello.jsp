@@ -5,7 +5,7 @@
 <body>
 	<h1>Title : ${title}</h1>
 	<h1>Message : ${message}</h1>
-	<h1>Bank : ${bank.name}</h1>
+	<h1>Client ID: ${client.id}</h1>
 
 	<sec:authorize access="hasRole('ROLE_USER')">
 
