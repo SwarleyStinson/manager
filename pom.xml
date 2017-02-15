@@ -21,8 +21,8 @@
 
     <properties>
         <jdk.version>1.6</jdk.version>
-        <spring.version>3.2.8.RELEASE</spring.version>
-        <spring.security.version>3.2.3.RELEASE</spring.security.version>
+        <spring.version>4.3.6.RELEASE</spring.version>
+        <spring.security.version>4.2.1.RELEASE</spring.security.version>
         <jstl.version>1.2</jstl.version>
     </properties>
 
@@ -79,6 +79,11 @@
             <artifactId>jstl</artifactId>
             <version>${jstl.version}</version>
         </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
+        </dependency>
 
         <!-- H2 Database and MyBatis -->
         <dependency>
@@ -90,11 +95,6 @@
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis</artifactId>
             <version>3.4.2</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>3.1.0</version>
         </dependency>
     </dependencies>
 </project>

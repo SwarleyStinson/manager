@@ -1,5 +1,6 @@
 package ru.stepanov.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -14,6 +15,10 @@ import ru.stepanov.entity.Client;
 
 @Controller
 public class MainController {
+    @Autowired
+    ClientDAO clientDAO;
+
+
 
     @RequestMapping(value = "/admin**", method = RequestMethod.GET)
     public ModelAndView adminPage() {
@@ -23,13 +28,9 @@ public class MainController {
 
     @RequestMapping(value = "/admin**", method = RequestMethod.POST)
     public String admin(Client client){
+
         System.out.println("--------: " + client.getName());
-
-        ClientDAO clientDAO = new ClientDAO();
-        clientDAO.addClient(client);
-
-        System.out.println("--------: " + client.getEmail());
-
+        System.out.println("--------: " + clientDAO.addClient(client));
         return "admin";
     }
 

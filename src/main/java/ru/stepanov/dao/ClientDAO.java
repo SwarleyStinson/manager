@@ -1,18 +1,24 @@
 package ru.stepanov.dao;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import ru.stepanov.entity.Client;
 
 public class ClientDAO {
+    private JdbcTemplate jdbcTemplate;
+
+    @Autowired
+    public ClientDAO(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
+
     private static final String SQL_INSERT_CLIENT =
             "insert into CLIENT (id, name, login, password, email, type) values (?,?,?,?,?)";
+
     private static final String SQL_UPDATE_CLIENT =
             "update CLIENT (id, name, login, password, email, type) values (?,?,?,?,?)";
 
-
-    private JdbcTemplate jdbcTemplate = new JdbcTemplate();
-
-    public String addClient(Client client) {
+       public String addClient(Client client) {
 
         jdbcTemplate.update(SQL_INSERT_CLIENT,
                 client.getId(),
