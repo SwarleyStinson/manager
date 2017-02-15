@@ -14,8 +14,7 @@
 
 <c:url value="/j_spring_security_logout" var="logoutUrl"/>
 <form action="${logoutUrl}" method="post" id="logoutForm">
-    <input type="hidden" name="${_csrf.parameterName}"
-           value="${_csrf.token}"/>
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 </form>
 <script>
     function formSubmit() {
@@ -26,8 +25,7 @@
 <c:if test="${pageContext.request.userPrincipal.name != null}">
     <h2>
 
-        Добро пожаловать : ${pageContext.request.userPrincipal.name} | <a
-            href="javascript:formSubmit()"> Logout</a>
+        Добро пожаловать : ${pageContext.request.userPrincipal.name} | <a href="javascript:formSubmit()"> Logout</a>
     </h2>
 </c:if>
 
@@ -47,19 +45,21 @@
             <th>EMAIL</th>
             <th>TYPE</th>
         </tr>
-        <tr>
-            <td> ${clientList.get(0).id}</td>
-            <td> ${clientList.get(0).name}</td>
-            <td> ${clientList.get(0).login}</td>
-            <td> ${clientList.get(0).password}</td>
-            <td> ${clientList.get(0).email}</td>
-            <td> ${clientList.get(0).type}</td>
-            <td>
-                <sf:form method="post">
-                    <input type="checkbox" name="check_1"/>
-                </sf:form>
-            </td>
-        </tr>
+        <c:forEach items="clientList" var="c">
+            <tr>
+                <td> ${c.id}</td>
+                <td> ${c.name}</td>
+                <td> ${c.login}</td>
+                <td> ${c.password}</td>
+                <td> ${c.email}</td>
+                <td> ${c.type}</td>
+                <td>
+                    <sf:form method="post">
+                        <input type="checkbox" name="check_1"/>
+                    </sf:form>
+                </td>
+            </tr>
+        </c:forEach>
     </table>
 </div>
 <div align="center">
