@@ -39,7 +39,7 @@
 <div align="center">
 
     <table id="client_table" align="center" border="1" width="1000" cellpadding="1" cellspacing="15">
-        <tr>
+        <tr bordercolor="black">
             <th>ID</th>
             <th>NAME</th>
             <th>LOGIN</th>
@@ -48,12 +48,12 @@
             <th>TYPE</th>
         </tr>
         <tr>
-            <td> ${client.id}</td>
-            <td> ${client.name}</td>
-            <td> ${client.login}</td>
-            <td> ${client.password}</td>
-            <td> ${client.email}</td>
-            <td> ${client.type}</td>
+            <td> ${clientList.get(0).id}</td>
+            <td> ${clientList.get(0).name}</td>
+            <td> ${clientList.get(0).login}</td>
+            <td> ${clientList.get(0).password}</td>
+            <td> ${clientList.get(0).email}</td>
+            <td> ${clientList.get(0).type}</td>
             <td>
                 <sf:form method="post">
                     <input type="checkbox" name="check_1"/>

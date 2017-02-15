@@ -1,11 +1,12 @@
 <%@taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page session="true" contentType="text/html; charset=utf-8" %>
 <html>
 <body>
 	<h1>Title : ${title}</h1>
 	<h1>Message : ${message}</h1>
-	<h1>Client ID: ${client.id}</h1>
+	<p> Для редактирования базы перейдите на <a href="admin.jsp">/Admin</a> </p>
 
 	<sec:authorize access="hasRole('ROLE_USER')">
 
