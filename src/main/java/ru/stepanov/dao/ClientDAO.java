@@ -4,6 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import ru.stepanov.entity.Client;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+
 public class ClientDAO {
     private JdbcTemplate jdbcTemplate;
 
@@ -12,13 +17,41 @@ public class ClientDAO {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    private static final String SQL_INSERT_CLIENT =
-            "insert into CLIENT (name, login, password, email, type) values (?,?,?,?,?)";
 
-    private static final String SQL_UPDATE_CLIENT =
-            "update CLIENT set name=?, login=?, password=?, email=?, type=? where id=?";
 
-       public String addClient(Client client) {
+
+
+
+    public ArrayList<Client> getArrayOfClients(ArrayList<Client> clients) throws SQLException {
+        String SQL_GET_ALL = "SELECT * FROM client";
+        Statement statement = jdbcTemplate.getDataSource().getConnection().createStatement();
+
+        ResultSet resultSet = statement.executeQuery(SQL_GET_ALL);
+        while (resultSet.next()) {
+            Client client = new Client();
+
+            client.setId(resultSet.getInt("id"));
+            client.setName(resultSet.getString("name"));
+            client.setLogin(resultSet.getString("login"));
+            client.setPassword(resultSet.getString("password"));
+            client.setEmail(resultSet.getString("email"));
+            client.setType(resultSet.getString("type"));
+
+            System.out.println(client);
+            clients.add(client);
+        }
+        statement.close();
+        return clients;
+    }
+
+    public String deleteClient(String name) {
+
+        return "Клиент " + name + " успешно удален!";
+    }
+
+    public String addClient(Client client) {
+        final String SQL_INSERT_CLIENT =
+                "insert into CLIENT (name, login, password, email, type) values (?,?,?,?,?)";
 
         jdbcTemplate.update(SQL_INSERT_CLIENT,
                 client.getName(),
@@ -31,12 +64,9 @@ public class ClientDAO {
         return "Клиент " + client.getName() + " успешно добавлен!";
     }
 
-    public String deleteClient(String name) {
-
-        return "Клиент " + name + " успешно удален!";
-    }
-
     public String setClient(Client client) {
+        final String SQL_UPDATE_CLIENT =
+                "update CLIENT set name=?, login=?, password=?, email=?, type=? where id=?";
 
         jdbcTemplate.update(SQL_UPDATE_CLIENT,
                 client.getName(),

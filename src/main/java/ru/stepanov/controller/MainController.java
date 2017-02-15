@@ -13,6 +13,9 @@ import org.springframework.web.servlet.ModelAndView;
 import ru.stepanov.dao.ClientDAO;
 import ru.stepanov.entity.Client;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
+
 @Controller
 public class MainController {
     @Autowired
@@ -21,18 +24,25 @@ public class MainController {
 
 
     @RequestMapping(value = "/admin**", method = RequestMethod.GET)
-    public ModelAndView adminPage() {
+    public ModelAndView adminPage() throws SQLException {
         ModelAndView modelAndView = new ModelAndView();
+        ArrayList<Client> clients = new ArrayList<Client>();
+
+
+        clients.clear();
+        clients = clientDAO.getArrayOfClients(clients);
+        modelAndView.addObject(clients);
+
         return modelAndView;
     }
 
     @RequestMapping(value = "/admin**", method = RequestMethod.POST)
     public ModelAndView admin(Client client){
         ModelAndView modelAndView = new ModelAndView();
-        System.out.println("--------: " + clientDAO.addClient(client));
+        if (client!=null) {
+            System.out.println("--------: " + clientDAO.addClient(client));
+        }
 
-
-        modelAndView.addObject(client);
         modelAndView.setViewName("admin");
         return modelAndView;
     }

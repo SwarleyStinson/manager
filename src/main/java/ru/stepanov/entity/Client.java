@@ -6,9 +6,9 @@ public class Client {
     private String login;
     private String password;
     private String email;
-    private TypeOfClient type;
+    private String type;
 
-    public Client(int id, String name, String login, String password, String email, TypeOfClient type) {
+    public Client(int id, String name, String login, String password, String email, String type) {
         this.id = id;
         this.name = name;
         this.login = login;
@@ -32,8 +32,12 @@ public class Client {
         return login;
     }
 
-    public TypeOfClient getType() {
+    public String getType() {
         return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public void setLogin(String login) {

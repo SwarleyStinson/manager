@@ -1,10 +1,8 @@
 package ru.stepanov.dao;
 
-import ru.stepanov.entity.PaySystem;
-
 public class BankDAO {
 
-    public String addBank(String name, String address, PaySystem[] paySystem) {
+    public String addBank(String name, String address, String paySystem) {
 
 
         return "Банк " + name + " успешно добавлен!";

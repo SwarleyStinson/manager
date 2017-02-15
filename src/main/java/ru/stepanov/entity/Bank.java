@@ -3,9 +3,9 @@ package ru.stepanov.entity;
 public class Bank {
     private String name;
     private String address;
-    private PaySystem[] paySystem;
+    private String paySystem;
 
-    public Bank(String name, String address, PaySystem[] paySystem) {
+    public Bank(String name, String address, String paySystem) {
         this.name = name;
         this.address = address;
         this.paySystem = paySystem;
@@ -27,11 +27,11 @@ public class Bank {
         this.address = address;
     }
 
-    public PaySystem[] getPaySystem() {
+    public String getPaySystem() {
         return paySystem;
     }
 
-    public void setPaySystem(PaySystem[] paySystem) {
+    public void setPaySystem(String paySystem) {
         this.paySystem = paySystem;
     }
 }
