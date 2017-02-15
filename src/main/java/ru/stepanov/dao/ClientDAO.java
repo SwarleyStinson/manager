@@ -13,20 +13,20 @@ public class ClientDAO {
     }
 
     private static final String SQL_INSERT_CLIENT =
-            "insert into CLIENT (id, name, login, password, email, type) values (?,?,?,?,?,?)";
+            "insert into CLIENT (name, login, password, email, type) values (?,?,?,?,?)";
 
     private static final String SQL_UPDATE_CLIENT =
-            "update CLIENT (id, name, login, password, email, type) values (?,?,?,?,?)";
+            "update CLIENT set name=?, login=?, password=?, email=?, type=? where id=?";
 
        public String addClient(Client client) {
 
         jdbcTemplate.update(SQL_INSERT_CLIENT,
-                client.getId(),
                 client.getName(),
                 client.getLogin(),
                 client.getPassword(),
                 client.getEmail(),
-                client.getType().toString());
+                client.getType()
+        );
 
         return "Клиент " + client.getName() + " успешно добавлен!";
     }
@@ -38,6 +38,14 @@ public class ClientDAO {
 
     public String setClient(Client client) {
 
+        jdbcTemplate.update(SQL_UPDATE_CLIENT,
+                client.getName(),
+                client.getLogin(),
+                client.getPassword(),
+                client.getEmail(),
+                client.getType(),
+                client.getId()
+        );
 
         return "Клиент " + client.getName() + " успешно изменен!";
     }

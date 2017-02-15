@@ -1,3 +1,0 @@
-insert into users (id, name, login, password, email, type) values (1, "Vladimir Lenin", "v.lenin", "1917", "v.lenin@sssr.net", "REAL_FACE");
-insert into users (id, name, login, password, email, type) values (2, "Lev trockiy", "l.trockiy", "12345", "l.trockiy@sssr.net", "REAL_FACE");
-insert into users (id, name, login, password, email, type) values (3, "Apple", "apple", "12345", "apple@gmail.com", "COMPANY");

@@ -32,9 +32,9 @@
 </c:if>
 
 <div align="left">
-    <input name="Client Database" type="button"/>
-    <input name="Bank Database" type="button"/>
-    <input name="Order Database" type="button"/>
+    <input name="Client Database" type="button" size="10"/>
+    <input name="Bank Database" type="button" size="10"/>
+    <input name="Order Database" type="button" size="10"/>
 </div>
 <div align="center">
 
@@ -48,22 +48,23 @@
             <th>TYPE</th>
         </tr>
         <tr>
-            <td> строка 1</td>
-            <td> строка 1</td>
-            <td> строка 1</td>
-            <td> строка 1</td>
-            <td> строка 1</td>
-            <td> строка 1</td>
+            <td> ${client.id}</td>
+            <td> ${client.name}</td>
+            <td> ${client.login}</td>
+            <td> ${client.password}</td>
+            <td> ${client.email}</td>
+            <td> ${client.type}</td>
+            <td>
+                <sf:form method="post">
+                    <input type="checkbox" name="check_1"/>
+                </sf:form>
+            </td>
         </tr>
     </table>
 </div>
 <div align="center">
 
     <sf:form method="post" commandName="t_client">
-        <tr>
-            <td>ID:</td>
-            <td><input name="id" type="text" width="5"/></td>
-        </tr>
         <tr>
             <td>Name:</td>
             <td><input name="name" type="text" width="20"/></td>

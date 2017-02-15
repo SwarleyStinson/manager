@@ -27,11 +27,14 @@ public class MainController {
     }
 
     @RequestMapping(value = "/admin**", method = RequestMethod.POST)
-    public String admin(Client client){
-
-        System.out.println("--------: " + client.getName());
+    public ModelAndView admin(Client client){
+        ModelAndView modelAndView = new ModelAndView();
         System.out.println("--------: " + clientDAO.addClient(client));
-        return "admin";
+
+
+        modelAndView.addObject(client);
+        modelAndView.setViewName("admin");
+        return modelAndView;
     }
 
 
