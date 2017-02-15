@@ -7,11 +7,11 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <!--<parent>-->
-    <!--<groupId>com.cardpay</groupId>-->
-    <!--<artifactId>cardpay-parent</artifactId>-->
-    <!--<version>1.5.34</version>-->
-    <!--</parent>-->
+    <parent>
+        <groupId>com.cardpay</groupId>
+        <artifactId>cardpay-parent</artifactId>
+        <version>1.5.34</version>
+    </parent>
 
     <groupId>ru.stepanov</groupId>
     <artifactId>TestWebSpringApp</artifactId>
@@ -21,8 +21,10 @@
 
     <properties>
         <jdk.version>1.6</jdk.version>
+<!--
         <spring.version>4.3.6.RELEASE</spring.version>
         <spring.security.version>4.2.1.RELEASE</spring.security.version>
+-->
         <jstl.version>1.2</jstl.version>
     </properties>
 
@@ -32,45 +34,45 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
-            <version>${spring.version}</version>
+            <!--<version>${spring.version}</version>-->
         </dependency>
 
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
-            <version>${spring.version}</version>
+            <!--<version>${spring.version}</version>-->
         </dependency>
 
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
-            <version>${spring.version}</version>
+            <!--<version>${spring.version}</version>-->
         </dependency>
 
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-jdbc</artifactId>
-            <version>${spring.version}</version>
+            <!--<version>${spring.version}</version>-->
         </dependency>
 
         <!-- Spring Security -->
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-web</artifactId>
-            <version>${spring.security.version}</version>
+            <!--<version>${spring.security.version}</version>-->
         </dependency>
 
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-config</artifactId>
-            <version>${spring.security.version}</version>
+            <!--<version>${spring.security.version}</version>-->
         </dependency>
 
         <!-- Spring Security JSP Taglib -->
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-taglibs</artifactId>
-            <version>${spring.security.version}</version>
+            <!--<version>${spring.security.version}</version>-->
         </dependency>
 
         <!-- jstl for jsp page -->

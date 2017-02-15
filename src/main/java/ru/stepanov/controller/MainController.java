@@ -22,9 +22,6 @@ public class MainController {
     ClientDAO clientDAO;
     ArrayList<Client> clients = new ArrayList<Client>();
 
-
-
-
     @RequestMapping(value = "/admin**", method = RequestMethod.GET)
     public ModelAndView adminPage() throws SQLException {
         ModelAndView modelAndView = new ModelAndView();
@@ -39,7 +36,7 @@ public class MainController {
     @RequestMapping(value = "/admin**", method = RequestMethod.POST)
     public ModelAndView admin(Client client) throws SQLException {
         ModelAndView modelAndView = new ModelAndView();
-        if (client!=null) {
+        if (client != null) {
             System.out.println("--------: " + clientDAO.addClient(client));
         }
         //add handler for Bank and Order
@@ -53,7 +50,7 @@ public class MainController {
 
 
     @RequestMapping(value = "/hello", method = RequestMethod.GET)
-    public ModelAndView hello(){
+    public ModelAndView hello() {
         ModelAndView model = new ModelAndView();
         model.addObject("title", "This is Hello Page");
         model.addObject("message", "Hello, Cardpay's developer!");
@@ -61,7 +58,7 @@ public class MainController {
         return model;
     }
 
-    @RequestMapping(value = { "/"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/"}, method = RequestMethod.GET)
     public ModelAndView defaultPage() {
 
         ModelAndView model = new ModelAndView();
@@ -91,6 +88,7 @@ public class MainController {
         return model;
 
     }
+
     //for 403 access denied page
     @RequestMapping(value = "/403", method = RequestMethod.GET)
     public ModelAndView accessDenied() {
