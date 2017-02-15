@@ -1,11 +1,8 @@
 package ru.stepanov.dao;
 
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
 import ru.stepanov.entity.Client;
 
-@Component
 public class ClientDAO {
     private static final String SQL_INSERT_CLIENT =
             "insert into CLIENT (id, name, login, password, email, type) values (?,?,?,?,?)";
@@ -15,7 +12,6 @@ public class ClientDAO {
 
     private JdbcTemplate jdbcTemplate = new JdbcTemplate();
 
-//    @Transactional
     public String addClient(Client client) {
 
         jdbcTemplate.update(SQL_INSERT_CLIENT,
@@ -29,13 +25,11 @@ public class ClientDAO {
         return "Клиент " + client.getName() + " успешно добавлен!";
     }
 
-    @Transactional
     public String deleteClient(String name) {
 
         return "Клиент " + name + " успешно удален!";
     }
 
-    @Transactional
     public String setClient(Client client) {
 
 
