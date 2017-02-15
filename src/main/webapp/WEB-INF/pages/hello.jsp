@@ -6,7 +6,7 @@
 <body>
 	<h1>Title : ${title}</h1>
 	<h1>Message : ${message}</h1>
-	<p> Для редактирования базы перейдите на <a href="admin.jsp">/Admin</a> </p>
+	<p> Для редактирования базы перейдите на <a href="admin">/Admin</a> </p>
 
 	<sec:authorize access="hasRole('ROLE_USER')">
 
