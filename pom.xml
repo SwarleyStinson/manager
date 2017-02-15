@@ -1,61 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project
+        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+	http://maven.apache.org/xsd/maven-4.0.0.xsd"
+        xmlns="http://maven.apache.org/POM/4.0.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
     <modelVersion>4.0.0</modelVersion>
 
     <!--<parent>-->
-        <!--<groupId>com.cardpay</groupId>-->
-        <!--<artifactId>cardpay-parent</artifactId>-->
-        <!--<version>1.5.34</version>-->
+    <!--<groupId>com.cardpay</groupId>-->
+    <!--<artifactId>cardpay-parent</artifactId>-->
+    <!--<version>1.5.34</version>-->
     <!--</parent>-->
 
     <groupId>ru.stepanov</groupId>
     <artifactId>TestWebSpringApp</artifactId>
-    <version>3</version>
+    <version>4</version>
     <name>Test Spring Framework Web Application</name>
     <packaging>war</packaging>
 
     <properties>
-        <jdk.version>1.8</jdk.version>
-        <spring.version>3.2.8.RELEASE</spring.version>
-        <spring.security.version>3.2.3.RELEASE</spring.security.version>
-        <servlet.version>3.1.0</servlet.version>
+        <jdk.version>1.6</jdk.version>
+        <spring.version>4.3.6.RELEASE</spring.version>
+        <spring.security.version>4.2.1.RELEASE</spring.security.version>
+        <jstl.version>1.2</jstl.version>
     </properties>
 
     <dependencies>
 
-        <!-- Servlet API -->
+        <!-- Spring 3 dependencies -->
         <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>${servlet.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>jstl</artifactId>
-            <version>1.2</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>javax.servlet.jsp</groupId>
-            <artifactId>jsp-api</artifactId>
-            <version>2.2</version>
-            <scope>provided</scope>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${spring.version}</version>
         </dependency>
 
-        <!-- Spring MVC -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-webmvc</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context-support</artifactId>
-            <version>${spring.version}</version>
-            <scope>compile</scope>
-        </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
@@ -64,15 +43,14 @@
 
         <dependency>
             <groupId>org.springframework</groupId>
-            <artifactId>spring-jdbc</artifactId>
+            <artifactId>spring-webmvc</artifactId>
             <version>${spring.version}</version>
         </dependency>
 
-        <!-- Database H2 -->
         <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <version>1.4.193</version>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>${spring.version}</version>
         </dependency>
 
         <!-- Spring Security -->
@@ -93,48 +71,30 @@
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-taglibs</artifactId>
             <version>${spring.security.version}</version>
-
         </dependency>
 
+        <!-- jstl for jsp page -->
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-framework-bom</artifactId>
-            <version>4.0.3.RELEASE</version>
-            <type>pom</type>
-            <scope>import</scope>
+            <groupId>jstl</groupId>
+            <artifactId>jstl</artifactId>
+            <version>${jstl.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
         </dependency>
 
+        <!-- H2 Database and MyBatis -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>1.4.193</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+            <version>3.4.2</version>
+        </dependency>
     </dependencies>
-
-    <build>
-
-        <finalName>SpringSecurity</finalName>
-        <plugins>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.3.2</version>
-                <configuration>
-                    <source>${jdk.version}</source>
-                    <target>${jdk.version}</target>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
-
-    <!--
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-framework-bom</artifactId>
-                <version>${spring-framework.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-    -->
-
 </project>
