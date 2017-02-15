@@ -21,6 +21,12 @@ public class ClientDAO {
 
 
 
+    public ArrayList<Client> refresh(ArrayList<Client> clients) throws SQLException {
+
+        clients.clear();
+        clients = this.getArrayOfClients(clients);
+        return clients;
+    }
 
     public ArrayList<Client> getArrayOfClients(ArrayList<Client> clients) throws SQLException {
         String SQL_GET_ALL = "SELECT * FROM client";

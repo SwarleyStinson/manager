@@ -20,28 +20,32 @@ import java.util.ArrayList;
 public class MainController {
     @Autowired
     ClientDAO clientDAO;
+    ArrayList<Client> clients = new ArrayList<Client>();
+
 
 
 
     @RequestMapping(value = "/admin**", method = RequestMethod.GET)
     public ModelAndView adminPage() throws SQLException {
         ModelAndView modelAndView = new ModelAndView();
-        ArrayList<Client> clients = new ArrayList<Client>();
 
+        clients = clientDAO.refresh(clients);
 
-        clients.clear();
-        clients = clientDAO.getArrayOfClients(clients);
         modelAndView.addObject(clients);
-
+        modelAndView.setViewName("admin");
         return modelAndView;
     }
 
     @RequestMapping(value = "/admin**", method = RequestMethod.POST)
-    public ModelAndView admin(Client client){
+    public ModelAndView admin(Client client) throws SQLException {
         ModelAndView modelAndView = new ModelAndView();
         if (client!=null) {
             System.out.println("--------: " + clientDAO.addClient(client));
         }
+        //add handler for Bank and Order
+
+        clients = clientDAO.refresh(clients);
+        modelAndView.addObject(clients);
 
         modelAndView.setViewName("admin");
         return modelAndView;
