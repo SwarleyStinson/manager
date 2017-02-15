@@ -15,20 +15,17 @@ import ru.stepanov.entity.Client;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class MainController {
     @Autowired
     ClientDAO clientDAO;
-    ArrayList<Client> clients = new ArrayList<Client>();
 
     @RequestMapping(value = "/admin**", method = RequestMethod.GET)
     public ModelAndView adminPage() throws SQLException {
         ModelAndView modelAndView = new ModelAndView();
-
-        clients = clientDAO.refresh(clients);
-
-        modelAndView.addObject(clients);
+        modelAndView.addObject(clientDAO.getAll());
         modelAndView.setViewName("admin");
         return modelAndView;
     }
@@ -41,8 +38,8 @@ public class MainController {
         }
         //add handler for Bank and Order
 
-        clients = clientDAO.refresh(clients);
-        modelAndView.addObject(clients);
+        //clients = clientDAO.refresh(clients);
+        //modelAndView.addObject(clients);
 
         modelAndView.setViewName("admin");
         return modelAndView;

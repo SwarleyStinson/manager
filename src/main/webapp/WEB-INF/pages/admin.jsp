@@ -45,7 +45,7 @@
             <th>EMAIL</th>
             <th>TYPE</th>
         </tr>
-        <c:forEach items="${clientList}" var="c" varStatus="${clientList.size()}">
+        <c:forEach items="${clientList}" var="c">
             <tr >
                 <td> ${c.id}</td>
                 <td> ${c.name}</td>

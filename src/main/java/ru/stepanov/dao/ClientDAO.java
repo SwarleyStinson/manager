@@ -8,6 +8,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class ClientDAO {
     private JdbcTemplate jdbcTemplate;
@@ -17,16 +19,19 @@ public class ClientDAO {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    public ArrayList<Client> refresh(ArrayList<Client> clients) throws SQLException {
-
-        clients.clear();
-        clients = this.getArrayOfClients(clients);
-        return clients;
+    public List<Client> getAll() throws SQLException {
+        return Arrays.asList(
+                // int id, String name, String login, String password, String email, String type
+                new Client(1, "Name", "Login", "PWD", "email", "type"),
+                new Client(2, "Name2", "Login2", "PWD2", "email2", "type2")
+        );
     }
 
-    public ArrayList<Client> getArrayOfClients(ArrayList<Client> clients) throws SQLException {
+    public List<Client> _getAll() throws SQLException {
         String SQL_GET_ALL = "SELECT * FROM client";
         Statement statement = jdbcTemplate.getDataSource().getConnection().createStatement();
+
+        List<Client> result = new ArrayList<>();
 
         ResultSet resultSet = statement.executeQuery(SQL_GET_ALL);
         while (resultSet.next()) {
@@ -40,10 +45,10 @@ public class ClientDAO {
             client.setType(resultSet.getString("type"));
 
             System.out.println(client);
-            clients.add(client);
+            result.add(client);
         }
         statement.close();
-        return clients;
+        return result;
     }
 
     public String deleteClient(String name) {
