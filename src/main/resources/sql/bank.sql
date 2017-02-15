@@ -1,1 +1,0 @@
-CREATE TABLE BANK (id INT PRIMARY KEY, name varchar(40), address varchar(40), paysystem varchar(40))

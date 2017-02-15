@@ -5,10 +5,9 @@
 	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
 	http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd">
 
-	<bean id="dataSource" class="org.h2.jdbcx.JdbcDataSource">
-		<property name="URL" value="jdbc:h2:~/TestDatabase"/>
-		<property name="user" value="root"/>
-		<property name="password" value="root"/>
+    <jdbc:embedded-database id="dataSource" type="H2">
+        <jdbc:script location="classpath:sql/schema.sql"/>
+        <jdbc:script location="classpath:sql/data.sql"/>
+    </jdbc:embedded-database>
 
-	</bean>
 </beans>

@@ -9,10 +9,39 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import ru.stepanov.dao.ClientDAO;
 import ru.stepanov.entity.Client;
 
 @Controller
 public class MainController {
+
+    @RequestMapping(value = "/admin**", method = RequestMethod.GET)
+    public ModelAndView adminPage() {
+        ModelAndView modelAndView = new ModelAndView();
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/admin**", method = RequestMethod.POST)
+    public String admin(Client client){
+        System.out.println("--------: " + client.getName());
+
+        ClientDAO clientDAO = new ClientDAO();
+        clientDAO.addClient(client);
+
+        System.out.println("--------: " + client.getEmail());
+
+        return "admin";
+    }
+
+
+    @RequestMapping(value = "/hello", method = RequestMethod.GET)
+    public ModelAndView hello(){
+        ModelAndView model = new ModelAndView();
+        model.addObject("title", "This is Hello Page");
+        model.addObject("message", "Hello, Cardpay's developer!");
+
+        return model;
+    }
 
     @RequestMapping(value = { "/"}, method = RequestMethod.GET)
     public ModelAndView defaultPage() {
@@ -23,32 +52,6 @@ public class MainController {
         model.setViewName("hello");
         return model;
 
-    }
-
-    @RequestMapping(value = "/admin**", method = RequestMethod.GET)
-    public ModelAndView adminPage() {
-        ModelAndView modelAndView = new ModelAndView();
-
-
-
-        return modelAndView;
-    }
-
-
-    @RequestMapping(value = "/admin**", method = RequestMethod.POST)
-    public String admin(Client client){
-        System.out.println("Name: " + client.getName());
-
-        return "admin";
-    }
-
-    @RequestMapping(value = "/hello", method = RequestMethod.GET)
-    public ModelAndView hello(){
-        ModelAndView model = new ModelAndView();
-        model.addObject("title", "This is Hello Page");
-        model.addObject("message", "Hello, Cardpay's developer!");
-
-        return model;
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)

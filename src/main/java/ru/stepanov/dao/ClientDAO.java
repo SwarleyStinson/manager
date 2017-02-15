@@ -1,27 +1,21 @@
 package ru.stepanov.dao;
 
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import ru.stepanov.entity.Client;
 
+@Component
 public class ClientDAO {
     private static final String SQL_INSERT_CLIENT =
-            "insert into public.CLIENT (id, name, login, password, email, type) values (?,?,?,?,?)";
+            "insert into CLIENT (id, name, login, password, email, type) values (?,?,?,?,?)";
     private static final String SQL_UPDATE_CLIENT =
-            "update public.CLIENT (id, name, login, password, email, type) values (?,?,?,?,?)";
-    private JdbcTemplate jdbcTemplate;
+            "update CLIENT (id, name, login, password, email, type) values (?,?,?,?,?)";
 
-    public ClientDAO(JdbcTemplate jdbcTemplate) {
-        this.jdbcTemplate = jdbcTemplate;
-    }
 
-    public static void addFrog(){
-        System.out.println("Frog added!");
-    }
+    private JdbcTemplate jdbcTemplate = new JdbcTemplate();
 
-    public ClientDAO() {    }
-
-    @Transactional
+//    @Transactional
     public String addClient(Client client) {
 
         jdbcTemplate.update(SQL_INSERT_CLIENT,

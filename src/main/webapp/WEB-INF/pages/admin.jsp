@@ -1,6 +1,5 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@page session="true" contentType="text/html; charset=utf-8" %>
 <html>
 <head>
@@ -60,7 +59,7 @@
 </div>
 <div align="center">
 
-    <form:form method="post" commandName="t_client">
+    <sf:form method="post" commandName="t_client">
         <tr>
             <td>ID:</td>
             <td><input name="id" type="text" width="5"/></td>
@@ -88,7 +87,7 @@
         <tr>
             <td><input type="submit" value="Добавить"/></td>
         </tr>
-    </form:form>
+    </sf:form>
 </div>
 </body>
 </html>
