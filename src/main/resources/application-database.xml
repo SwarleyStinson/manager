@@ -7,15 +7,9 @@
     <bean id="dataSource" class="org.h2.jdbcx.JdbcDataSource">
         <!--<property name="URL" value="jdbc:h2:tcp://localhost/~/TestDatabase"/>-->
         <property name="URL" value="jdbc:h2:~/TestDatabase"/>
-        <property name="user" value="sa"/>
-        <property name="password" value=""/>
+        <property name="user" value="root"/>
+        <property name="password" value="root"/>
     </bean>
-
-<!--
-	<jdbc:initialize-database>
-		<jdbc:script/>
-	</jdbc:initialize-database>
--->
 
 	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
 		<property name="dataSource" ref="dataSource"/>

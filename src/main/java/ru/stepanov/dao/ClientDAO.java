@@ -17,10 +17,6 @@ public class ClientDAO {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-
-
-
-
     public ArrayList<Client> refresh(ArrayList<Client> clients) throws SQLException {
 
         clients.clear();
