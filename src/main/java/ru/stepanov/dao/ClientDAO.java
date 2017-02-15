@@ -13,7 +13,7 @@ public class ClientDAO {
     }
 
     private static final String SQL_INSERT_CLIENT =
-            "insert into CLIENT (id, name, login, password, email, type) values (?,?,?,?,?)";
+            "insert into CLIENT (id, name, login, password, email, type) values (?,?,?,?,?,?)";
 
     private static final String SQL_UPDATE_CLIENT =
             "update CLIENT (id, name, login, password, email, type) values (?,?,?,?,?)";
@@ -26,7 +26,7 @@ public class ClientDAO {
                 client.getLogin(),
                 client.getPassword(),
                 client.getEmail(),
-                client.getType());
+                client.getType().toString());
 
         return "Клиент " + client.getName() + " успешно добавлен!";
     }
