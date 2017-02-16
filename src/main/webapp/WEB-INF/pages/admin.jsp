@@ -18,8 +18,8 @@
 </head>
 
 <body>
-<h1>Title : страница управления базой данных</h1>
-<h1>Таблица : Client</h1>
+<h3>Title : страница управления базой данных</h3>
+<h3>Таблица : Client</h3>
 <c:set var="isUpdate" value="1" />
 <c:set var="isCreate" value="1" />
 
