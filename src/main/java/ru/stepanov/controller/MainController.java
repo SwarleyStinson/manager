@@ -14,8 +14,6 @@ import ru.stepanov.dao.ClientDAO;
 import ru.stepanov.entity.Client;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 @Controller
 public class MainController {
@@ -31,36 +29,28 @@ public class MainController {
     }
 
     @RequestMapping(value = "/admin**", method = RequestMethod.POST)
-    public ModelAndView admin(Client client) throws SQLException {
+    public ModelAndView admin(@RequestParam(value = "deleteByID", defaultValue = "0") int deleteByID, Client client) throws SQLException {
         ModelAndView modelAndView = new ModelAndView();
-        if (client != null) {
+        if (client.getName() != null) {
             System.out.println("--------: " + clientDAO.addClient(client));
         }
+        if (deleteByID > 0) {
+            System.out.println("--------: " + clientDAO.deleteClientByID(deleteByID));
+        }
+
         //add handler for Bank and Order
 
-        //clients = clientDAO.refresh(clients);
-        //modelAndView.addObject(clients);
-
+        modelAndView.addObject(clientDAO.getAll());
         modelAndView.setViewName("admin");
         return modelAndView;
-    }
-
-
-    @RequestMapping(value = "/hello", method = RequestMethod.GET)
-    public ModelAndView hello() {
-        ModelAndView model = new ModelAndView();
-        model.addObject("title", "This is Hello Page");
-        model.addObject("message", "Hello, Cardpay's developer!");
-
-        return model;
     }
 
     @RequestMapping(value = {"/"}, method = RequestMethod.GET)
     public ModelAndView defaultPage() {
 
         ModelAndView model = new ModelAndView();
-        model.addObject("title", "Test Web Spring Application");
-        model.addObject("message", "This is default page! This page are available for all user's.");
+        model.addObject("title", "This is Hello Page");
+        model.addObject("message", "Hello, Cardpay's developer!");
         model.setViewName("hello");
         return model;
 
@@ -83,7 +73,6 @@ public class MainController {
         model.setViewName("login");
 
         return model;
-
     }
 
     //for 403 access denied page
@@ -99,13 +88,9 @@ public class MainController {
             System.out.println(userDetail);
 
             model.addObject("username", userDetail.getUsername());
-
         }
 
         model.setViewName("403");
         return model;
-
     }
-
-
 }

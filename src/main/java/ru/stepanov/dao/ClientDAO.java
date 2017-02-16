@@ -8,7 +8,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class ClientDAO {
@@ -20,14 +19,6 @@ public class ClientDAO {
     }
 
     public List<Client> getAll() throws SQLException {
-        return Arrays.asList(
-                // int id, String name, String login, String password, String email, String type
-                new Client(1, "Name", "Login", "PWD", "email", "type"),
-                new Client(2, "Name2", "Login2", "PWD2", "email2", "type2")
-        );
-    }
-
-    public List<Client> _getAll() throws SQLException {
         String SQL_GET_ALL = "SELECT * FROM client";
         Statement statement = jdbcTemplate.getDataSource().getConnection().createStatement();
 
@@ -43,17 +34,26 @@ public class ClientDAO {
             client.setPassword(resultSet.getString("password"));
             client.setEmail(resultSet.getString("email"));
             client.setType(resultSet.getString("type"));
-
-            System.out.println(client);
             result.add(client);
         }
         statement.close();
         return result;
     }
 
-    public String deleteClient(String name) {
+    public String deleteClientByID(int id) {
+        String SQL_DELETE_BY_ID = "DELETE FROM client WHERE id=" + id;
+        try {
+            Statement statement = jdbcTemplate.getDataSource().getConnection().createStatement();
+            statement.execute(SQL_DELETE_BY_ID);
+        } catch (SQLException e) {
 
-        return "Клиент " + name + " успешно удален!";
+            System.out.println("Метод deleteClient поломался...");
+            e.printStackTrace();
+        }
+
+
+
+        return "Клиент c id: " + id + " успешно удален!";
     }
 
     public String addClient(Client client) {

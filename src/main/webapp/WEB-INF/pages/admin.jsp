@@ -8,9 +8,8 @@
 </head>
 
 <body>
-<h1>Title : ${title}</h1>
-<h1>Message : ${message}</h1>
-
+<h1>Title : страница управления базой данных</h1>
+<h1>Таблица : Client</h1>
 
 <c:url value="/j_spring_security_logout" var="logoutUrl"/>
 <form action="${logoutUrl}" method="post" id="logoutForm">
@@ -24,15 +23,14 @@
 
 <c:if test="${pageContext.request.userPrincipal.name != null}">
     <h2>
-
         Добро пожаловать : ${pageContext.request.userPrincipal.name} | <a href="javascript:formSubmit()"> Logout</a>
     </h2>
 </c:if>
 
 <div align="left">
-    <input name="Client Database" type="button" size="10"/>
-    <input name="Bank Database" type="button" size="10"/>
-    <input name="Order Database" type="button" size="10"/>
+    <input value="Client Database" type="button" size="100"/>
+    <input value="Bank Database" type="button" size="100"/>
+    <input value="Order Database" type="button" size="100"/>
 </div>
 <div align="center">
 
@@ -46,16 +44,17 @@
             <th>TYPE</th>
         </tr>
         <c:forEach items="${clientList}" var="c">
-            <tr >
-                <td> ${c.id}</td>
-                <td> ${c.name}</td>
-                <td> ${c.login}</td>
+            <tr>
+                <td align="center" width="5"> ${c.id}</td>
+                <td width="15"> ${c.name}</td>
+                <td width="10"> ${c.login}</td>
                 <td> ${c.password}</td>
                 <td> ${c.email}</td>
                 <td> ${c.type}</td>
                 <td>
-                    <sf:form method="post">
-                        <input type="checkbox" name="check_1"/>
+                    <sf:form>
+                        <input type="hidden" value="${c.id}" name="deleteByID">
+                        <input type="submit" value="Удалить"/>
                     </sf:form>
                 </td>
             </tr>
@@ -67,15 +66,15 @@
     <sf:form method="post" commandName="t_client">
         <tr>
             <td>Name:</td>
-            <td><input name="name" type="text" width="20"/></td>
+            <td><input name="name" type="text" width="5"/></td>
         </tr>
         <tr>
             <td>Login:</td>
-            <td><input name="login" type="text" width="20"/></td>
+            <td><input name="login" type="text" width="15"/></td>
         </tr>
         <tr>
             <td>Password:</td>
-            <td><input name="password" type="text" width="20"/></td>
+            <td><input name="password" type="text" width="10"/></td>
         </tr>
         <tr>
             <td>E-mail:</td>
