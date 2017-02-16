@@ -74,11 +74,11 @@
         <c:forEach items="${clientList}" var="c">
             <tr>
                 <td align="center" width="5"> ${c.id}</td>
-                <td width="40"> ${c.name}</td>
-                <td width="10"> ${c.login}</td>
-                <td width="10"> ${c.password}</td>
-                <td width="20"> ${c.email}</td>
-                <td width="15"> ${c.type}</td>
+                <td width="40">${c.name}</td>
+                <td width="10">${c.login}</td>
+                <td width="10">${c.password}</td>
+                <td width="20">${c.email}</td>
+                <td width="15">${c.type}</td>
                 <td>
                     <sf:form>
                         <input type="hidden" value="${c.id}" name="deleteByID">
