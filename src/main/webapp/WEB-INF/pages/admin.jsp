@@ -5,6 +5,16 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>Admin page</title>
+    <style>
+        .allfields {
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid transparent;
+            border-radius: 4px;
+            color: #a94442;
+            background-color: #d9edf7;
+            border-color: #bce8f1;
+    </style>
 </head>
 
 <body>
@@ -28,13 +38,13 @@
 </c:if>
 
 <div align="left">
-    <input value="Client Database" type="button" size="100"/>
+    <input value="Client Database" type="button" size="100" height="40"/>
     <input value="Bank Database" type="button" size="100"/>
     <input value="Order Database" type="button" size="100"/>
 </div>
 <div align="center">
 
-    <table id="client_table" align="center" border="1" width="1000" cellpadding="1" cellspacing="15">
+    <table id="client_table" align="center" border="1" width="1000" cellpadding="05" cellspacing="0">
         <tr bordercolor="black">
             <th>ID</th>
             <th>NAME</th>
@@ -46,24 +56,34 @@
         <c:forEach items="${clientList}" var="c">
             <tr>
                 <td align="center" width="5"> ${c.id}</td>
-                <td width="15"> ${c.name}</td>
+                <td width="40"> ${c.name}</td>
                 <td width="10"> ${c.login}</td>
-                <td> ${c.password}</td>
-                <td> ${c.email}</td>
-                <td> ${c.type}</td>
+                <td width="10"> ${c.password}</td>
+                <td width="20"> ${c.email}</td>
+                <td width="15"> ${c.type}</td>
+                <td>
+                    <sf:form >
+                        <input type="hidden" value="${c.id}" name="deleteByID">
+                        <input type="submit" value="Удалить" align="center"/>
+                    </sf:form>
+                </td>
                 <td>
                     <sf:form>
-                        <input type="hidden" value="${c.id}" name="deleteByID">
-                        <input type="submit" value="Удалить"/>
+
+                        <input type="hidden" value="${c.id}" name="setByID">
+                        <input type="submit" value="Изменить" align="center"/>
                     </sf:form>
                 </td>
             </tr>
         </c:forEach>
     </table>
 </div>
-<div align="center">
+<c:if test="${not empty allfields}">
+    <div class="allfields" align="center">${allfields}</div>
+</c:if>
+<div align="center" >
 
-    <sf:form method="post" commandName="t_client">
+    <sf:form method="post">
         <tr>
             <td>Name:</td>
             <td><input name="name" type="text" width="5"/></td>

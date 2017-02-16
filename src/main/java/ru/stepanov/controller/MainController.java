@@ -29,11 +29,24 @@ public class MainController {
     }
 
     @RequestMapping(value = "/admin**", method = RequestMethod.POST)
-    public ModelAndView admin(@RequestParam(value = "deleteByID", defaultValue = "0") int deleteByID, Client client) throws SQLException {
+    public ModelAndView admin(@RequestParam(value = "deleteByID", defaultValue = "0") int deleteByID,
+                              @RequestParam(value = "setByID", defaultValue = "0") int setByID,
+                              Client client) throws SQLException {
         ModelAndView modelAndView = new ModelAndView();
-        if (client.getName() != null) {
+
+        //add
+        if (client.getName() != null && setByID == 0) {
             System.out.println("--------: " + clientDAO.addClient(client));
         }
+        //set
+//        if (setByID > 0 && client.getName() != null && client.getLogin() != null && client.getPassword() != null && client.getEmail() != null && client.getType() != null) {
+//            System.out.println("--------: " + clientDAO.setClientByID(client, setByID));
+//        } else modelAndView.addObject("allfields", "Заполните все поля!!!");
+
+        if (setByID > 0) {
+            System.out.println("--------: " + client.getName());
+        } else modelAndView.addObject("allfields", "Заполните все поля!!!");
+        //delete
         if (deleteByID > 0) {
             System.out.println("--------: " + clientDAO.deleteClientByID(deleteByID));
         }

@@ -50,9 +50,6 @@ public class ClientDAO {
             System.out.println("Метод deleteClient поломался...");
             e.printStackTrace();
         }
-
-
-
         return "Клиент c id: " + id + " успешно удален!";
     }
 
@@ -71,17 +68,16 @@ public class ClientDAO {
         return "Клиент " + client.getName() + " успешно добавлен!";
     }
 
-    public String setClient(Client client) {
+    public String setClientByID(Client client, int id) {
         final String SQL_UPDATE_CLIENT =
-                "update CLIENT set name=?, login=?, password=?, email=?, type=? where id=?";
+                "update CLIENT set name=?, login=?, password=?, email=?, type=? where id=" + id;
 
         jdbcTemplate.update(SQL_UPDATE_CLIENT,
                 client.getName(),
                 client.getLogin(),
                 client.getPassword(),
                 client.getEmail(),
-                client.getType(),
-                client.getId()
+                client.getType()
         );
 
         return "Клиент " + client.getName() + " успешно изменен!";
