@@ -23,31 +23,31 @@ public class MainController {
     @RequestMapping(value = "/admin**", method = RequestMethod.GET)
     public ModelAndView adminPage() throws SQLException {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject(clientDAO.getLast20());
+        modelAndView.addObject(clientDAO.getAll());
         modelAndView.setViewName("admin");
         return modelAndView;
     }
 
     @RequestMapping(value = "/admin**", method = RequestMethod.POST)
-    public ModelAndView admin(@RequestParam(value = "deleteByID", defaultValue = "0") int deleteByID, Client client) throws SQLException {
+    public ModelAndView admin(@RequestParam(value = "deleteByID", defaultValue = "0") int deleteByID,
+                              @RequestParam(value = "isUpdate", defaultValue = "0") int isUpdate,
+                              @RequestParam(value = "isCreate", defaultValue = "0") int isCreate,
+                              Client client) throws SQLException {
         ModelAndView modelAndView = new ModelAndView();
 
-        //add
-        if (client.getId() == 0 && client.getName() != null && client.getLogin() != null && client.getPassword() != null && client.getEmail() != null && client.getType() != null) {
+        if (isUpdate == 1) {
+            System.out.println("--------: " + clientDAO.setClientByID(client, client.getId()));
+        }
+        if (isCreate == 1) {
             System.out.println("--------: " + clientDAO.addClient(client));
         }
-        //set
-        if (client.getId() > 0 && client.getName() != null && client.getLogin() != null && client.getPassword() != null && client.getEmail() != null && client.getType() != null) {
-            System.out.println("--------: " + clientDAO.setClientByID(client, client.getId()));
-        } else if (client.getId() > 0) modelAndView.addObject("allfields", "Заполните все поля!!!");
-        //delete
         if (deleteByID > 0) {
             System.out.println("--------: " + clientDAO.deleteClientByID(deleteByID));
         }
 
         //add handler for Bank and Order
 
-        modelAndView.addObject(clientDAO.getLast20());
+        modelAndView.addObject(clientDAO.getAll());
         modelAndView.setViewName("admin");
         return modelAndView;
     }

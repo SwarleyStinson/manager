@@ -20,7 +20,8 @@
 <body>
 <h1>Title : страница управления базой данных</h1>
 <h1>Таблица : Client</h1>
-
+<c:set var="isUpdate" value="1" />
+<c:set var="isCreate" value="1" />
 
 <c:url value="/j_spring_security_logout" var="logoutUrl"/>
 <form action="${logoutUrl}" method="post" id="logoutForm">
@@ -61,7 +62,6 @@
     }
 </script>
 
-
 <div align="center">
     <table id="client_table" align="center" border="1" width="1000" cellpadding="05" cellspacing="0">
         <tr bordercolor="black">
@@ -80,13 +80,13 @@
                 <td width="10">${c.password}</td>
                 <td width="20">${c.email}</td>
                 <td width="15">${c.type}</td>
-                <td>
+                <td width="80">
                     <sf:form>
                         <input type="hidden" value="${c.id}" name="deleteByID">
                         <input type="submit" value="Удалить" align="center"/>
                     </sf:form>
                 </td>
-                <td>
+                <td width="180">
                     <sf:form>
                         <input onclick="toggle(), toggleToo()" type="button" value="изменить/добавить"/>
                     </sf:form>
@@ -96,20 +96,25 @@
     </table>
 </div>
 
+<%-- изменение строки --%>
 <div align="center">
     <c:if test="${not empty allfields}">
         <div class="allfields" align="center">${allfields}</div>
     </c:if>
 
     <sf:form id="hidethis" method="post" style="display: none" name="setForm">
-
+        <div class="allfields" align="center">Введите новые данные клиента:</div>
+        <tr>
+            <td>ID:</td>
+            <td width="5"><input name="id" type="text" width="5" required pattern="^[0-9]+$"/></td>
+        </tr>
         <tr>
             <td>Name:</td>
-            <td><input name="name" type="text" width="5" required pattern="^[a-zA-Z]+$"/></td>
+            <td><input name="name" type="text" width="5" required pattern="^[a-zA-Z\s]+$"/></td>
         </tr>
         <tr>
             <td>Login:</td>
-            <td><input name="login" type="text" width="15" required pattern="^[a-z.]+$"/></td>
+            <td width="15"><input name="login" type="text" width="15" required pattern="^[a-z.]+$"/></td>
         </tr>
         <tr>
             <td>Password:</td>
@@ -123,27 +128,27 @@
         <tr>
             <td>Type:</td>
             <td>
-                <select>
+                <select required name="type">
                     <option>REAL_FACE</option>
                     <option>COMPANY</option>
                 </select>
             </td>
         </tr>
-
-        <td><input type="submit" value="Сохранить изменения"/></td>
+        <input type="hidden" value="${isUpdate}" name="isUpdate">
+        <td width="10"><input type="submit" value="Сохранить изменения"/></td>
 
     </sf:form>
 </div>
 
-
+<%-- Добавление клиента --%>
 <div align="center">
 
-    <div class="allfields" align="center">Введите данные нового клиента:</div>
 
     <sf:form id="hidethistoo" method="post" name="addForm">
+        <div class="allfields" align="center">Введите данные нового клиента:</div>
         <tr>
             <td>Name:</td>
-            <td><input name="name" type="text" width="5" required pattern="^[a-zA-Z]+$"/></td>
+            <td><input name="name" type="text" width="5" required pattern="^[a-zA-Z\s]+$"/></td>
         </tr>
         <tr>
             <td>Login:</td>
@@ -161,13 +166,14 @@
         <tr>
             <td>Type:</td>
             <td>
-                <select>
+                <select form="hidethistoo" required name="type">
                     <option>REAL_FACE</option>
                     <option>COMPANY</option>
                 </select>
             </td>
         </tr>
         <tr>
+            <input type="hidden" value="${isCreate}" name="isCreate">
             <td><input type="submit" value="Добавить клиента"/></td>
         </tr>
     </sf:form>
