@@ -43,6 +43,7 @@
     <input value="Bank Database" type="button" size="100"/>
     <input value="Order Database" type="button" size="100"/>
 </div>
+
 <script>
     function toggle() {
         if (document.getElementById("hidethis").style.display == 'none') {
@@ -102,29 +103,32 @@
 
     <sf:form id="hidethis" method="post" style="display: none" name="setForm">
 
-        <td>ID:</td>
-        <td><input name="id" type="text" width="5" required/>
-
-        </td>
-        <td>Name:</td>
-        <td><input name="name" type="text" width="5" required/></td>
-
-        <td>Login:</td>
-        <td><input name="login" type="text" width="15" required/></td>
-
-        <td>Password:</td>
-        <td><input name="password" type="text" width="10" formenctype="application/x-www-form-urlencoded" required/></td>
-
-        <td>E-mail:</td>
-        <td><input name="email" type="email" width="20" required/></td>
-
-        <td>Type:</td>
-        <td>
-            <select>
-                <option>REAL_FACE</option>
-                <option>COMPANY</option>
-            </select>
-        </td>
+        <tr>
+            <td>Name:</td>
+            <td><input name="name" type="text" width="5" required pattern="^[a-zA-Z]+$"/></td>
+        </tr>
+        <tr>
+            <td>Login:</td>
+            <td><input name="login" type="text" width="15" required pattern="^[a-z.]+$"/></td>
+        </tr>
+        <tr>
+            <td>Password:</td>
+            <td><input name="password" type="text" width="10" formenctype="application/x-www-form-urlencoded" required
+                       pattern="^[0-9a-zA-Z.,-=+\|\]+$!@#$%^&*()"/></td>
+        </tr>
+        <tr>
+            <td>E-mail:</td>
+            <td><input name="email" type="email" width="20" required pattern="^[0-9a-zA-Z._-@]+$"/></td>
+        </tr>
+        <tr>
+            <td>Type:</td>
+            <td>
+                <select>
+                    <option>REAL_FACE</option>
+                    <option>COMPANY</option>
+                </select>
+            </td>
+        </tr>
 
         <td><input type="submit" value="Сохранить изменения"/></td>
 
@@ -133,23 +137,26 @@
 
 
 <div align="center">
+
+    <div class="allfields" align="center">Введите данные нового клиента:</div>
+
     <sf:form id="hidethistoo" method="post" name="addForm">
-        <div class="allfields" align="center">Введите данные нового клиента:</div>
         <tr>
             <td>Name:</td>
-            <td><input name="name" type="text" width="5" required/></td>
+            <td><input name="name" type="text" width="5" required pattern="^[a-zA-Z]+$"/></td>
         </tr>
         <tr>
             <td>Login:</td>
-            <td><input name="login" type="text" width="15" required/></td>
+            <td><input name="login" type="text" width="15" required pattern="^[a-z.]+$"/></td>
         </tr>
         <tr>
             <td>Password:</td>
-            <td><input name="password" type="text" width="10" formenctype="application/x-www-form-urlencoded" required/></td>
+            <td><input name="password" type="text" width="10" formenctype="application/x-www-form-urlencoded" required
+                       pattern="^[0-9a-zA-Z.,-=+\|\]+$!@#$%^&*()"/></td>
         </tr>
         <tr>
             <td>E-mail:</td>
-            <td><input name="email" type="email" width="20" required/></td>
+            <td><input name="email" type="email" width="20" required pattern="^[0-9a-zA-Z._-@]+$"/></td>
         </tr>
         <tr>
             <td>Type:</td>
@@ -168,7 +175,7 @@
 <div align="center">
     <td>Скачать таблицу в формате:</td>
     <td><input type="button" value="PDF"/></td>
-    <td><input type="button" value="Exel"/></td>
+    <td><input type="button" value="Excel"/></td>
 </div>
 </body>
 </html>

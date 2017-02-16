@@ -23,7 +23,7 @@ public class MainController {
     @RequestMapping(value = "/admin**", method = RequestMethod.GET)
     public ModelAndView adminPage() throws SQLException {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject(clientDAO.getAll());
+        modelAndView.addObject(clientDAO.getLast20());
         modelAndView.setViewName("admin");
         return modelAndView;
     }
@@ -47,7 +47,7 @@ public class MainController {
 
         //add handler for Bank and Order
 
-        modelAndView.addObject(clientDAO.getAll());
+        modelAndView.addObject(clientDAO.getLast20());
         modelAndView.setViewName("admin");
         return modelAndView;
     }

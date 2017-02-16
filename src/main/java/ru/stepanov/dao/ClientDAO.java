@@ -18,7 +18,7 @@ public class ClientDAO {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    public List<Client> getAll() throws SQLException {
+    public List<Client> getLast20() throws SQLException {
         String SQL_GET_ALL = "SELECT * FROM client";
         Statement statement = jdbcTemplate.getDataSource().getConnection().createStatement();
 
