@@ -3,6 +3,7 @@ package ru.stepanov.entity;
 import java.util.Date;
 
 public class Order {
+
     private int number;
     private String firstContrAgent;
     private String firstContrAgentType;
@@ -12,7 +13,6 @@ public class Order {
     private Date dateOfFinish;
     private TypeOfOrder type;
     private boolean overdue;
-
 
     public Order(int number, String firstContrAgent, String firstContrAgentType, String secondContrAgent, String secondContrAgentType, Date dateOfStart, Date dateOfFinish, TypeOfOrder type) {
         this.number = number;

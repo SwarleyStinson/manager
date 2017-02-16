@@ -4,7 +4,6 @@ public class BankDAO {
 
     public String addBank(String name, String address, String paySystem) {
 
-
         return "Банк " + name + " успешно добавлен!";
     }
 
@@ -13,7 +12,7 @@ public class BankDAO {
         return "Банк " + name + " успешно удален!";
     }
 
-    public String setBank (String name){
+    public String setBank(String name) {
 
         return "Сведения о банке" + name + " успешно изменены!";
     }

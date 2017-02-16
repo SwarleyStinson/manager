@@ -1,6 +1,11 @@
 package ru.stepanov.entity;
 
-public class Client {
+import java.io.Serializable;
+
+public class Client implements Serializable {
+
+    private static final long serialVersionUID = 6324496442814639361L;
+
     private int id;
     private String name;
     private String login;
@@ -66,5 +71,17 @@ public class Client {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @Override
+    public String toString() {
+        return "Client{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", login='" + login + '\'' +
+                ", password='***'" +
+                ", email='" + email + '\'' +
+                ", type='" + type + '\'' +
+                '}';
     }
 }
