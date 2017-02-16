@@ -21,6 +21,7 @@
 <h1>Title : страница управления базой данных</h1>
 <h1>Таблица : Client</h1>
 
+
 <c:url value="/j_spring_security_logout" var="logoutUrl"/>
 <form action="${logoutUrl}" method="post" id="logoutForm">
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
@@ -31,7 +32,7 @@
     }
 </script>
 
-<c:if test="${pageContext.request.userPrincipal.name != null}">
+<c:if test="${pageContext.request.userPrincipal.name != admin}">
     <h2>
         Добро пожаловать : ${pageContext.request.userPrincipal.name} | <a href="javascript:formSubmit()"> Logout</a>
     </h2>
@@ -42,8 +43,25 @@
     <input value="Bank Database" type="button" size="100"/>
     <input value="Order Database" type="button" size="100"/>
 </div>
-<div align="center">
+<script>
+    function toggle() {
+        if( document.getElementById("hidethis").style.display=='none' ){
+            document.getElementById("hidethis").style.display = '';
+        }else{
+            document.getElementById("hidethis").style.display = 'none';
+        }
+    }
+    function toggleToo() {
+        if( document.getElementById("hidethistoo").style.display=='none' ){
+            document.getElementById("hidethistoo").style.display = '';
+        }else{
+            document.getElementById("hidethistoo").style.display = 'none';
+        }
+    }
+</script>
 
+
+<div align="center">
     <table id="client_table" align="center" border="1" width="1000" cellpadding="05" cellspacing="0">
         <tr bordercolor="black">
             <th>ID</th>
@@ -62,28 +80,55 @@
                 <td width="20"> ${c.email}</td>
                 <td width="15"> ${c.type}</td>
                 <td>
-                    <sf:form >
+                    <sf:form>
                         <input type="hidden" value="${c.id}" name="deleteByID">
                         <input type="submit" value="Удалить" align="center"/>
                     </sf:form>
                 </td>
                 <td>
                     <sf:form>
-
-                        <input type="hidden" value="${c.id}" name="setByID">
-                        <input type="submit" value="Изменить" align="center"/>
+                        <input onclick="toggle(), toggleToo()" type="button" value="изменить/добавить" />
                     </sf:form>
                 </td>
             </tr>
         </c:forEach>
     </table>
 </div>
-<c:if test="${not empty allfields}">
-    <div class="allfields" align="center">${allfields}</div>
-</c:if>
-<div align="center" >
 
-    <sf:form method="post">
+<div align="center">
+    <c:if test="${not empty allfields}">
+        <div class="allfields" align="center">${allfields}</div>
+    </c:if>
+
+    <sf:form id="hidethis" method="post" style="display: none" name="setForm">
+
+        <td>ID:</td>
+        <td><input name="id" type="text" width="5"/>
+
+        </td><td>Name:</td>
+        <td><input name="name" type="text" width="5"/></td>
+
+        <td>Login:</td>
+        <td><input name="login" type="text" width="15"/></td>
+
+        <td>Password:</td>
+        <td><input name="password" type="text" width="10"/></td>
+
+        <td>E-mail:</td>
+        <td><input name="email" type="email" width="20"/></td>
+
+        <td>Type:</td>
+        <td><input name="type" type="text" width="10"/></td>
+
+        <td><input type="submit" value="Сохранить изменения"/></td>
+
+    </sf:form>
+</div>
+
+
+<div align="center">
+    <sf:form  id="hidethistoo" method="post" name="addForm">
+        <div class="allfields" align="center">Введите данные нового клиента:</div>
         <tr>
             <td>Name:</td>
             <td><input name="name" type="text" width="5"/></td>
@@ -105,9 +150,14 @@
             <td><input name="type" type="text" width="10"/></td>
         </tr>
         <tr>
-            <td><input type="submit" value="Добавить"/></td>
+            <td><input type="submit" value="Добавить клиента"/></td>
         </tr>
     </sf:form>
+</div>
+<div align="center" >
+    <td>Скачать таблицу в формате: </td>
+    <td><input type="button" value="PDF"/></td>
+    <td><input type="button" value="Exel"/></td>
 </div>
 </body>
 </html>
