@@ -45,16 +45,16 @@
 </div>
 <script>
     function toggle() {
-        if( document.getElementById("hidethis").style.display=='none' ){
+        if (document.getElementById("hidethis").style.display == 'none') {
             document.getElementById("hidethis").style.display = '';
-        }else{
+        } else {
             document.getElementById("hidethis").style.display = 'none';
         }
     }
     function toggleToo() {
-        if( document.getElementById("hidethistoo").style.display=='none' ){
+        if (document.getElementById("hidethistoo").style.display == 'none') {
             document.getElementById("hidethistoo").style.display = '';
-        }else{
+        } else {
             document.getElementById("hidethistoo").style.display = 'none';
         }
     }
@@ -87,7 +87,7 @@
                 </td>
                 <td>
                     <sf:form>
-                        <input onclick="toggle(), toggleToo()" type="button" value="изменить/добавить" />
+                        <input onclick="toggle(), toggleToo()" type="button" value="изменить/добавить"/>
                     </sf:form>
                 </td>
             </tr>
@@ -103,22 +103,28 @@
     <sf:form id="hidethis" method="post" style="display: none" name="setForm">
 
         <td>ID:</td>
-        <td><input name="id" type="text" width="5"/>
+        <td><input name="id" type="text" width="5" required/>
 
-        </td><td>Name:</td>
-        <td><input name="name" type="text" width="5"/></td>
+        </td>
+        <td>Name:</td>
+        <td><input name="name" type="text" width="5" required/></td>
 
         <td>Login:</td>
-        <td><input name="login" type="text" width="15"/></td>
+        <td><input name="login" type="text" width="15" required/></td>
 
         <td>Password:</td>
-        <td><input name="password" type="text" width="10"/></td>
+        <td><input name="password" type="text" width="10" formenctype="application/x-www-form-urlencoded" required/></td>
 
         <td>E-mail:</td>
-        <td><input name="email" type="email" width="20"/></td>
+        <td><input name="email" type="email" width="20" required/></td>
 
         <td>Type:</td>
-        <td><input name="type" type="text" width="10"/></td>
+        <td>
+            <select>
+                <option>REAL_FACE</option>
+                <option>COMPANY</option>
+            </select>
+        </td>
 
         <td><input type="submit" value="Сохранить изменения"/></td>
 
@@ -127,35 +133,40 @@
 
 
 <div align="center">
-    <sf:form  id="hidethistoo" method="post" name="addForm">
+    <sf:form id="hidethistoo" method="post" name="addForm">
         <div class="allfields" align="center">Введите данные нового клиента:</div>
         <tr>
             <td>Name:</td>
-            <td><input name="name" type="text" width="5"/></td>
+            <td><input name="name" type="text" width="5" required/></td>
         </tr>
         <tr>
             <td>Login:</td>
-            <td><input name="login" type="text" width="15"/></td>
+            <td><input name="login" type="text" width="15" required/></td>
         </tr>
         <tr>
             <td>Password:</td>
-            <td><input name="password" type="text" width="10"/></td>
+            <td><input name="password" type="text" width="10" formenctype="application/x-www-form-urlencoded" required/></td>
         </tr>
         <tr>
             <td>E-mail:</td>
-            <td><input name="email" type="email" width="20"/></td>
+            <td><input name="email" type="email" width="20" required/></td>
         </tr>
         <tr>
             <td>Type:</td>
-            <td><input name="type" type="text" width="10"/></td>
+            <td>
+                <select>
+                    <option>REAL_FACE</option>
+                    <option>COMPANY</option>
+                </select>
+            </td>
         </tr>
         <tr>
             <td><input type="submit" value="Добавить клиента"/></td>
         </tr>
     </sf:form>
 </div>
-<div align="center" >
-    <td>Скачать таблицу в формате: </td>
+<div align="center">
+    <td>Скачать таблицу в формате:</td>
     <td><input type="button" value="PDF"/></td>
     <td><input type="button" value="Exel"/></td>
 </div>
