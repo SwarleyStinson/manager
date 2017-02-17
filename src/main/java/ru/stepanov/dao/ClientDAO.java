@@ -19,7 +19,20 @@ public class ClientDAO {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    public List<Client> getLast15() {
+    public List<Integer> getPage() {
+        List<Integer> result = new ArrayList<>();
+        int size = getAll().size();
+        int count = 0;
+        int i = 0;
+        while (size>=count){
+            count+=14;
+            result.add(i);
+        }
+        return result;
+    }
+
+
+    public List<Client> getLast14() {
         List<Client> result = getAll();
 
         int count = 0;

@@ -8,7 +8,7 @@
     <style>
         .allfields {
             padding: 15px;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
             border: 1px solid transparent;
             border-radius: 4px;
             color: #a94442;
@@ -24,7 +24,6 @@
 <c:set var="isUpdate" value="1"/>
 <c:set var="isCreate" value="1"/>
 <c:set var="clientToDefault" value="1"/>
-<c:set var="page1" value="1"/>
 
 <c:url value="/j_spring_security_logout" var="logoutUrl"/>
 
@@ -46,11 +45,25 @@
         <td><input value="Client Database" type="button" size="100" height="40"/></td>
         <%--<td><input value="Bank Database" type="button" size="100" height="40"/></td>--%>
         <%--<td><input value="Order Database" type="button" size="100" height="40"/></td>        --%>
-
-        <td><input type="submit" value="${page1}"></td>
     </sf:form>
-    <%--<input value="Order Database" type="button" size="100"/>--%>
 </div>
+
+<%-- Tablepage Control Buttons --%>
+<div align="center" style="">
+    <td>
+        <input type="submit" value="${page.get(1)}" name="page">
+    </td>
+    <td>
+        <input type="submit" value="${page.get(2)}" name="page">
+    </td>
+    <td>
+        <input type="submit" value="${page.get(3)}" name="page">
+    </td>
+    <td>
+        <input type="submit" value="${page.get(0)}" name="page">
+    </td>
+</div>
+
 
 <script>
     function toggle() {
