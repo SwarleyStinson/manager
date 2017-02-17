@@ -1,3 +1,4 @@
+<%--suppress ALL --%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
 <%@page session="true" contentType="text/html; charset=utf-8" %>
@@ -24,6 +25,7 @@
 <c:set var="isUpdate" value="1"/>
 <c:set var="isCreate" value="1"/>
 <c:set var="clientToDefault" value="1"/>
+<c:set var="tablePage" value="1" scope="session"/>
 
 <c:url value="/j_spring_security_logout" var="logoutUrl"/>
 
@@ -49,18 +51,22 @@
 </div>
 
 <%-- Tablepage Control Buttons --%>
-<div align="center" style="">
+<div align="center">
     <td>
-        <input type="submit" value="${page.get(1)}" name="page">
+        <input type="hidden" value="" name="page">
+        <input type="submit" value="В начало">
     </td>
     <td>
-        <input type="submit" value="${page.get(2)}" name="page">
+        <input type="submit" value="предыдущая">
     </td>
     <td>
-        <input type="submit" value="${page.get(3)}" name="page">
+        текущая страница: ${tablePage}
     </td>
     <td>
-        <input type="submit" value="${page.get(0)}" name="page">
+        <input type="submit" value="текущая">
+    </td>
+    <td>
+        <input type="submit" value="В конец">
     </td>
 </div>
 
@@ -80,6 +86,10 @@
             document.getElementById("hidethistoo").style.display = 'none';
         }
     }
+    function pageIncrement() {
+        ${tablePage} += 1;
+    }
+
 </script>
 
 <div align="center">
