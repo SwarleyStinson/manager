@@ -41,8 +41,8 @@
 
 <div align="left">
     <input value="Client Database" type="button" size="100" height="40"/>
-    <input value="Bank Database" type="button" size="100"/>
-    <input value="Order Database" type="button" size="100"/>
+    <%--<input value="Bank Database" type="button" size="100"/>--%>
+    <%--<input value="Order Database" type="button" size="100"/>--%>
 </div>
 
 <script>

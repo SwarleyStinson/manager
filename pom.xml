@@ -13,7 +13,7 @@
 
     <groupId>ru.stepanov</groupId>
     <artifactId>spring</artifactId>
-    <version>5</version>
+    <version>6</version>
     <name>Test Spring Framework Web Application</name>
     <packaging>war</packaging>
 

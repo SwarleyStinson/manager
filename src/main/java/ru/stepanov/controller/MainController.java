@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import ru.stepanov.dao.ClientDAO;
 import ru.stepanov.entity.Client;
 
+import java.io.IOException;
 import java.sql.SQLException;
 
 @Controller
@@ -21,7 +22,7 @@ public class MainController {
     ClientDAO clientDAO;
 
     @RequestMapping(value = "/admin**", method = RequestMethod.GET)
-    public ModelAndView adminPage() throws SQLException {
+    public ModelAndView adminPage() throws SQLException, IOException {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject(clientDAO.getAll());
         modelAndView.setViewName("admin");
@@ -35,15 +36,10 @@ public class MainController {
                               Client client) throws SQLException {
         ModelAndView modelAndView = new ModelAndView();
 
-        if (isUpdate == 1) {
-            System.out.println("--------: " + clientDAO.setClientByID(client, client.getId()));
-        }
-        if (isCreate == 1) {
-            System.out.println("--------: " + clientDAO.addClient(client));
-        }
-        if (deleteByID > 0) {
-            System.out.println("--------: " + clientDAO.deleteClientByID(deleteByID));
-        }
+        // Client Database processing
+        if (isUpdate == 1) clientDAO.setClientByID(client, client.getId());
+        if (isCreate == 1) clientDAO.addClient(client);
+        if (deleteByID > 0) clientDAO.deleteClientByID(deleteByID);
 
         //add handler for Bank and Order
 

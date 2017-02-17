@@ -4,6 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import ru.stepanov.entity.Client;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -40,7 +43,45 @@ public class ClientDAO {
         return result;
     }
 
-    public String deleteClientByID(int id) {
+    public void setToDefaultState() throws IOException {
+        List<String> lines = null;
+        List<String> lines2 = null;
+        try {
+            lines = Files.readAllLines(Paths.get("C:/Users/p.stepanov", "sql/schema.sql"));
+            lines2 = Files.readAllLines(Paths.get("C:/Users/p.stepanov", "sql/data.sql"));
+        } catch (IOException e) {
+            System.out.println("-------: Files поломался");
+        }
+
+        try {
+            Statement statement = jdbcTemplate.getDataSource().getConnection().createStatement();
+            int count = 0;
+            StringBuilder query = null;
+            while (count <= lines.size()) {
+                query.append(lines.get(count));
+                count++;
+            }
+            statement.execute(query.toString());
+
+            count = 0;
+            query.delete(0, query.length());
+
+            System.out.println("--------: " + query.toString());
+
+            while (count <= lines2.size()) {
+                query.append(lines.get(count));
+                count++;
+            }
+            statement.execute(query.toString());
+
+        } catch (SQLException e) {
+
+            System.out.println("Метод setToDefaultState поломался...");
+            e.printStackTrace();
+        }
+    }
+
+    public void deleteClientByID(int id) {
         String SQL_DELETE_BY_ID = "DELETE FROM client WHERE id=" + id;
         try {
             Statement statement = jdbcTemplate.getDataSource().getConnection().createStatement();
@@ -50,10 +91,9 @@ public class ClientDAO {
             System.out.println("Метод deleteClient поломался...");
             e.printStackTrace();
         }
-        return "Клиент c id: " + id + " успешно удален!";
     }
 
-    public String addClient(Client client) {
+    public void addClient(Client client) {
         final String SQL_INSERT_CLIENT =
                 "insert into CLIENT (name, login, password, email, type) values (?,?,?,?,?)";
 
@@ -64,11 +104,9 @@ public class ClientDAO {
                 client.getEmail(),
                 client.getType()
         );
-
-        return "Клиент " + client.getName() + " успешно добавлен!";
     }
 
-    public String setClientByID(Client client, int id) {
+    public void setClientByID(Client client, int id) {
         final String SQL_UPDATE_CLIENT =
                 "update CLIENT set name=?, login=?, password=?, email=?, type=? where id=" + id;
 
@@ -79,7 +117,5 @@ public class ClientDAO {
                 client.getEmail(),
                 client.getType()
         );
-
-        return "Клиент " + client.getName() + " успешно изменен!";
     }
 }
