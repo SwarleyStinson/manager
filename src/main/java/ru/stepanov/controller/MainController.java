@@ -24,7 +24,7 @@ public class MainController {
     @RequestMapping(value = "/admin**", method = RequestMethod.GET)
     public ModelAndView adminPage() throws SQLException, IOException {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject(clientDAO.getAll());
+        modelAndView.addObject(clientDAO.getLast15());
         modelAndView.setViewName("admin");
         return modelAndView;
     }
@@ -33,7 +33,7 @@ public class MainController {
     public ModelAndView admin(@RequestParam(value = "deleteByID", defaultValue = "0") int deleteByID,
                               @RequestParam(value = "isUpdate", defaultValue = "0") int isUpdate,
                               @RequestParam(value = "isCreate", defaultValue = "0") int isCreate,
-                              Client client) throws SQLException {
+                              Client client) throws SQLException, ClassNotFoundException {
         ModelAndView modelAndView = new ModelAndView();
 
         // Client Database processing

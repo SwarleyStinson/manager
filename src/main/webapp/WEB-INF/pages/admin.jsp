@@ -18,30 +18,37 @@
 </head>
 
 <body>
-<h3>Title : страница управления базой данных</h3>
+<h3>Добро пожаловать : ${pageContext.request.userPrincipal.name} | <a href="javascript:formSubmit()"> Logout</a></h3>
 <h3>Таблица : Client</h3>
-<c:set var="isUpdate" value="1" />
-<c:set var="isCreate" value="1" />
+
+<c:set var="isUpdate" value="1"/>
+<c:set var="isCreate" value="1"/>
+<c:set var="clientToDefault" value="1"/>
+<c:set var="page1" value="1"/>
 
 <c:url value="/j_spring_security_logout" var="logoutUrl"/>
+
 <form action="${logoutUrl}" method="post" id="logoutForm">
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 </form>
+
 <script>
     function formSubmit() {
         document.getElementById("logoutForm").submit();
     }
 </script>
 
-<c:if test="${pageContext.request.userPrincipal.name != admin}">
-    <h2>
-        Добро пожаловать : ${pageContext.request.userPrincipal.name} | <a href="javascript:formSubmit()"> Logout</a>
-    </h2>
-</c:if>
 
-<div align="left">
-    <input value="Client Database" type="button" size="100" height="40"/>
-    <%--<input value="Bank Database" type="button" size="100"/>--%>
+<%-- Control Button Panel --%>
+
+<div align="left" class="allfields">
+    <sf:form>
+        <td><input value="Client Database" type="button" size="100" height="40"/></td>
+        <%--<td><input value="Bank Database" type="button" size="100" height="40"/></td>--%>
+        <%--<td><input value="Order Database" type="button" size="100" height="40"/></td>        --%>
+
+        <td><input type="submit" value="${page1}"></td>
+    </sf:form>
     <%--<input value="Order Database" type="button" size="100"/>--%>
 </div>
 
@@ -65,12 +72,12 @@
 <div align="center">
     <table id="client_table" align="center" border="1" width="1000" cellpadding="05" cellspacing="0">
         <tr bordercolor="black">
-            <th>ID</th>
-            <th>NAME</th>
-            <th>LOGIN</th>
-            <th>PASSWORD</th>
-            <th>EMAIL</th>
-            <th>TYPE</th>
+            <th align="center" width="5">ID</th>
+            <th width="40">NAME</th>
+            <th width="10">LOGIN</th>
+            <th width="10">PASSWORD</th>
+            <th width="20">EMAIL</th>
+            <th width="15">TYPE</th>
         </tr>
         <c:forEach items="${clientList}" var="c">
             <tr>

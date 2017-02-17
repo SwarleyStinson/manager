@@ -1,15 +1,13 @@
 package ru.stepanov.dao;
 
+import org.h2.tools.RunScript;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import ru.stepanov.entity.Client;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,76 +19,79 @@ public class ClientDAO {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    public List<Client> getAll() throws SQLException {
-        String SQL_GET_ALL = "SELECT * FROM client";
-        Statement statement = jdbcTemplate.getDataSource().getConnection().createStatement();
+    public List<Client> getLast15() {
+        List<Client> result = getAll();
 
-        List<Client> result = new ArrayList<>();
+        int count = 0;
+        int cycleEnd = result.size();
 
-        ResultSet resultSet = statement.executeQuery(SQL_GET_ALL);
-        while (resultSet.next()) {
-            Client client = new Client();
-
-            client.setId(resultSet.getInt("id"));
-            client.setName(resultSet.getString("name"));
-            client.setLogin(resultSet.getString("login"));
-            client.setPassword(resultSet.getString("password"));
-            client.setEmail(resultSet.getString("email"));
-            client.setType(resultSet.getString("type"));
-            result.add(client);
+        while (count <= cycleEnd - 15) {
+            result.remove(0);
+            count++;
         }
-        statement.close();
         return result;
     }
 
-    public void setToDefaultState() throws IOException {
-        List<String> lines = null;
-        List<String> lines2 = null;
-        try {
-            lines = Files.readAllLines(Paths.get("C:/Users/p.stepanov", "sql/schema.sql"));
-            lines2 = Files.readAllLines(Paths.get("C:/Users/p.stepanov", "sql/data.sql"));
-        } catch (IOException e) {
-            System.out.println("-------: Files поломался");
-        }
+    public List<Client> getAll() {
+        String SQL_GET_ALL = "SELECT * FROM client";
+        Statement statement;
+        List<Client> result = null;
 
         try {
-            Statement statement = jdbcTemplate.getDataSource().getConnection().createStatement();
-            int count = 0;
-            StringBuilder query = null;
-            while (count <= lines.size()) {
-                query.append(lines.get(count));
-                count++;
+            statement = jdbcTemplate.getDataSource().getConnection().createStatement();
+
+            result = new ArrayList<>();
+
+            ResultSet resultSet = statement.executeQuery(SQL_GET_ALL);
+
+            while (resultSet.next()) {
+                Client client = new Client();
+
+                client.setId(resultSet.getInt("id"));
+                client.setName(resultSet.getString("name"));
+                client.setLogin(resultSet.getString("login"));
+                client.setPassword(resultSet.getString("password"));
+                client.setEmail(resultSet.getString("email"));
+                client.setType(resultSet.getString("type"));
+                result.add(client);
             }
-            statement.execute(query.toString());
-
-            count = 0;
-            query.delete(0, query.length());
-
-            System.out.println("--------: " + query.toString());
-
-            while (count <= lines2.size()) {
-                query.append(lines.get(count));
-                count++;
-            }
-            statement.execute(query.toString());
-
+            statement.close();
         } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
 
-            System.out.println("Метод setToDefaultState поломался...");
+    public void setToDefaultState() {
+        try {
+            RunScript.execute(jdbcTemplate.getDataSource().getConnection(), new FileReader("schema.sql"));
+            RunScript.execute(jdbcTemplate.getDataSource().getConnection(), new FileReader("data.sql"));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (FileNotFoundException e) {
+            System.out.println("-------: поломался setToDefaultState");
             e.printStackTrace();
         }
     }
 
-    public void deleteClientByID(int id) {
+    public void deleteClientByID(int id) throws ClassNotFoundException, SQLException {
         String SQL_DELETE_BY_ID = "DELETE FROM client WHERE id=" + id;
-        try {
-            Statement statement = jdbcTemplate.getDataSource().getConnection().createStatement();
-            statement.execute(SQL_DELETE_BY_ID);
-        } catch (SQLException e) {
 
-            System.out.println("Метод deleteClient поломался...");
-            e.printStackTrace();
-        }
+        //Альтернативный способ получения connection
+        Class.forName("org.h2.Driver");
+        Connection conn = DriverManager.getConnection("jdbc:h2:~/TestDatabase", "root", "root");
+        Statement statement = conn.createStatement();
+        statement.execute(SQL_DELETE_BY_ID);
+        conn.close();
+
+//        try {
+//            Statement statement = jdbcTemplate.getDataSource().getConnection().createStatement();
+//            statement.execute(SQL_DELETE_BY_ID);
+//        } catch (SQLException e) {
+//
+//            System.out.println("Метод deleteClient поломался...");
+//            e.printStackTrace();
+//        }
     }
 
     public void addClient(Client client) {
