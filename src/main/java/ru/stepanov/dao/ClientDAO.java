@@ -1,36 +1,64 @@
 package ru.stepanov.dao;
 
-import org.h2.tools.RunScript;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import ru.stepanov.entity.Client;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.sql.*;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ClientDAO {
     private JdbcTemplate jdbcTemplate;
+    private int tableSize;
+    private int currentPage ;
 
     @Autowired
     public ClientDAO(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
+        tableSize = getAll().size();
+        currentPage = 0;
     }
 
-    public List<Integer> getPage() {
-        List<Integer> result = new ArrayList<>();
-        int size = getAll().size();
-        int count = 0;
-        int i = 0;
-        while (size>=count){
-            count+=14;
-            result.add(i);
+    public int getCurrentPageNumber(int changePageCommand) {
+        int result = result = 1;
+        if (changePageCommand == 1) {
+            result = 1;
+            currentPage = 1;
         }
+        if (changePageCommand == 2) result = --currentPage;
+        if (changePageCommand == 3) result = ++currentPage;
+        if (changePageCommand == 4) {
+            if (tableSize % 14 != 0) {
+                result = tableSize / 14 + 1;
+                currentPage = result;
+            } else {
+                result = tableSize / 14;
+                currentPage = result;
+            }
+        }
+
         return result;
     }
 
+    public List<Client> getPage(int currentPageNumber) {
+        List<Client> result = getAll();
+
+        //удаление с начала до текущей страницы
+        int count = 1;
+        while (count < currentPage) {
+            for (int i = 0; i < 14; i++) result.remove(i);
+            count++;
+        }
+        //удаление до конца
+        int cycleEnd = result.size();
+
+        for (int i = cycleEnd; i >= 14; i--) result.remove(i);
+
+        return result;
+    }
 
     public List<Client> getLast14() {
         List<Client> result = getAll();
@@ -38,7 +66,7 @@ public class ClientDAO {
         int count = 0;
         int cycleEnd = result.size();
 
-        while (count <= cycleEnd - 15) {
+        while (count <= cycleEnd - 16) {
             result.remove(0);
             count++;
         }
@@ -75,36 +103,17 @@ public class ClientDAO {
         return result;
     }
 
-    public void setToDefaultState() {
-        try {
-            RunScript.execute(jdbcTemplate.getDataSource().getConnection(), new FileReader("schema.sql"));
-            RunScript.execute(jdbcTemplate.getDataSource().getConnection(), new FileReader("data.sql"));
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (FileNotFoundException e) {
-            System.out.println("-------: поломался setToDefaultState");
-            e.printStackTrace();
-        }
-    }
-
     public void deleteClientByID(int id) throws ClassNotFoundException, SQLException {
         String SQL_DELETE_BY_ID = "DELETE FROM client WHERE id=" + id;
+        try {
+            Statement statement = jdbcTemplate.getDataSource().getConnection().createStatement();
+            statement.execute(SQL_DELETE_BY_ID);
+        } catch (SQLException e) {
 
-        //Альтернативный способ получения connection
-        Class.forName("org.h2.Driver");
-        Connection conn = DriverManager.getConnection("jdbc:h2:~/TestDatabase", "root", "root");
-        Statement statement = conn.createStatement();
-        statement.execute(SQL_DELETE_BY_ID);
-        conn.close();
-
-//        try {
-//            Statement statement = jdbcTemplate.getDataSource().getConnection().createStatement();
-//            statement.execute(SQL_DELETE_BY_ID);
-//        } catch (SQLException e) {
-//
-//            System.out.println("Метод deleteClient поломался...");
-//            e.printStackTrace();
-//        }
+            System.out.println("Метод deleteClient поломался...");
+            e.printStackTrace();
+        }
+        tableSize--;
     }
 
     public void addClient(Client client) {
@@ -118,6 +127,7 @@ public class ClientDAO {
                 client.getEmail(),
                 client.getType()
         );
+        tableSize++;
     }
 
     public void setClientByID(Client client, int id) {
@@ -133,3 +143,9 @@ public class ClientDAO {
         );
     }
 }
+//Альтернативный способ получения connection
+//        Class.forName("org.h2.Driver");
+//        Connection conn = DriverManager.getConnection("jdbc:h2:~/TestDatabase", "root", "root");
+//        Statement statement = conn.createStatement();
+//        statement.execute(SQL_DELETE_BY_ID);
+//        conn.close();

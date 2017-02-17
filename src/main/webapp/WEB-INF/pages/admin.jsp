@@ -25,7 +25,7 @@
 <c:set var="isUpdate" value="1"/>
 <c:set var="isCreate" value="1"/>
 <c:set var="clientToDefault" value="1"/>
-<c:set var="tablePage" value="1" scope="session"/>
+<c:set var="currentPage" value="${currentPage}" scope="session"/>
 
 <c:url value="/j_spring_security_logout" var="logoutUrl"/>
 
@@ -52,22 +52,34 @@
 
 <%-- Tablepage Control Buttons --%>
 <div align="center">
-    <td>
-        <input type="hidden" value="" name="page">
-        <input type="submit" value="В начало">
-    </td>
-    <td>
-        <input type="submit" value="предыдущая">
-    </td>
-    <td>
-        текущая страница: ${tablePage}
-    </td>
-    <td>
-        <input type="submit" value="текущая">
-    </td>
-    <td>
-        <input type="submit" value="В конец">
-    </td>
+    <%--
+            Change Command:  1 - begin; 2 - down; 3 - up; 4 - end
+    --%>
+    <sf:form>
+        <tr>
+            <td>
+                <input type="hidden" value=1 name="currentPage">
+                <input type="submit" value="В начало">
+            </td>
+
+            <td>
+                <input type="hidden" value=2 name="currentPage">
+                <input type="submit" value="предыдущая">
+            </td>
+            <td>
+                текущая страница: ${currentPage}
+            </td>
+            <td>
+                <input type="hidden" value=3 name="currentPage">
+                <input value="следующая" type="submit">
+            </td>
+            <td>
+                <input type="hidden" value=4 name="currentPage">
+                <input type="submit" value="В конец">
+            </td>
+        </tr>
+    </sf:form>
+
 </div>
 
 
@@ -86,10 +98,6 @@
             document.getElementById("hidethistoo").style.display = 'none';
         }
     }
-    function pageIncrement() {
-        ${tablePage} += 1;
-    }
-
 </script>
 
 <div align="center">
@@ -171,6 +179,7 @@
 </div>
 
 <%-- Добавление клиента --%>
+
 <div align="center">
 
 
@@ -208,10 +217,15 @@
         </tr>
     </sf:form>
 </div>
+
 <div align="center">
+    <c:url value="/excel" var="excelController"/>
+    <c:url value="/pdf" var="pdfController"/>
+
     <td>Скачать таблицу в формате:</td>
-    <td><input type="button" value="PDF"/></td>
-    <td><input type="button" value="Excel"/></td>
+    <td><a href="${excelController}">Excel</a></td>
+    <td><a href="${pdfController}">PDF</a></td>
+
 </div>
 </body>
 </html>
