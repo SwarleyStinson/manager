@@ -1,7 +1,32 @@
-drop table if EXISTS client;
-drop table if EXISTS bank;
-drop table if EXISTS order;
-CREATE TABLE  client (id int primary key auto_increment, name varchar(20) not null, login varchar(20) not null, password varchar(40) not null, email varchar(20) not null, type varchar(10)  not null);
-CREATE TABLE  bank (id int primary key auto_increment,    name varchar(40) not null,    address varchar(40)  not null,    paysystems varchar(40)  not null);
-CREATE TABLE order (    number int PRIMARY KEY AUTO_INCREMENT,    firstContrAgent VARCHAR(40),    firstContrAgentType VARCHAR(10),    secondContrAgent VARCHAR(40),    secondContrAgentType VARCHAR(10),    dateOfStart DATETIME,    dateOfFinish DATETIME,    type VARCHAR(10),    overdue BOOLEAN);
+DROP TABLE IF EXISTS client;
+DROP TABLE IF EXISTS bank;
+DROP TABLE IF EXISTS orders;
+
+CREATE TABLE client (
+  id       INT PRIMARY KEY AUTO_INCREMENT,
+  name     VARCHAR(20) NOT NULL,
+  login    VARCHAR(20) NOT NULL,
+  password VARCHAR(40) NOT NULL,
+  email    VARCHAR(20) NOT NULL,
+  type     VARCHAR(10) NOT NULL
+);
+
+CREATE TABLE bank (
+  id         INT PRIMARY KEY AUTO_INCREMENT,
+  name       VARCHAR(40) NOT NULL,
+  address    VARCHAR(40) NOT NULL,
+  paysystems VARCHAR(40) NOT NULL
+);
+
+CREATE TABLE orders (
+  number               INT PRIMARY KEY AUTO_INCREMENT,
+  firstContrAgent      VARCHAR(40),
+  firstContrAgentType  VARCHAR(10),
+  secondContrAgent     VARCHAR(40),
+  secondContrAgentType VARCHAR(10),
+  dateOfStart          DATETIME,
+  dateOfFinish         DATETIME,
+  type                 VARCHAR(10),
+  overdue              BOOLEAN
+);
 
