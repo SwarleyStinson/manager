@@ -13,34 +13,29 @@ import java.util.List;
 public class ClientDAO {
     private JdbcTemplate jdbcTemplate;
     private int tableSize;
-    private int currentPage ;
+    private int currentPage;
+    private int maxPage;
 
     @Autowired
     public ClientDAO(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
         tableSize = getAll().size();
-        currentPage = 0;
+        currentPage = getCurrentPageNumber(4);
+        maxPage = currentPage;
     }
 
     public int getCurrentPageNumber(int changePageCommand) {
-        int result = result = 1;
-        if (changePageCommand == 1) {
-            result = 1;
-            currentPage = 1;
-        }
-        if (changePageCommand == 2) result = --currentPage;
-        if (changePageCommand == 3) result = ++currentPage;
+        if (changePageCommand == 1) currentPage = 1;
+        if (changePageCommand == 2)
+            if (currentPage > 1) --currentPage;
+        if (changePageCommand == 3)
+            if (currentPage < maxPage) ++currentPage;
         if (changePageCommand == 4) {
-            if (tableSize % 14 != 0) {
-                result = tableSize / 14 + 1;
-                currentPage = result;
-            } else {
-                result = tableSize / 14;
-                currentPage = result;
-            }
+            if (tableSize % 10 != 0) {
+                currentPage = tableSize / 10 + 1;
+            } else currentPage = tableSize / 10;
         }
-
-        return result;
+        return currentPage;
     }
 
     public List<Client> getPage(int currentPageNumber) {
@@ -49,24 +44,25 @@ public class ClientDAO {
         //удаление с начала до текущей страницы
         int count = 1;
         while (count < currentPage) {
-            for (int i = 0; i < 14; i++) result.remove(i);
+            for (int i = 0; i < 10; i++) result.remove(0);
             count++;
         }
         //удаление до конца
-        int cycleEnd = result.size();
+        int cycleEnd = result.size() - 1;
 
-        for (int i = cycleEnd; i >= 14; i--) result.remove(i);
+        for (int i = cycleEnd; i >= 10; i--)
+            result.remove(i);
 
         return result;
     }
 
-    public List<Client> getLast14() {
+    public List<Client> getLast() {
         List<Client> result = getAll();
 
         int count = 0;
         int cycleEnd = result.size();
 
-        while (count <= cycleEnd - 16) {
+        while (count <= cycleEnd - 11) {
             result.remove(0);
             count++;
         }
@@ -81,7 +77,7 @@ public class ClientDAO {
         try {
             statement = jdbcTemplate.getDataSource().getConnection().createStatement();
 
-            result = new ArrayList<>();
+            result = new ArrayList<Client>();
 
             ResultSet resultSet = statement.executeQuery(SQL_GET_ALL);
 
@@ -114,6 +110,7 @@ public class ClientDAO {
             e.printStackTrace();
         }
         tableSize--;
+        maxPage = getCurrentPageNumber(4);
     }
 
     public void addClient(Client client) {
@@ -128,6 +125,7 @@ public class ClientDAO {
                 client.getType()
         );
         tableSize++;
+        maxPage = getCurrentPageNumber(4);
     }
 
     public void setClientByID(Client client, int id) {

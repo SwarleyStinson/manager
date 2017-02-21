@@ -20,7 +20,6 @@
 
 <body>
 <h3>Добро пожаловать : ${pageContext.request.userPrincipal.name} | <a href="javascript:formSubmit()"> Logout</a></h3>
-<h3>Таблица : Client</h3>
 
 <c:set var="isUpdate" value="1"/>
 <c:set var="isCreate" value="1"/>
@@ -42,7 +41,7 @@
 
 <%-- Control Button Panel --%>
 
-<div align="left" class="allfields">
+<div align="left">
     <sf:form>
         <td><input value="Client Database" type="button" size="100" height="40"/></td>
         <%--<td><input value="Bank Database" type="button" size="100" height="40"/></td>--%>
@@ -58,24 +57,29 @@
     <sf:form>
         <tr>
             <td>
-                <input type="hidden" value=1 name="currentPage">
-                <input type="submit" value="В начало">
+                <sf:form>
+                    <input type="hidden" value=1 name="currentPage">
+                    <input type="submit" value="В начало">
+                </sf:form>
             </td>
 
             <td>
-                <input type="hidden" value=2 name="currentPage">
-                <input type="submit" value="предыдущая">
+                <sf:form>
+                    <input type="hidden" value=2 name="currentPage">
+                    <input type="submit" value="предыдущая">
+                </sf:form>
             </td>
             <td>
-                текущая страница: ${currentPage}
+                <sf:form>
+                    <input type="hidden" value=3 name="currentPage">
+                    <input value="следующая" type="submit">
+                </sf:form>
             </td>
             <td>
-                <input type="hidden" value=3 name="currentPage">
-                <input value="следующая" type="submit">
-            </td>
-            <td>
-                <input type="hidden" value=4 name="currentPage">
-                <input type="submit" value="В конец">
+                <sf:form>
+                    <input type="hidden" value=4 name="currentPage">
+                    <input type="submit" value="В конец">
+                </sf:form>
             </td>
         </tr>
     </sf:form>
@@ -144,7 +148,7 @@
         <div class="allfields" align="center">Введите новые данные клиента:</div>
         <tr>
             <td>ID:</td>
-            <td width="5"><input name="id" type="text" width="5" required pattern="^[0-9]+$"/></td>
+            <td width="5"><input name="id" type="text" width="5" required pattern="^[0-9]+$" autofocus/></td>
         </tr>
         <tr>
             <td>Name:</td>
@@ -179,7 +183,6 @@
 </div>
 
 <%-- Добавление клиента --%>
-
 <div align="center">
 
 
@@ -187,7 +190,7 @@
         <div class="allfields" align="center">Введите данные нового клиента:</div>
         <tr>
             <td>Name:</td>
-            <td><input name="name" type="text" width="5" required pattern="^[a-zA-Z\s]+$"/></td>
+            <td><input name="name" type="text" width="5" required pattern="^[a-zA-Z\s]+$" autofocus/></td>
         </tr>
         <tr>
             <td>Login:</td>
@@ -218,14 +221,16 @@
     </sf:form>
 </div>
 
-<div align="center">
-    <c:url value="/excel" var="excelController"/>
-    <c:url value="/pdf" var="pdfController"/>
 
-    <td>Скачать таблицу в формате:</td>
-    <td><a href="${excelController}">Excel</a></td>
-    <td><a href="${pdfController}">PDF</a></td>
+<%--<div align="center">--%>
+<%--<c:url value="/excel" var="excelController"/>--%>
+<%--<c:url value="/pdf" var="pdfController"/>--%>
 
-</div>
+<%--<td>Скачать таблицу в формате:</td>--%>
+<%--<td><a href="${excelController}">Excel</a></td>--%>
+<%--<td><a href="${pdfController}">PDF</a></td>--%>
+
+<%--</div>--%>
+
 </body>
 </html>

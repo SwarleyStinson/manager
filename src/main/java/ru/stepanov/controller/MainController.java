@@ -24,7 +24,7 @@ public class MainController {
     @RequestMapping(value = "/admin**", method = RequestMethod.GET)
     public ModelAndView adminPage() throws SQLException, IOException {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject(clientDAO.getLast14());
+        modelAndView.addObject(clientDAO.getLast());
 
         modelAndView.addObject("currentPage", clientDAO.getCurrentPageNumber(4));
         modelAndView.setViewName("admin");
@@ -53,7 +53,7 @@ public class MainController {
             if (currentPage == 3) modelAndView.addObject(clientDAO.getPage(clientDAO.getCurrentPageNumber(3)));
             if (currentPage == 4) modelAndView.addObject(clientDAO.getPage(clientDAO.getCurrentPageNumber(4)));
 
-        } else modelAndView.addObject(clientDAO.getLast14());
+        } else modelAndView.addObject(clientDAO.getLast());
         modelAndView.setViewName("admin");
         return modelAndView;
     }

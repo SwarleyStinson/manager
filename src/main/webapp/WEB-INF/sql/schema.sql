@@ -7,7 +7,7 @@ CREATE TABLE client (
   name     VARCHAR(20) NOT NULL,
   login    VARCHAR(20) NOT NULL,
   password VARCHAR(40) NOT NULL,
-  email    VARCHAR(20) NOT NULL,
+  email    VARCHAR(40) NOT NULL,
   type     VARCHAR(10) NOT NULL
 );
 
