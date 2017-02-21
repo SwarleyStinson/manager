@@ -46,7 +46,7 @@
 
     <td><a href="${clientController}">Client</a></td>
     <td><a href="${bankController}">Bank</a></td>
-    <%--<td><a href="${ordersController}">Orders</a></td>--%>
+
 </div>
 
 <%-- Tablepage Control Buttons --%>

@@ -1,16 +1,52 @@
 package ru.stepanov.dao;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+
 import java.util.Date;
 
 public class OrderDAO {
-    public String addOrder(int number, String firstContrAgent, String firstContrAgentType,
-                           String secondContrAgent, String secondContrAgentType, Date dateOfStart, Date dateOfFinish) {
+    private JdbcTemplate jdbcTemplate;
+    private int tableSize;
+    private int currentPage;
+    private int maxPage;
 
-        return "Заказ успешно добавлен!";
+    @Autowired
+    public OrderDAO(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+        this.tableSize = tableSize;
+        this.currentPage = currentPage;
+        this.maxPage = maxPage;
     }
 
-    public String deleteOrder(int number) {
+    public void getCurrentPageNumber() {
 
-        return "Заказ с номером " + number + " удален!";
+    }
+
+    public void getPage() {
+
+    }
+
+    public void getLast() {
+
+    }
+
+    public void getAll() {
+
+    }
+
+    public void setOrderByID(){
+
+    }
+
+    public void addOrder(int number, String firstContrAgent, String firstContrAgentType,
+                           String secondContrAgent, String secondContrAgentType, Date dateOfStart, Date dateOfFinish) {
+
+
+    }
+
+    public void deleteOrderByID(int number) {
+
+
     }
 }

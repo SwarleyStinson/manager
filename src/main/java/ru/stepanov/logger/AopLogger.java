@@ -15,13 +15,11 @@ public class AopLogger {
 
     @Before("execution(* ru.stepanov.dao.ClientDAO.addClient(..))")
     public void logBeforeAddToDB(JoinPoint joinPoint) {
-
         logger.info("New Client add to database: {}", new Date().toString());
     }
 
     @Before("execution(* ru.stepanov.dao.ClientDAO.deleteClientByID(..))")
     public void logBeforeDeleteToDB(JoinPoint joinPoint) {
-
         logger.info("Client was delete from database: {}", new Date().toString());
     }
 
@@ -29,7 +27,6 @@ public class AopLogger {
             pointcut = "execution(* ru.stepanov.dao.ClientDAO.setClientByID(..))",
             throwing = "error")
     public void logAfterThrowing(JoinPoint joinPoint, Throwable error) {
-
-       logger.debug("");
+        logger.debug("");
     }
 }
