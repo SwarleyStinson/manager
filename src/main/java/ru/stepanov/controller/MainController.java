@@ -10,28 +10,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import ru.stepanov.dao.BankDAO;
 import ru.stepanov.dao.ClientDAO;
+import ru.stepanov.entity.Bank;
 import ru.stepanov.entity.Client;
 
-import java.io.IOException;
 import java.sql.SQLException;
 
 @Controller
 public class MainController {
     @Autowired
     ClientDAO clientDAO;
+    @Autowired
+    BankDAO bankDAO;
 
-    @RequestMapping(value = "/admin**", method = RequestMethod.GET)
-    public ModelAndView adminPage() throws SQLException, IOException {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject(clientDAO.getLast());
-
-        modelAndView.addObject("currentPage", clientDAO.getCurrentPageNumber(4));
-        modelAndView.setViewName("admin");
-        return modelAndView;
-    }
-
-    @RequestMapping(value = "/admin**", method = RequestMethod.POST)
+    @RequestMapping(value = "/client**")
     public ModelAndView admin(@RequestParam(value = "deleteByID", defaultValue = "0") int deleteByID,
                               @RequestParam(value = "isUpdate", defaultValue = "0") int isUpdate,
                               @RequestParam(value = "isCreate", defaultValue = "0") int isCreate,
@@ -44,8 +37,6 @@ public class MainController {
         if (isCreate == 1) clientDAO.addClient(client);
         if (deleteByID > 0) clientDAO.deleteClientByID(deleteByID);
 
-        //add handler for Bank and Order
-
         // processing  Current Page
         if (currentPage != 0) {
             if (currentPage == 1) modelAndView.addObject(clientDAO.getPage(clientDAO.getCurrentPageNumber(1)));
@@ -54,7 +45,32 @@ public class MainController {
             if (currentPage == 4) modelAndView.addObject(clientDAO.getPage(clientDAO.getCurrentPageNumber(4)));
 
         } else modelAndView.addObject(clientDAO.getLast());
-        modelAndView.setViewName("admin");
+        modelAndView.setViewName("client");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/bank**")
+    public ModelAndView bank(@RequestParam(value = "deleteByID", defaultValue = "0") int deleteByID,
+                              @RequestParam(value = "isUpdate", defaultValue = "0") int isUpdate,
+                              @RequestParam(value = "isCreate", defaultValue = "0") int isCreate,
+                              @RequestParam(value = "currentPage", defaultValue = "0") int currentPage,
+                              Bank bank) throws SQLException, ClassNotFoundException {
+        ModelAndView modelAndView = new ModelAndView();
+
+        // Bank Database processing
+        if (isUpdate == 1) bankDAO.setBankByID(bank, bank.getId());
+        if (isCreate == 1) bankDAO.addBank(bank);
+        if (deleteByID > 0) bankDAO.deleteBankByID(deleteByID);
+
+        // processing  Current Page
+        if (currentPage != 0) {
+            if (currentPage == 1) modelAndView.addObject(bankDAO.getPage(bankDAO.getCurrentPageNumber(1)));
+            if (currentPage == 2) modelAndView.addObject(bankDAO.getPage(bankDAO.getCurrentPageNumber(2)));
+            if (currentPage == 3) modelAndView.addObject(bankDAO.getPage(bankDAO.getCurrentPageNumber(3)));
+            if (currentPage == 4) modelAndView.addObject(bankDAO.getPage(bankDAO.getCurrentPageNumber(4)));
+
+        } else modelAndView.addObject(bankDAO.getLast());
+        modelAndView.setViewName("bank");
         return modelAndView;
     }
 

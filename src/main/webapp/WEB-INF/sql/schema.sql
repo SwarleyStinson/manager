@@ -1,21 +1,21 @@
-DROP TABLE IF EXISTS client;
+-- DROP TABLE IF EXISTS client;
 DROP TABLE IF EXISTS bank;
 DROP TABLE IF EXISTS orders;
 
-CREATE TABLE client (
-  id       INT PRIMARY KEY AUTO_INCREMENT,
-  name     VARCHAR(20) NOT NULL,
-  login    VARCHAR(20) NOT NULL,
-  password VARCHAR(40) NOT NULL,
-  email    VARCHAR(40) NOT NULL,
-  type     VARCHAR(10) NOT NULL
-);
+-- CREATE TABLE client (
+--   id       INT PRIMARY KEY AUTO_INCREMENT,
+--   name     VARCHAR(20) NOT NULL,
+--   login    VARCHAR(20) NOT NULL,
+--   password VARCHAR(40) NOT NULL,
+--   email    VARCHAR(40) NOT NULL,
+--   type     VARCHAR(10) NOT NULL
+-- );
 
 CREATE TABLE bank (
   id         INT PRIMARY KEY AUTO_INCREMENT,
-  name       VARCHAR(40) NOT NULL,
-  address    VARCHAR(40) NOT NULL,
-  paysystems VARCHAR(40) NOT NULL
+  name       VARCHAR(50) NOT NULL,
+  address    VARCHAR(50) NOT NULL,
+  paysystem VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE orders (

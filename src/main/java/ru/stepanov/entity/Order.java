@@ -11,10 +11,11 @@ public class Order {
     private String secondContrAgentType;
     private Date dateOfStart;
     private Date dateOfFinish;
-    private TypeOfOrder type;
+    private String type;
     private boolean overdue;
 
-    public Order(int number, String firstContrAgent, String firstContrAgentType, String secondContrAgent, String secondContrAgentType, Date dateOfStart, Date dateOfFinish, TypeOfOrder type) {
+    public Order(int number, String firstContrAgent, String firstContrAgentType,
+                 String secondContrAgent, String secondContrAgentType, Date dateOfStart, Date dateOfFinish, String type) {
         this.number = number;
         this.firstContrAgent = firstContrAgent;
         this.firstContrAgentType = firstContrAgentType;

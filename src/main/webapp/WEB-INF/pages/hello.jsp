@@ -6,7 +6,7 @@
 <body>
 <h3>Title : ${title}<></h3>
 <h3>Message : ${message}</h3>
-<p> Для редактирования базы перейдите на <a href="admin">/Admin</a></p>
+<p> Для редактирования базы перейдите на <a href="client">/Client</a>, <a href="bank">/Bank</a> </p>
 
 <sec:authorize access="hasRole('ROLE_USER')">
 

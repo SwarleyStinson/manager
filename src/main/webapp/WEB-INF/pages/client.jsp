@@ -42,11 +42,13 @@
 <%-- Control Button Panel --%>
 
 <div align="left">
-    <sf:form>
-        <td><input value="Client Database" type="button" size="100" height="40"/></td>
-        <%--<td><input value="Bank Database" type="button" size="100" height="40"/></td>--%>
-        <%--<td><input value="Order Database" type="button" size="100" height="40"/></td>        --%>
-    </sf:form>
+    <c:url value="/client" var="clientController"/>
+    <c:url value="/orders" var="ordersController"/>
+    <c:url value="/bank" var="bankController"/>
+
+    <td><a href="${clientController}">Client</a></td>
+    <td><a href="${bankController}">Bank</a></td>
+    <%--<td><a href="${ordersController}">Orders</a></td>--%>
 </div>
 
 <%-- Tablepage Control Buttons --%>

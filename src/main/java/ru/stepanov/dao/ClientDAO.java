@@ -141,9 +141,3 @@ public class ClientDAO {
         );
     }
 }
-//Альтернативный способ получения connection
-//        Class.forName("org.h2.Driver");
-//        Connection conn = DriverManager.getConnection("jdbc:h2:~/TestDatabase", "root", "root");
-//        Statement statement = conn.createStatement();
-//        statement.execute(SQL_DELETE_BY_ID);
-//        conn.close();

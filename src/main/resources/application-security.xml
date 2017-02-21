@@ -17,16 +17,19 @@
                 password-parameter="password"/>
 
         <logout logout-success-url="/login?logout"/>
+        <intercept-url pattern="/login*" access="permitAll()"/>
 
-        <csrf/>
+        <intercept-url pattern="/client*" access="isAuthenticated()"/>
+        <intercept-url pattern="/bank*" access="hasRole('ROLE_ADMIN')"/>
 
+        <intercept-url pattern="/*" access="permitAll()"/>
     </http>
 
     <authentication-manager>
         <authentication-provider>
             <user-service>
                 <user name="admin" password="admin" authorities="ROLE_ADMIN"/>
-                <!--<user name="user" password="user" authorities="ROLE_USER"/>-->
+                <user name="user" password="user" authorities="ROLE_USER"/>
             </user-service>
         </authentication-provider>
     </authentication-manager>

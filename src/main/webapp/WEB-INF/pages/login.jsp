@@ -39,6 +39,8 @@
 
 	<h1>${message}</h1>
 
+	
+
 	<div id="login-box">
 
 		<h3>Login with Username and Password</h3>
