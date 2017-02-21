@@ -15,24 +15,21 @@ public class AopLogger {
 
     @Before("execution(* ru.stepanov.dao.ClientDAO.addClient(..))")
     public void logBeforeAddToDB(JoinPoint joinPoint) {
-        System.out.println("------: " + joinPoint.getSignature().getName());
-        logger.debug("New Client add to database: {}", new Date().toString());
+
+        logger.info("New Client add to database: {}", new Date().toString());
     }
 
     @Before("execution(* ru.stepanov.dao.ClientDAO.deleteClientByID(..))")
     public void logBeforeDeleteToDB(JoinPoint joinPoint) {
-        System.out.println("------: " + joinPoint.getSignature().getName());
-        logger.debug("Client was delete from database: {}", new Date().toString());
+
+        logger.info("Client was delete from database: {}", new Date().toString());
     }
 
     @AfterThrowing(
             pointcut = "execution(* ru.stepanov.dao.ClientDAO.setClientByID(..))",
-            throwing= "error")
+            throwing = "error")
     public void logAfterThrowing(JoinPoint joinPoint, Throwable error) {
 
-        System.out.println("logAfterThrowing() is running!");
-        System.out.println("Problem place : " + joinPoint.getSignature().getName());
-        System.out.println("Exception : " + error);
-        System.out.println("******");
+       logger.debug("");
     }
 }
