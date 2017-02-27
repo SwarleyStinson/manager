@@ -1,16 +1,19 @@
 package ru.stepanov.mapper;
 
+import org.apache.ibatis.session.SqlSession;
 import ru.stepanov.entity.Client;
 
 import java.util.List;
 
-public interface ClientMapper {
+public class ClientMapper {
+    public List<Client> getAll() {
 
-    public List<Client> getAll();
-
-    public void insertClient(Client client);
-
-    public void deleteByID(int id);
-
-    public void updateById(Client client, int id);
+        SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession();
+        try {
+            ClientMapper clientMapper = sqlSession.getMapper(ClientMapper.class);
+            return clientMapper.getAll();
+        } finally {
+            sqlSession.close();
+        }
+    }
 }

@@ -3,11 +3,10 @@ package ru.stepanov.dao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import ru.stepanov.entity.Client;
+import ru.stepanov.mapper.ClientMapper;
 
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.List;
 
 public class ClientDAO {
@@ -25,35 +24,37 @@ public class ClientDAO {
     }
 
     public List<Client> getAll() {
-//        ClientService clientService = new ClientService();
-//        return clientService.getAll();
-        String SQL_GET_ALL = "SELECT * FROM client";
-        Statement statement;
-        List<Client> result = null;
+        ClientMapper clientService = new ClientMapper();
+        System.out.println("-----------: MyBatis: getAll()");
+        return clientService.getAll();
 
-        try {
-            statement = jdbcTemplate.getDataSource().getConnection().createStatement();
-
-            result = new ArrayList<Client>();
-
-            ResultSet resultSet = statement.executeQuery(SQL_GET_ALL);
-
-            while (resultSet.next()) {
-                Client client = new Client();
-
-                client.setId(resultSet.getInt("id"));
-                client.setName(resultSet.getString("name"));
-                client.setLogin(resultSet.getString("login"));
-                client.setPassword(resultSet.getString("password"));
-                client.setEmail(resultSet.getString("email"));
-                client.setType(resultSet.getString("type"));
-                result.add(client);
-            }
-            statement.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return result;
+//        String SQL_GET_ALL = "SELECT * FROM client";
+//        Statement statement;
+//        List<Client> result = null;
+//
+//        try {
+//            statement = jdbcTemplate.getDataSource().getConnection().createStatement();
+//
+//            result = new ArrayList<Client>();
+//
+//            ResultSet resultSet = statement.executeQuery(SQL_GET_ALL);
+//
+//            while (resultSet.next()) {
+//                Client client = new Client();
+//
+//                client.setId(resultSet.getInt("id"));
+//                client.setName(resultSet.getString("name"));
+//                client.setLogin(resultSet.getString("login"));
+//                client.setPassword(resultSet.getString("password"));
+//                client.setEmail(resultSet.getString("email"));
+//                client.setType(resultSet.getString("type"));
+//                result.add(client);
+//            }
+//            statement.close();
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//        return result;
     }
 
     public int getCurrentPageNumber(int changePageCommand) {
