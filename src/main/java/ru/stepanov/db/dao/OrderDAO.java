@@ -1,4 +1,4 @@
-package ru.stepanov.dao.OldDaoWithResultSet;
+package ru.stepanov.db.dao;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;

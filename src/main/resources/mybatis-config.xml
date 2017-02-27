@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <typeAliases>
-        <typeAlias type="ru.stepanov.domain.Client" alias="Client" />
+        <typeAlias type="ru.stepanov.db.domain.Client" alias="Client" />
     </typeAliases>
 
     <environments default="development">

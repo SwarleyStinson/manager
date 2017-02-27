@@ -1,4 +1,4 @@
-package ru.stepanov.domain;
+package ru.stepanov.db.domain;
 
 import java.io.Serializable;
 

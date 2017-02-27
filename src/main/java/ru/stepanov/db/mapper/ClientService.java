@@ -1,7 +1,7 @@
-package ru.stepanov.mapper;
+package ru.stepanov.db.mapper;
 
 import org.apache.ibatis.session.SqlSession;
-import ru.stepanov.domain.Client;
+import ru.stepanov.db.domain.Client;
 
 import java.util.List;
 

@@ -1,9 +1,9 @@
-package ru.stepanov.dao;
+package ru.stepanov.db.dao;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import ru.stepanov.domain.Client;
-import ru.stepanov.mapper.ClientService;
+import ru.stepanov.db.domain.Client;
+import ru.stepanov.db.mapper.ClientService;
 
 import java.sql.SQLException;
 import java.sql.Statement;

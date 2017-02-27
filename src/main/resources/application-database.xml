@@ -14,11 +14,11 @@
         <property name="dataSource" ref="dataSource"/>
     </bean>
 
-    <bean id="bankDAO" class="ru.stepanov.dao.BankDAO">
+    <bean id="bankDAO" class="ru.stepanov.db.dao.BankDAO">
         <constructor-arg ref="jdbcTemplate"/>
     </bean>
 
-    <bean id="clientDAO" class="ru.stepanov.dao.ClientDAO">
+    <bean id="clientDAO" class="ru.stepanov.db.dao.ClientDAO">
         <constructor-arg ref="jdbcTemplate"/>
     </bean>
 

@@ -13,18 +13,18 @@ import java.util.Date;
 public class AopLogger {
     private static final Logger logger = LoggerFactory.getLogger(Logger.class);
 
-    @Before("execution(* ru.stepanov.dao.ClientDAO.addClient(..))")
+    @Before("execution(* ru.stepanov.db.dao.ClientDAO.addClient(..))")
     public void logBeforeAddToDB(JoinPoint joinPoint) {
         logger.info("New Client add to database: {}", new Date().toString());
     }
 
-    @Before("execution(* ru.stepanov.dao.ClientDAO.deleteClientByID(..))")
+    @Before("execution(* ru.stepanov.db.dao.ClientDAO.deleteClientByID(..))")
     public void logBeforeDeleteToDB(JoinPoint joinPoint) {
         logger.info("Client was delete from database: {}", new Date().toString());
     }
 
     @AfterThrowing(
-            pointcut = "execution(* ru.stepanov.dao.ClientDAO.setClientByID(..))",
+            pointcut = "execution(* ru.stepanov.db.dao.ClientDAO.setClientByID(..))",
             throwing = "error")
     public void logAfterThrowing(JoinPoint joinPoint, Throwable error) {
         logger.debug("");
