@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import ru.stepanov.dao.BankDAO;
 import ru.stepanov.dao.ClientDAO;
-import ru.stepanov.entity.Bank;
-import ru.stepanov.entity.Client;
+import ru.stepanov.domain.Bank;
+import ru.stepanov.domain.Client;
 
 import java.sql.SQLException;
 
@@ -110,7 +110,7 @@ public class MainController {
 
         ModelAndView model = new ModelAndView();
 
-        //check if user is entity
+        //check if user is domain
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (!(auth instanceof AnonymousAuthenticationToken)) {
             UserDetails userDetail = (UserDetails) auth.getPrincipal();

@@ -1,4 +1,4 @@
-package ru.stepanov.entity;
+package ru.stepanov.domain;
 
 import java.util.Date;
 

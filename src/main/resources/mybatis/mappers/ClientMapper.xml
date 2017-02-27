@@ -6,7 +6,7 @@
 <mapper namespace="ru.stepanov.mapper.ClientMapper">
 
     <!-- Person.java namespace -->
-    <resultMap type="ru.stepanov.entity.Client" id="ClientResult">
+    <resultMap type="ru.stepanov.domain.Client" id="ClientResult">
         <id column="id" property="id"/>
         <result property="name" column="name"/>
         <result property="login" column="login"/>

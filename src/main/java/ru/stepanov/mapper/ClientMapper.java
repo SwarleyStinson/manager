@@ -1,6 +1,6 @@
 package ru.stepanov.mapper;
 
-import ru.stepanov.entity.Client;
+import ru.stepanov.domain.Client;
 
 import java.util.List;
 

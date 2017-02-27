@@ -1,9 +1,8 @@
-package ru.stepanov.dao;
+package ru.stepanov.dao.OldDaoWithResultSet;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import ru.stepanov.domain.Bank;
-
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
