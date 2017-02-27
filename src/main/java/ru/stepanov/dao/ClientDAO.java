@@ -24,6 +24,38 @@ public class ClientDAO {
         maxPage = currentPage;
     }
 
+    public List<Client> getAll() {
+//        ClientService clientService = new ClientService();
+//        return clientService.getAll();
+        String SQL_GET_ALL = "SELECT * FROM client";
+        Statement statement;
+        List<Client> result = null;
+
+        try {
+            statement = jdbcTemplate.getDataSource().getConnection().createStatement();
+
+            result = new ArrayList<Client>();
+
+            ResultSet resultSet = statement.executeQuery(SQL_GET_ALL);
+
+            while (resultSet.next()) {
+                Client client = new Client();
+
+                client.setId(resultSet.getInt("id"));
+                client.setName(resultSet.getString("name"));
+                client.setLogin(resultSet.getString("login"));
+                client.setPassword(resultSet.getString("password"));
+                client.setEmail(resultSet.getString("email"));
+                client.setType(resultSet.getString("type"));
+                result.add(client);
+            }
+            statement.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
     public int getCurrentPageNumber(int changePageCommand) {
         if (changePageCommand == 1) currentPage = 1;
         if (changePageCommand == 2)
@@ -65,38 +97,6 @@ public class ClientDAO {
         while (count <= cycleEnd - 11) {
             result.remove(0);
             count++;
-        }
-        return result;
-    }
-
-    public List<Client> getAll() {
-//        ClientService clientService = new ClientService();
-//        return clientService.getAll();
-        String SQL_GET_ALL = "SELECT * FROM client";
-        Statement statement;
-        List<Client> result = null;
-
-        try {
-            statement = jdbcTemplate.getDataSource().getConnection().createStatement();
-
-            result = new ArrayList<Client>();
-
-            ResultSet resultSet = statement.executeQuery(SQL_GET_ALL);
-
-            while (resultSet.next()) {
-                Client client = new Client();
-
-                client.setId(resultSet.getInt("id"));
-                client.setName(resultSet.getString("name"));
-                client.setLogin(resultSet.getString("login"));
-                client.setPassword(resultSet.getString("password"));
-                client.setEmail(resultSet.getString("email"));
-                client.setType(resultSet.getString("type"));
-                result.add(client);
-            }
-            statement.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
         return result;
     }
