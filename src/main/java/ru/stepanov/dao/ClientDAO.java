@@ -3,7 +3,7 @@ package ru.stepanov.dao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import ru.stepanov.entity.Client;
-import ru.stepanov.mapper.ClientMapper;
+import ru.stepanov.mapper.ClientService;
 
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -24,7 +24,7 @@ public class ClientDAO {
     }
 
     public List<Client> getAll() {
-        ClientMapper clientService = new ClientMapper();
+        ClientService clientService = new ClientService();
         System.out.println("-----------: MyBatis: getAll()");
         return clientService.getAll();
 
