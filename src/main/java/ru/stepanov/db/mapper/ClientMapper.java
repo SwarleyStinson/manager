@@ -8,9 +8,9 @@ public interface ClientMapper {
 
     public List<Client> getAll();
 
+    public void deleteById(int id);
+
     public void insertClient(Client client);
 
-    public void deleteByID(int id);
-
-    public void updateById(Client client, int id);
+    public void updateById(Client client);
 }

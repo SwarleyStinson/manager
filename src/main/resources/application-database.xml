@@ -20,6 +20,11 @@
 
     <bean id="clientDAO" class="ru.stepanov.db.dao.ClientDAO">
         <constructor-arg ref="jdbcTemplate"/>
+        <constructor-arg ref="clientService"/>
     </bean>
+
+
+
+    <bean id="clientService" class="ru.stepanov.db.mapper.ClientService" />
 
 </beans>

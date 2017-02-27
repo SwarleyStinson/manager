@@ -33,7 +33,7 @@ public class MainController {
         ModelAndView modelAndView = new ModelAndView();
 
         // Client Database processing
-        if (isUpdate == 1) clientDAO.setClientByID(client, client.getId());
+        if (isUpdate == 1) clientDAO.updateClient(client);
         if (isCreate == 1) clientDAO.addClient(client);
         if (deleteByID > 0) clientDAO.deleteByID(deleteByID);
 

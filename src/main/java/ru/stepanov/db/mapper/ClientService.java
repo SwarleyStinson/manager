@@ -24,7 +24,33 @@ public class ClientService {
 
         try {
             ClientMapper clientMapper = sqlSession.getMapper(ClientMapper.class);
-            clientMapper.deleteByID(id);
+            clientMapper.deleteById(id);
+            sqlSession.commit();
+        } finally {
+            sqlSession.close();
+        }
+    }
+
+    public void insertClient(Client client) {
+
+        SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession();
+
+        try {
+            ClientMapper clientMapper = sqlSession.getMapper(ClientMapper.class);
+            clientMapper.insertClient(client);
+            sqlSession.commit();
+        } finally {
+            sqlSession.close();
+        }
+    }
+
+    public void updateById(Client client) {
+
+        SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession();
+
+        try {
+            ClientMapper clientMapper = sqlSession.getMapper(ClientMapper.class);
+            clientMapper.updateById(client);
             sqlSession.commit();
         } finally {
             sqlSession.close();

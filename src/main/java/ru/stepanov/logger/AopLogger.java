@@ -24,7 +24,7 @@ public class AopLogger {
     }
 
     @AfterThrowing(
-            pointcut = "execution(* ru.stepanov.db.dao.ClientDAO.setClientByID(..))",
+            pointcut = "execution(* ru.stepanov.db.dao.ClientDAO.updateClient(..))",
             throwing = "error")
     public void logAfterThrowing(JoinPoint joinPoint, Throwable error) {
         logger.debug("");

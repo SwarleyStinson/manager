@@ -23,4 +23,20 @@
         DELETE FROM client WHERE ID = #{id}
     </delete>
 
+    <insert id="insertClient" parameterType="Client" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO client (name, login, password, email, type)
+        VALUES(#{name}, #{login}, #{password}, #{email}, #{type})
+    </insert>
+
+    <update id='updateById' parameterType='Client'>
+        UPDATE client SET
+        name = #{name},
+        login = #{login},
+        password = #{password},
+        email = #{email},
+        type = #{type}
+        WHERE id = #{id}
+    </update>
+
+
 </mapper>

@@ -13,64 +13,37 @@ public class ClientDAO {
     private int tableSize;
     private int currentPage;
     private int maxPage;
+    ClientService clientService;
 
 
     @Autowired
-    public ClientDAO(JdbcTemplate jdbcTemplate) {
+    public ClientDAO(JdbcTemplate jdbcTemplate, ClientService clientService) {
         this.jdbcTemplate = jdbcTemplate;
+        this.clientService = clientService;
         tableSize = getAll().size();
         currentPage = getCurrentPageNumber(4);
         maxPage = currentPage;
     }
 
     public List<Client> getAll() {
-        ClientService clientService = new ClientService();
         return clientService.getAll();
-
-//        String SQL_GET_ALL = "SELECT * FROM client";
-//        Statement statement;
-//        List<Client> result = null;
-//
-//        try {
-//            statement = jdbcTemplate.getDataSource().getConnection().createStatement();
-//
-//            result = new ArrayList<Client>();
-//
-//            ResultSet resultSet = statement.executeQuery(SQL_GET_ALL);
-//
-//            while (resultSet.next()) {
-//                Client client = new Client();
-//
-//                client.setId(resultSet.getInt("id"));
-//                client.setName(resultSet.getString("name"));
-//                client.setLogin(resultSet.getString("login"));
-//                client.setPassword(resultSet.getString("password"));
-//                client.setEmail(resultSet.getString("email"));
-//                client.setType(resultSet.getString("type"));
-//                result.add(client);
-//            }
-//            statement.close();
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//        return result;
     }
 
     public void deleteByID(int id) throws ClassNotFoundException, SQLException {
-        ClientService clientService = new ClientService();
         clientService.deleteById(id);
-
-//        String SQL_DELETE_BY_ID = "DELETE FROM client WHERE id=" + id;
-//        try {
-//            Statement statement = jdbcTemplate.getDataSource().getConnection().createStatement();
-//            statement.execute(SQL_DELETE_BY_ID);
-//        } catch (SQLException e) {
-//
-//            System.out.println("Метод deleteClient поломался...");
-//            e.printStackTrace();
-//        }
         tableSize--;
         maxPage = getCurrentPageNumber(4);
+    }
+
+    public void addClient(Client client) {
+        clientService.insertClient(client);
+        tableSize++;
+        maxPage = getCurrentPageNumber(4);
+    }
+
+    public void updateClient(Client client) {
+
+        clientService.updateById(client);
     }
 
     public int getCurrentPageNumber(int changePageCommand) {
@@ -116,33 +89,5 @@ public class ClientDAO {
             count++;
         }
         return result;
-    }
-
-    public void addClient(Client client) {
-        final String SQL_INSERT_CLIENT =
-                "insert into CLIENT (name, login, password, email, type) values (?,?,?,?,?)";
-
-        jdbcTemplate.update(SQL_INSERT_CLIENT,
-                client.getName(),
-                client.getLogin(),
-                client.getPassword(),
-                client.getEmail(),
-                client.getType()
-        );
-        tableSize++;
-        maxPage = getCurrentPageNumber(4);
-    }
-
-    public void setClientByID(Client client, int id) {
-        final String SQL_UPDATE_CLIENT =
-                "update CLIENT set name=?, login=?, password=?, email=?, type=? where id=" + id;
-
-        jdbcTemplate.update(SQL_UPDATE_CLIENT,
-                client.getName(),
-                client.getLogin(),
-                client.getPassword(),
-                client.getEmail(),
-                client.getType()
-        );
     }
 }
