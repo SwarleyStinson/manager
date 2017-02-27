@@ -51,10 +51,10 @@ public class MainController {
 
     @RequestMapping(value = "/bank**")
     public ModelAndView bank(@RequestParam(value = "deleteByID", defaultValue = "0") int deleteByID,
-                              @RequestParam(value = "isUpdate", defaultValue = "0") int isUpdate,
-                              @RequestParam(value = "isCreate", defaultValue = "0") int isCreate,
-                              @RequestParam(value = "currentPage", defaultValue = "0") int currentPage,
-                              Bank bank) throws SQLException, ClassNotFoundException {
+                             @RequestParam(value = "isUpdate", defaultValue = "0") int isUpdate,
+                             @RequestParam(value = "isCreate", defaultValue = "0") int isCreate,
+                             @RequestParam(value = "currentPage", defaultValue = "0") int currentPage,
+                             Bank bank) throws SQLException, ClassNotFoundException {
         ModelAndView modelAndView = new ModelAndView();
 
         // Bank Database processing

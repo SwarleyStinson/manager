@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- Mapper.java namespace -->
+<mapper namespace="ru.stepanov.mapper.ClientMapper">
+
+    <!-- Person.java namespace -->
+    <resultMap type="ru.stepanov.entity.Client" id="ClientResult">
+        <id column="id" property="id"/>
+        <result property="name" column="name"/>
+        <result property="login" column="login"/>
+        <result property="password" column="password"/>
+        <result property="email" column="email"/>
+        <result property="type" column="type"/>
+    </resultMap>
+
+    <select id="getAll" resultMap="ClientResult">
+        SELECT * FROM client
+    </select>
+
+</mapper>

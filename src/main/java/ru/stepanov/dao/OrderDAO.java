@@ -12,11 +12,14 @@ public class OrderDAO {
     private int maxPage;
 
     @Autowired
-    public OrderDAO(JdbcTemplate jdbcTemplate) {
+    public OrderDAO() {
         this.jdbcTemplate = jdbcTemplate;
         this.tableSize = tableSize;
         this.currentPage = currentPage;
         this.maxPage = maxPage;
+    }
+
+    public OrderDAO(JdbcTemplate jdbcTemplate) {
     }
 
     public void getCurrentPageNumber() {
@@ -35,12 +38,12 @@ public class OrderDAO {
 
     }
 
-    public void setOrderByID(){
+    public void setOrderByID() {
 
     }
 
     public void addOrder(int number, String firstContrAgent, String firstContrAgentType,
-                           String secondContrAgent, String secondContrAgentType, Date dateOfStart, Date dateOfFinish) {
+                         String secondContrAgent, String secondContrAgentType, Date dateOfStart, Date dateOfFinish) {
 
 
     }

@@ -70,6 +70,8 @@ public class ClientDAO {
     }
 
     public List<Client> getAll() {
+//        ClientService clientService = new ClientService();
+//        return clientService.getAll();
         String SQL_GET_ALL = "SELECT * FROM client";
         Statement statement;
         List<Client> result = null;
