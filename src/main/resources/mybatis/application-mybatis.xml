@@ -20,6 +20,4 @@
         <constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"/>
     </bean>
 
-    <bean id="abstractMyBatisDao" class="ru.stepanov.db.mapper.AbstractMyBatisDao"/>
-
 </beans>

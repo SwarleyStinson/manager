@@ -18,5 +18,17 @@ public class ClientService {
         }
     }
 
+    public void deleteById(int id) {
+
+        SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession();
+
+        try {
+            ClientMapper clientMapper = sqlSession.getMapper(ClientMapper.class);
+            clientMapper.deleteByID(id);
+            sqlSession.commit();
+        } finally {
+            sqlSession.close();
+        }
+    }
 
 }

@@ -19,4 +19,8 @@
         SELECT * FROM client
     </select>
 
+    <delete id="deleteById" parameterType="int">
+        DELETE FROM client WHERE ID = #{id}
+    </delete>
+
 </mapper>

@@ -10,7 +10,7 @@ public interface ClientMapper {
 
     public void insertClient(Client client);
 
-    public void deleteByID(int id);
+    public void deleteByID(Integer id);
 
     public void updateById(Client client, int id);
 }

@@ -6,8 +6,8 @@
 
     <bean id="dataSource" class="org.h2.jdbcx.JdbcDataSource">
         <property name="URL" value="jdbc:h2:~/TestDatabase;DB_CLOSE_ON_EXIT=TRUE;FILE_LOCK=NO;MULTI_THREADED=1;"/>
-        <property name="user" value="sa"/>
-        <property name="password" value=""/>
+        <property name="user" value="root"/>
+        <property name="password" value="root"/>
     </bean>
 
     <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">

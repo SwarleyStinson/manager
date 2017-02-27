@@ -6,7 +6,6 @@ import ru.stepanov.db.domain.Client;
 import ru.stepanov.db.mapper.ClientService;
 
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.List;
 
 public class ClientDAO {
@@ -14,6 +13,7 @@ public class ClientDAO {
     private int tableSize;
     private int currentPage;
     private int maxPage;
+    ClientService clientService;
 
     @Autowired
     public ClientDAO(JdbcTemplate jdbcTemplate) {
@@ -21,10 +21,10 @@ public class ClientDAO {
         tableSize = getAll().size();
         currentPage = getCurrentPageNumber(4);
         maxPage = currentPage;
+        clientService  = new ClientService();
     }
 
     public List<Client> getAll() {
-        ClientService clientService = new ClientService();
         return clientService.getAll();
 
 //        String SQL_GET_ALL = "SELECT * FROM client";
@@ -54,6 +54,22 @@ public class ClientDAO {
 //            e.printStackTrace();
 //        }
 //        return result;
+    }
+
+    public void deleteByID(int id) throws ClassNotFoundException, SQLException {
+        clientService.deleteById(id);
+
+//        String SQL_DELETE_BY_ID = "DELETE FROM client WHERE id=" + id;
+//        try {
+//            Statement statement = jdbcTemplate.getDataSource().getConnection().createStatement();
+//            statement.execute(SQL_DELETE_BY_ID);
+//        } catch (SQLException e) {
+//
+//            System.out.println("Метод deleteClient поломался...");
+//            e.printStackTrace();
+//        }
+        tableSize--;
+        maxPage = getCurrentPageNumber(4);
     }
 
     public int getCurrentPageNumber(int changePageCommand) {
@@ -99,20 +115,6 @@ public class ClientDAO {
             count++;
         }
         return result;
-    }
-
-    public void deleteClientByID(int id) throws ClassNotFoundException, SQLException {
-        String SQL_DELETE_BY_ID = "DELETE FROM client WHERE id=" + id;
-        try {
-            Statement statement = jdbcTemplate.getDataSource().getConnection().createStatement();
-            statement.execute(SQL_DELETE_BY_ID);
-        } catch (SQLException e) {
-
-            System.out.println("Метод deleteClient поломался...");
-            e.printStackTrace();
-        }
-        tableSize--;
-        maxPage = getCurrentPageNumber(4);
     }
 
     public void addClient(Client client) {

@@ -35,7 +35,7 @@ public class MainController {
         // Client Database processing
         if (isUpdate == 1) clientDAO.setClientByID(client, client.getId());
         if (isCreate == 1) clientDAO.addClient(client);
-        if (deleteByID > 0) clientDAO.deleteClientByID(deleteByID);
+        if (deleteByID > 0) clientDAO.deleteByID(deleteByID);
 
         // processing  Current Page
         if (currentPage != 0) {
