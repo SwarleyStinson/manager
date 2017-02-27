@@ -13,7 +13,7 @@ public class ClientDAO {
     private int tableSize;
     private int currentPage;
     private int maxPage;
-    ClientService clientService;
+
 
     @Autowired
     public ClientDAO(JdbcTemplate jdbcTemplate) {
@@ -21,10 +21,10 @@ public class ClientDAO {
         tableSize = getAll().size();
         currentPage = getCurrentPageNumber(4);
         maxPage = currentPage;
-        clientService  = new ClientService();
     }
 
     public List<Client> getAll() {
+        ClientService clientService = new ClientService();
         return clientService.getAll();
 
 //        String SQL_GET_ALL = "SELECT * FROM client";
@@ -57,6 +57,7 @@ public class ClientDAO {
     }
 
     public void deleteByID(int id) throws ClassNotFoundException, SQLException {
+        ClientService clientService = new ClientService();
         clientService.deleteById(id);
 
 //        String SQL_DELETE_BY_ID = "DELETE FROM client WHERE id=" + id;
