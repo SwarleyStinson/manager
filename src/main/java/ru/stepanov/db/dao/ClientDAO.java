@@ -25,7 +25,6 @@ public class ClientDAO {
 
     public List<Client> getAll() {
         ClientService clientService = new ClientService();
-        System.out.println("-----------: MyBatis: getAll()");
         return clientService.getAll();
 
 //        String SQL_GET_ALL = "SELECT * FROM client";

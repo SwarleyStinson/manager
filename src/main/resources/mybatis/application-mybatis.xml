@@ -16,4 +16,10 @@
           p:mapperLocations="classpath*:mybatis/mappers/**.xml"
     />
 
+    <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+        <constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"/>
+    </bean>
+
+    <bean id="abstractMyBatisDao" class="ru.stepanov.db.mapper.AbstractMyBatisDao"/>
+
 </beans>
