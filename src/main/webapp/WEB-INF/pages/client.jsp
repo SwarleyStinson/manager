@@ -40,7 +40,6 @@
 
 
 <%-- Control Button Panel --%>
-
 <div align="left">
     <c:url value="/client" var="clientController"/>
     <c:url value="/orders" var="ordersController"/>
@@ -126,20 +125,19 @@
                 <td width="15">${c.type}</td>
                 <td width="80">
                     <sf:form>
-                        <input type="hidden" value="${c.id}" name="deleteByID">
+                        <input type="hidden" value="${c.id}" name="deleteById">
                         <input type="submit" value="Удалить" align="center"/>
-                    </sf:form>
-                </td>
-                <td width="180">
-                    <sf:form>
-                        <input onclick="toggle(), toggleToo()" type="button" value="изменить/добавить"/>
                     </sf:form>
                 </td>
             </tr>
         </c:forEach>
     </table>
 </div>
-
+<div align="center">
+    <sf:form>
+        <input onclick="toggle(), toggleToo()" type="button" value="изменить/добавить"/>
+    </sf:form>
+</div>
 <%-- изменение строки --%>
 <div align="center">
     <c:if test="${not empty allfields}">

@@ -6,7 +6,7 @@
 <mapper namespace="ru.stepanov.db.mapper.ClientMapper">
 
     <!-- namespace -->
-    <resultMap type="ru.stepanov.db.domain.Client" id="ClientResult">
+    <resultMap type="ru.stepanov.db.domain.Client" id="ClientResult3">
         <id column="id" property="id"/>
         <result property="name" column="name"/>
         <result property="login" column="login"/>
@@ -15,7 +15,7 @@
         <result property="type" column="type"/>
     </resultMap>
 
-    <select id="getAll" resultMap="ClientResult">
+    <select id="getAll" resultMap="ClientResult3">
         SELECT * FROM client
     </select>
 

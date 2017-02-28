@@ -1,4 +1,4 @@
-package ru.stepanov.db;
+package ru.stepanov.db.dao;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -3,10 +3,10 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- Mapper.java namespace -->
-<mapper namespace="ru.stepanov.db.dao.ClientDAO">
+<mapper namespace="ClientDao">
 
     <!-- namespace -->
-    <resultMap type="ru.stepanov.db.domain.Client" id="ClientResult">
+    <resultMap type="ru.stepanov.db.domain.Client" id="ClientResultMap">
         <id column="id" property="id"/>
         <result property="name" column="name"/>
         <result property="login" column="login"/>
@@ -15,11 +15,11 @@
         <result property="type" column="type"/>
     </resultMap>
 
-    <select id="getAll" resultMap="ClientResult">
+    <select id="getAllClient" resultMap="ClientResultMap">
         SELECT * FROM client
     </select>
 
-    <delete id="deleteById" parameterType="int">
+    <delete id="deleteClientById" parameterType="int">
         DELETE FROM client WHERE ID = #{id}
     </delete>
 
@@ -28,7 +28,7 @@
         VALUES(#{name}, #{login}, #{password}, #{email}, #{type})
     </insert>
 
-    <update id='updateById' parameterType='Client'>
+    <update id='updateClient' parameterType='Client'>
         UPDATE client SET
         name = #{name},
         login = #{login},

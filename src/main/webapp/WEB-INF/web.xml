@@ -26,8 +26,6 @@
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>
-            classpath:application-security.xml
-            classpath:application-database.xml
             classpath:aplication-context.xml
         </param-value>
     </context-param>

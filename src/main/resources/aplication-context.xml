@@ -1,14 +1,22 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/aop
-        http://www.springframework.org/schema/aop/spring-aop.xsd">
+        http://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
     <aop:aspectj-autoproxy/>
+    <context:annotation-config/>
+    <context:component-scan base-package="ru.stepanov.db.dao.*"/>
 
     <!-- Aspect Logger -->
     <bean id="logAspect" class="ru.stepanov.logger.AopLogger"/>
+
+    <import resource="gateway-servlet.xml"/>
+    <import resource="application-security.xml"/>
+    <import resource="application-database.xml"/>
+    <import resource="mybatis/application-mybatis.xml"/>
 
 </beans>

@@ -5,21 +5,21 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.util.Date;
 
-public class OrderDAO {
+public class OrderDao {
     private JdbcTemplate jdbcTemplate;
     private int tableSize;
     private int currentPage;
     private int maxPage;
 
     @Autowired
-    public OrderDAO() {
+    public OrderDao() {
         this.jdbcTemplate = jdbcTemplate;
         this.tableSize = tableSize;
         this.currentPage = currentPage;
         this.maxPage = maxPage;
     }
 
-    public OrderDAO(JdbcTemplate jdbcTemplate) {
+    public OrderDao(JdbcTemplate jdbcTemplate) {
     }
 
     public void getCurrentPageNumber() {
