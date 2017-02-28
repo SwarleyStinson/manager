@@ -2,13 +2,14 @@ package ru.stepanov.db.dao;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import ru.stepanov.db.AbstractMyBatisDao;
 import ru.stepanov.db.domain.Client;
 import ru.stepanov.db.mapper.ClientService;
 
 import java.sql.SQLException;
 import java.util.List;
 
-public class ClientDAO {
+public class ClientDAO extends AbstractMyBatisDao{
     private JdbcTemplate jdbcTemplate;
     private int tableSize;
     private int currentPage;
@@ -26,7 +27,10 @@ public class ClientDAO {
     }
 
     public List<Client> getAll() {
-        return clientService.getAll();
+
+//        return this.sqlSession.selectList("getAll");
+
+       return clientService.getAll();
     }
 
     public void deleteByID(int id) throws ClassNotFoundException, SQLException {
