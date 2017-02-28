@@ -44,7 +44,7 @@ public class MainController {
             if (currentPage == 3) modelAndView.addObject(clientDAO.getPage(clientDAO.getCurrentPageNumber(3)));
             if (currentPage == 4) modelAndView.addObject(clientDAO.getPage(clientDAO.getCurrentPageNumber(4)));
 
-        } else modelAndView.addObject(clientDAO.getLast());
+        } else modelAndView.addObject(clientDAO.getPage(clientDAO.getCurrentPage()));
         modelAndView.setViewName("client");
         return modelAndView;
     }

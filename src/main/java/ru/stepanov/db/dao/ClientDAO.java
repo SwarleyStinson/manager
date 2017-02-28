@@ -13,7 +13,7 @@ public class ClientDAO {
     private int tableSize;
     private int currentPage;
     private int maxPage;
-    ClientService clientService;
+    private ClientService clientService;
 
 
     @Autowired
@@ -44,6 +44,10 @@ public class ClientDAO {
     public void updateClient(Client client) {
 
         clientService.updateById(client);
+    }
+
+    public int getCurrentPage(){
+        return currentPage;
     }
 
     public int getCurrentPageNumber(int changePageCommand) {
