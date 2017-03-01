@@ -124,16 +124,15 @@
                         <input type="submit" value="Удалить" align="center"/>
                     </sf:form>
                 </td>
-                <td width="180">
-                    <sf:form>
-                        <input onclick="toggle(), toggleToo()" type="button" value="изменить/добавить"/>
-                    </sf:form>
-                </td>
             </tr>
         </c:forEach>
     </table>
 </div>
-
+<div align="center">
+    <sf:form>
+        <input onclick="toggle(), toggleToo()" type="button" value="изменить/добавить"/>
+    </sf:form>
+</div>
 <%-- изменение строки --%>
 <div align="center">
     <c:if test="${not empty allfields}">

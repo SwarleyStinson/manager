@@ -203,12 +203,12 @@
         <tr>
             <td>Date of Start:</td>
             <td>
-                <input name="dateofstart" type="date" width="10" formenctype="text/plain" required/>
+                <input name="dateofstart" type="date" width="10" required/>
             </td>
         </tr>
         <tr>
             <td>Date of Finish:</td>
-            <td><input name="dateoffinish" type="date" width="10" formenctype="text/plain" required/></td>
+            <td><input name="dateoffinish" type="date" width="10" required/></td>
         </tr>
         <tr>
             <td>Type:</td>

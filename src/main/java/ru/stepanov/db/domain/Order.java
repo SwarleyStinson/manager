@@ -1,8 +1,11 @@
 package ru.stepanov.db.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Order {
+public class Order implements Serializable{
+
+    private static final long serialVersionUID = 6324456442814635239L;
 
     private int id;
     private String firstcontragent;

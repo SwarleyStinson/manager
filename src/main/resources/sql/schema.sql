@@ -22,8 +22,8 @@ CREATE TABLE orders (
   id               INT PRIMARY KEY AUTO_INCREMENT,
   firstcontragent      VARCHAR(80),
   secondcontragent     VARCHAR(80),
-  dateofstart          DATETIME,
-  dateoffinish         DATETIME,
+  dateofstart          DATE,
+  dateoffinish         DATE,
   type                 VARCHAR(80)
 );
 

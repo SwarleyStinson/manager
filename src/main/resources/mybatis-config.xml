@@ -19,8 +19,4 @@
             </dataSource>
         </environment>
     </environments>
-    <!--<mappers>-->
-        <!--<mapper resource="mybatis/mappers/ClientServiceMapper.xml_"/>-->
-        <!--<mapper resource="mybatis/mappers/ClientMapper.xml"/>-->
-    <!--</mappers>-->
 </configuration>
