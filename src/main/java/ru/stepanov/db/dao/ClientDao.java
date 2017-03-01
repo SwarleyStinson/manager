@@ -1,7 +1,7 @@
 package ru.stepanov.db.dao;
 
+import com.cardpay.spring.annotations.MyBatisDao;
 import org.springframework.stereotype.Repository;
-import ru.stepanov.annotations.MyBatisDao;
 import ru.stepanov.db.domain.Client;
 
 import java.util.List;

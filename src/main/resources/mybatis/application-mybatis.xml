@@ -13,8 +13,7 @@
     <bean id="txTemplate" class="org.springframework.transaction.support.TransactionTemplate"
           p:transactionManager-ref="transactionManager"/>
 
-
-    <!--<bean id="myBatisDaoHandler" class="ru.stepanov.annotations.MyBatisDaoHandler"/>-->
+    <bean id="myBatisDaoHandler" class="com.cardpay.spring.annotations.MyBatisDaoHandler"/>
 
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean"
           p:dataSource-ref="dataSource"
@@ -23,11 +22,11 @@
           p:mapperLocations="classpath*:mybatis/mappers/**.xml"
     />
 
-    <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+    <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" depends-on="myBatisDaoHandler">
         <constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"/>
     </bean>
 
-    <bean id="sqlSessionBatch" class="org.mybatis.spring.SqlSessionTemplate">
+    <bean id="sqlSessionBatch" class="org.mybatis.spring.SqlSessionTemplate" depends-on="myBatisDaoHandler">
         <constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"/>
         <constructor-arg name="executorType" value="BATCH"/>
     </bean>
