@@ -1,55 +1,75 @@
 package ru.stepanov.db.dao;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
+import ru.stepanov.annotations.MyBatisDao;
+import ru.stepanov.db.domain.Order;
 
-import java.util.Date;
+import java.util.List;
 
-public class OrderDao {
-    private JdbcTemplate jdbcTemplate;
-    private int tableSize;
-    private int currentPage;
-    private int maxPage;
+@Repository
+@MyBatisDao("OrderDao")
+public class OrderDao extends AbstractMyBatisDao{
+    private int tableSize = 0;
+    private int currentPage = 0;
+    private int maxPage = 0;
 
-    @Autowired
-    public OrderDao() {
-        this.jdbcTemplate = jdbcTemplate;
-        this.tableSize = tableSize;
-        this.currentPage = currentPage;
-        this.maxPage = maxPage;
+    public List<Order> getAllOrders() {
+
+        return this.sqlSession.selectList("getAllOrders");
     }
 
-    public OrderDao(JdbcTemplate jdbcTemplate) {
+    public void deleteOrderByID(int id){
+        this.sqlSession.delete("deleteOrder", id);
+        tableSize--;
+        maxPage = getCurrentPageNumber(4);
     }
 
-    public void getCurrentPageNumber() {
-
+    public void insertOrder(Order order) {
+        this.sqlSession.insert("insertOrder", order);
+        tableSize++;
+        maxPage = getCurrentPageNumber(4);
     }
 
-    public void getPage() {
-
+    public void updateOrder(Order order) {
+        this.sqlSession.update("updateOrder", order);
     }
 
-    public void getLast() {
-
+    public int getCurrentPage() {
+        if(tableSize == 0) tableSize = getAllOrders().size();
+        if (currentPage == 0) currentPage = getCurrentPageNumber(4);
+        if (maxPage == 0) maxPage = currentPage;
+        return currentPage;
     }
 
-    public void getAll() {
-
+    public int getCurrentPageNumber(int changePageCommand) {
+        if (changePageCommand == 1) currentPage = 1;
+        if (changePageCommand == 2)
+            if (currentPage > 1) --currentPage;
+        if (changePageCommand == 3)
+            if (currentPage < maxPage) ++currentPage;
+        if (changePageCommand == 4) {
+            if (tableSize % 10 != 0) {
+                currentPage = tableSize / 10 + 1;
+            } else currentPage = tableSize / 10;
+        }
+        return currentPage;
     }
 
-    public void setOrderByID() {
+    public List<Order> getPage(int currentPageNumber) {
+        List<Order> result = getAllOrders();
 
-    }
+        //удаление с начала до текущей страницы
+        int count = 1;
+        while (count < currentPage) {
+            for (int i = 0; i < 10; i++) result.remove(0);
+            count++;
+        }
+        //удаление до конца
+        int cycleEnd = result.size() - 1;
 
-    public void addOrder(int number, String firstContrAgent, String firstContrAgentType,
-                         String secondContrAgent, String secondContrAgentType, Date dateOfStart, Date dateOfFinish) {
+        for (int i = cycleEnd; i >= 10; i--)
+            result.remove(i);
 
-
-    }
-
-    public void deleteOrderByID(int number) {
-
-
+        return result;
     }
 }

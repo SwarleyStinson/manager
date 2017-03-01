@@ -14,13 +14,13 @@
                 <property name="driver" value="org.h2.Driver"/>
                 <property name="url"
                           value="jdbc:h2:~/TestDatabase"/>
-                <property name="username" value="root"/>
-                <property name="password" value="root"/>
+                <property name="username" value="sa"/>
+                <property name="password" value=""/>
             </dataSource>
         </environment>
     </environments>
     <!--<mappers>-->
         <!--<mapper resource="mybatis/mappers/ClientServiceMapper.xml_"/>-->
-        <!--<mapper resource="mybatis/mappers/ClientDaoMapper.xml"/>-->
+        <!--<mapper resource="mybatis/mappers/ClientMapper.xml"/>-->
     <!--</mappers>-->
 </configuration>

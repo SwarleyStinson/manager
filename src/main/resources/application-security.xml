@@ -20,7 +20,8 @@
         <intercept-url pattern="/login*" access="permitAll()"/>
 
         <intercept-url pattern="/client*" access="isAuthenticated()"/>
-        <intercept-url pattern="/bank*" access="hasRole('ROLE_ADMIN')"/>
+        <intercept-url pattern="/bank*" access="isAuthenticated()"/>
+        <intercept-url pattern="/orders*" access="hasRole('ROLE_ADMIN')"/>
 
         <intercept-url pattern="/*" access="permitAll()"/>
     </http>

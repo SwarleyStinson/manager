@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- Mapper.java namespace -->
+<mapper namespace="OrderDao">
+
+    <!-- namespace -->
+    <resultMap type="ru.stepanov.db.domain.Order" id="OrderResult">
+        <id column="id" property="id"/>
+        <result property="firstcontragent" column="firstcontragent"/>
+        <result property="secondcontragent" column="secondcontragent"/>
+        <result property="dateofstart" column="dateofstart"/>
+        <result property="dateoffinish" column="dateoffinish"/>
+        <result property="type" column="type"/>
+    </resultMap>
+
+    <select id="getAllOrders" resultMap="OrderResult">
+        SELECT * FROM orders
+    </select>
+
+    <delete id="deleteOrder" parameterType="int">
+        DELETE FROM orders WHERE id = #{id}
+    </delete>
+
+    <insert id="insertOrder" parameterType="Order" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO orders (firstcontragent, secondcontragent, dateofstart, dateoffinish, type)
+        VALUES(#{firstcontragent}, #{secondcontragent}, #{dateofstart}, #{dateoffinish}, #{type})
+    </insert>
+
+    <update id='updateOrder' parameterType='Order'>
+        UPDATE orders SET
+        firstcontragent = #{firstcontragent},
+        secondcontragent = #{secondcontragent},
+        dateofstart = #{dateofstart},
+        dateoffinish = #{dateoffinish},
+        type = #{type}
+        WHERE id = #{id}
+    </update>
+
+</mapper>

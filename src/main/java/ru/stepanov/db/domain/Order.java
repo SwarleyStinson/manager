@@ -4,58 +4,70 @@ import java.util.Date;
 
 public class Order {
 
-    private int number;
-    private String firstContrAgent;
-    private String firstContrAgentType;
-    private String secondContrAgent;
-    private String secondContrAgentType;
-    private Date dateOfStart;
-    private Date dateOfFinish;
+    private int id;
+    private String firstcontragent;
+    private String secondcontragent;
+    private Date dateofstart;
+    private Date dateoffinish;
     private String type;
-    private boolean overdue;
 
-    public Order(int number, String firstContrAgent, String firstContrAgentType,
-                 String secondContrAgent, String secondContrAgentType, Date dateOfStart, Date dateOfFinish, String type) {
-        this.number = number;
-        this.firstContrAgent = firstContrAgent;
-        this.firstContrAgentType = firstContrAgentType;
-        this.secondContrAgent = secondContrAgent;
-        this.secondContrAgentType = secondContrAgentType;
-        this.dateOfStart = dateOfStart;
-        this.dateOfFinish = dateOfFinish;
+    public Order() {
+    }
+
+    public Order(int id, String firstcontragent, String secondcontragent, Date dateofstart, Date dateoffinish, String type) {
+        this.id = id;
+        this.firstcontragent = firstcontragent;
+        this.secondcontragent = secondcontragent;
+        this.dateofstart = dateofstart;
+        this.dateoffinish = dateoffinish;
         this.type = type;
-        this.overdue = false;
     }
 
-    public void setDateOfFinish(Date dateOfFinish) {
-        this.dateOfFinish = dateOfFinish;
+    public int getId() {
+        return id;
     }
 
-    public void setOverdue(boolean overdue) {
-        this.overdue = overdue;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public int getNumber() {
-        return number;
+    public String getFirstcontragent() {
+        return firstcontragent;
     }
 
-    public String getFirstContrAgent() {
-        return firstContrAgent;
+    public void setFirstContrAgent(String firstcontragent) {
+        this.firstcontragent = firstcontragent;
     }
 
-    public String getSecondContrAgent() {
-        return secondContrAgent;
+    public String getSecondcontragent() {
+        return secondcontragent;
     }
 
-    public Date getDateOfStart() {
-        return dateOfStart;
+    public void setSecondcontragent(String secondcontragent) {
+        this.secondcontragent = secondcontragent;
     }
 
-    public Date getDateOfFinish() {
-        return dateOfFinish;
+    public Date getDateofstart() {
+        return dateofstart;
     }
 
-    public boolean isOverdue() {
-        return overdue;
+    public void setDateofstart(Date dateofstart) {
+        this.dateofstart = dateofstart;
+    }
+
+    public Date getDateoffinish() {
+        return dateoffinish;
+    }
+
+    public void setDateoffinish(Date dateoffinish) {
+        this.dateoffinish = dateoffinish;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }
