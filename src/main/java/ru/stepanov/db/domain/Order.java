@@ -1,7 +1,6 @@
 package ru.stepanov.db.domain;
 
 import java.io.Serializable;
-import java.util.Date;
 
 public class Order implements Serializable{
 
@@ -10,14 +9,14 @@ public class Order implements Serializable{
     private int id;
     private String firstcontragent;
     private String secondcontragent;
-    private Date dateofstart;
-    private Date dateoffinish;
+    private String dateofstart;
+    private String dateoffinish;
     private String type;
 
     public Order() {
     }
 
-    public Order(int id, String firstcontragent, String secondcontragent, Date dateofstart, Date dateoffinish, String type) {
+    public Order(String firstcontragent, String secondcontragent, String dateofstart, String dateoffinish, String type) {
         this.id = id;
         this.firstcontragent = firstcontragent;
         this.secondcontragent = secondcontragent;
@@ -38,7 +37,7 @@ public class Order implements Serializable{
         return firstcontragent;
     }
 
-    public void setFirstContrAgent(String firstcontragent) {
+    public void setFirstcontragent(String firstcontragent) {
         this.firstcontragent = firstcontragent;
     }
 
@@ -50,19 +49,19 @@ public class Order implements Serializable{
         this.secondcontragent = secondcontragent;
     }
 
-    public Date getDateofstart() {
+    public String getDateofstart() {
         return dateofstart;
     }
 
-    public void setDateofstart(Date dateofstart) {
+    public void setDateofstart(String dateofstart) {
         this.dateofstart = dateofstart;
     }
 
-    public Date getDateoffinish() {
+    public String getDateoffinish() {
         return dateoffinish;
     }
 
-    public void setDateoffinish(Date dateoffinish) {
+    public void setDateoffinish(String dateoffinish) {
         this.dateoffinish = dateoffinish;
     }
 
@@ -72,5 +71,17 @@ public class Order implements Serializable{
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id=" + id +
+                ", firstcontragent='" + firstcontragent + '\'' +
+                ", secondcontragent='" + secondcontragent + '\'' +
+                ", dateofstart='" + dateofstart + '\'' +
+                ", dateoffinish='" + dateoffinish + '\'' +
+                ", type='" + type + '\'' +
+                '}';
     }
 }

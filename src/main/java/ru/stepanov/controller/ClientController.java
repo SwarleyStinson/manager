@@ -30,13 +30,9 @@ public class ClientController {
         if (deleteClient > 0) clientDao.deleteClientByID(deleteClient);
 
         // processing  Current Page
-        if (currentPage != 0) {
-            if (currentPage == 1) modelAndView.addObject(clientDao.getPage(clientDao.getCurrentPageNumber(1)));
-            if (currentPage == 2) modelAndView.addObject(clientDao.getPage(clientDao.getCurrentPageNumber(2)));
-            if (currentPage == 3) modelAndView.addObject(clientDao.getPage(clientDao.getCurrentPageNumber(3)));
-            if (currentPage == 4) modelAndView.addObject(clientDao.getPage(clientDao.getCurrentPageNumber(4)));
+        int page = currentPage > 0 && currentPage < 5 ? clientDao.getCurrentPageNumber(currentPage) : clientDao.getCurrentPage();
 
-        } else modelAndView.addObject(clientDao.getPage(clientDao.getCurrentPage()));
+        modelAndView.addObject(clientDao.getPage(page));
         modelAndView.setViewName("client");
         return modelAndView;
     }

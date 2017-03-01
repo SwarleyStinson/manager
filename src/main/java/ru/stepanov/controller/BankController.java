@@ -30,13 +30,9 @@ public class BankController {
         if (deleteByID > 0) bankDAO.deleteBankByID(deleteByID);
 
         // processing  Current Page
-        if (currentPage != 0) {
-            if (currentPage == 1) modelAndView.addObject(bankDAO.getPage(bankDAO.getCurrentPageNumber(1)));
-            if (currentPage == 2) modelAndView.addObject(bankDAO.getPage(bankDAO.getCurrentPageNumber(2)));
-            if (currentPage == 3) modelAndView.addObject(bankDAO.getPage(bankDAO.getCurrentPageNumber(3)));
-            if (currentPage == 4) modelAndView.addObject(bankDAO.getPage(bankDAO.getCurrentPageNumber(4)));
+        int page = currentPage > 0 && currentPage < 5 ? bankDAO.getCurrentPageNumber(currentPage) : bankDAO.getCurrentPage();
 
-        } else modelAndView.addObject(bankDAO.getLast());
+        modelAndView.addObject(bankDAO.getPage(page));
         modelAndView.setViewName("bank");
         return modelAndView;
     }

@@ -25,6 +25,9 @@ public class BankDAO {
         this.maxPage = currentPage;
     }
 
+    public int getCurrentPage() {
+        return currentPage;
+    }
 
     public int getCurrentPageNumber(int changePageCommand) {
         if (changePageCommand == 1) currentPage = 1;

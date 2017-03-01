@@ -123,7 +123,7 @@
                 <td width="15">${o.type}</td>
                 <td width="80">
                     <sf:form>
-                        <input type="hidden" value="${o.id}" name="deleteByID">
+                        <input type="hidden" value="${o.id}" name="deleteById">
                         <input type="submit" value="Удалить" align="center"/>
                     </sf:form>
                 </td>
@@ -186,11 +186,13 @@
 <%-- добавление  --%>
 <div align="center">
 
-    <sf:form id="hidethistoo" method="post" name="addForm">
+    <sf:form id="hidethistoo" method="post" name="addingOrder">
         <div class="allfields" align="center">Введите данные нового заказа:</div>
         <tr>
             <td>FirstContrAgent:</td>
-            <td><input name="firstcontragent" type="text" width="15" required pattern="^[a-zA-Z\s]+$"/></td>
+            <td>
+                <input name="firstcontragent" type="text" width="15" required pattern="^[a-zA-Z\s]+$"/>
+            </td>
         </tr>
         <tr>
             <td>SecondContrAgent:</td>
