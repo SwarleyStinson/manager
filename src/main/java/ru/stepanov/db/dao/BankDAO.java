@@ -77,12 +77,10 @@ public class BankDAO {
     public List<Bank> getAll() {
         String SQL_GET_ALL = "SELECT * FROM bank";
         Statement statement;
-        List<Bank> result = null;
+        List<Bank> result = new ArrayList<Bank>();
 
         try {
             statement = jdbcTemplate.getDataSource().getConnection().createStatement();
-
-            result = new ArrayList<Bank>();
 
             ResultSet resultSet = statement.executeQuery(SQL_GET_ALL);
 
