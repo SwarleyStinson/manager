@@ -57,6 +57,11 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-aop</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.cardpay</groupId>
+            <artifactId>cardpay-spring</artifactId>
+            <version>1.0.1</version>
+        </dependency>
 
 
         <!-- Spring Security -->

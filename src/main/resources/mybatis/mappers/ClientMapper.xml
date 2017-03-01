@@ -23,7 +23,7 @@
         DELETE FROM client WHERE ID = #{id}
     </delete>
 
-    <insert id="insertClient" parameterType="Client" useGeneratedKeys="true" keyProperty="id">
+    <insert id="insertOrder" parameterType="Client" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO client (name, login, password, email, type)
         VALUES(#{name}, #{login}, #{password}, #{email}, #{type})
     </insert>

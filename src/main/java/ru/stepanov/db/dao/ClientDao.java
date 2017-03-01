@@ -25,7 +25,7 @@ public class ClientDao extends AbstractMyBatisDao {
     }
 
     public void insertClient(Client client) {
-        this.sqlSession.insert("insertClient", client);
+        this.sqlSession.insert("insertOrder", client);
         tableSize++;
         maxPage = getCurrentPageNumber(4);
     }
