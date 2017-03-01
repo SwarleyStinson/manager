@@ -15,7 +15,7 @@ public class OrderDao extends AbstractMyBatisDao{
 
     public List<Order> getAllOrders() {
 
-        return this.sqlSession.selectList("getAllOrders");
+        return this.sqlSession.selectList(namespace + "getAll");
     }
 
     public void deleteOrderByID(int id){

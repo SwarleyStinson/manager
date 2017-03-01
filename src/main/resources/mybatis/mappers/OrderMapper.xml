@@ -15,7 +15,7 @@
         <result property="type" column="type"/>
     </resultMap>
 
-    <select id="getAllOrders" resultMap="OrderResult">
+    <select id="getAll" resultMap="OrderResult">
         SELECT * FROM orders
     </select>
 
