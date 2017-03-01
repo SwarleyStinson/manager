@@ -1,18 +1,16 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:aop="http://www.springframework.org/schema/aop"
-       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:context="http://www.springframework.org/schema/context"
        xmlns:p="http://www.springframework.org/schema/p"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans
-       http://www.springframework.org/schema/beans/spring-beans.xsd
-        http://www.springframework.org/schema/aop
-        http://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-    <aop:aspectj-autoproxy/>
+    <!--<aop:aspectj-autoproxy/>-->
     <context:annotation-config/>
-    <context:component-scan base-package="ru.stepanov.db.dao.*"/>
 
-    <tx:annotation-driven mode="proxy" transaction-manager="transactionManager"/>
+    <context:component-scan base-package="ru.stepanov.*">
+        <context:exclude-filter type="regex" expression="ru\.stepanov\.controller\.*"/>
+    </context:component-scan>
 
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
           p:dataSource-ref="dataSource"/>
@@ -21,7 +19,7 @@
           p:transactionManager-ref="transactionManager"/>
 
     <!-- Aspect Logger -->
-    <bean id="logAspect" class="ru.stepanov.logger.AopLogger"/>
+    <!--<bean id="logAspect" class="ru.stepanov.logger.AopLogger"/>-->
 
     <import resource="gateway-servlet.xml"/>
     <import resource="application-security.xml"/>

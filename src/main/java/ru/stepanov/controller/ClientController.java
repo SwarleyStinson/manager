@@ -1,5 +1,7 @@
 package ru.stepanov.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +15,8 @@ import java.sql.SQLException;
 @Controller
 public class ClientController {
 
+    private final Logger log = LoggerFactory.getLogger(getClass());
+
     @Autowired
     ClientDao clientDao;
 
@@ -22,6 +26,9 @@ public class ClientController {
                               @RequestParam(value = "isCreate", defaultValue = "0") int isCreate,
                               @RequestParam(value = "currentPage", defaultValue = "0") int currentPage,
                               Client client) throws SQLException, ClassNotFoundException {
+
+        log.info("~~~~~~~~~~~~~~~~~~~~~~~~~~~ {}", clientDao instanceof ClientDao);
+
         ModelAndView modelAndView = new ModelAndView();
 
         // Client Database processing

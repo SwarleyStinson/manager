@@ -1,24 +1,30 @@
 package ru.stepanov.db.dao;
 
 import com.cardpay.spring.annotations.MyBatisDao;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 import ru.stepanov.db.domain.Order;
 
 import java.util.List;
 
 @Repository
-@MyBatisDao("OrderDao")
-public class OrderDao extends AbstractMyBatisDao{
+@MyBatisDao
+public class OrderDao extends AbstractMyBatisDao {
+
+    private final Logger log = LoggerFactory.getLogger(getClass());
+
     private int tableSize = 0;
     private int currentPage = 0;
     private int maxPage = 0;
 
     public List<Order> getAllOrders() {
+        log.debug("OrderDao.getAllOrders: {}", this.namespace);
 
         return this.sqlSession.selectList(namespace + "getAll");
     }
 
-    public void deleteOrderByID(int id){
+    public void deleteOrderByID(int id) {
         this.sqlSession.delete("deleteOrder", id);
         tableSize--;
         maxPage = getCurrentPageNumber(4);
@@ -35,7 +41,7 @@ public class OrderDao extends AbstractMyBatisDao{
     }
 
     public int getCurrentPage() {
-        if(tableSize == 0) tableSize = getAllOrders().size();
+        if (tableSize == 0) tableSize = getAllOrders().size();
         if (currentPage == 0) currentPage = getCurrentPageNumber(4);
         if (maxPage == 0) maxPage = currentPage;
         return currentPage;

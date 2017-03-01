@@ -1,18 +1,19 @@
 package ru.stepanov.logger;
 
-import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.AfterThrowing;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
+//import org.aspectj.lang.JoinPoint;
+//import org.aspectj.lang.annotation.AfterThrowing;
+//import org.aspectj.lang.annotation.Aspect;
+//import org.aspectj.lang.annotation.Before;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.Date;
 
-@Aspect
+//@Aspect
 public class AopLogger {
     private static final Logger logger = LoggerFactory.getLogger(Logger.class);
 
+/*
     @Before("execution(* ru.stepanov.db.dao.ClientDao.insertClient(..))")
     public void logBeforeAddToDB(JoinPoint joinPoint) {
         logger.info("New Client add to database: {}", new Date().toString());
@@ -29,4 +30,5 @@ public class AopLogger {
     public void logAfterThrowing(JoinPoint joinPoint, Throwable error) {
         logger.debug("");
     }
+*/
 }
