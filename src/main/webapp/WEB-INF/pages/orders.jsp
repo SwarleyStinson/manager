@@ -52,9 +52,6 @@
 
 <%-- Tablepage Control Buttons --%>
 <div align="center">
-    <%--
-            Change Command:  1 - begin; 2 - down; 3 - up; 4 - end
-    --%>
     <sf:form>
         <tr>
             <td>
@@ -105,6 +102,7 @@
     }
 </script>
 
+<%-- отображение таблицы --%>
 <div align="center">
     <table id="orders_table" align="center" border="1" width="1000" cellpadding="05" cellspacing="0">
         <tr bordercolor="black">
@@ -139,7 +137,7 @@
     </sf:form>
 </div>
 
-<%-- изменение  --%>
+<%-- изменение строки  --%>
 <div align="center">
     <c:if test="${not empty allfields}">
         <div class="allfields" align="center">${allfields}</div>
