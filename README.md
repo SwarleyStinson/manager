@@ -1,13 +1,14 @@
+To Do:
+1) отказаться от cardpay-parent: настройка Spring, dao
+2) forbidden page
+3) добавить красок в дизайн: таблица, кнопочки, анимация
+4) выпадающие списки с динамическим набором значений (rest api)
+5) переделать Login page
+6) настроить логирование
+7) AJAX: что такое, как можно использовать в приложении
+8) отправка электронной почты
+9) скачать таблицу в pdf, excel
+10) JUnit тесты
 
-    <bean id="userRepository" class="com.cardpay.security.components.InMemoryUserRepository">
-        <constructor-arg name="users">
-            <map>
-                <entry key="user" value="password"/>
-            </map>
-        </constructor-arg>
-        <constructor-arg name="roles">
-            <map>
-                <entry key="user" value="ROLE_USER"/>
-            </map>
-        </constructor-arg>
-    </bean>
+2.0:
+1) фронтенд отедльно - Angular  +  REST API
