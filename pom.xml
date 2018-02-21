@@ -8,11 +8,11 @@
     <parent>
         <groupId>com.cardpay</groupId>
         <artifactId>cardpay-parent</artifactId>
-        <version>1.5.34</version>
+        <version>1.5.58</version>
     </parent>
 
     <groupId>ru.stepanov</groupId>
-    <artifactId>spring</artifactId>
+    <artifactId>manager</artifactId>
     <version>6</version>
     <name>Test Spring Framework Web Application</name>
     <packaging>war</packaging>
@@ -51,17 +51,11 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-tx</artifactId>
         </dependency>
-        <!--
-                <dependency>
-                    <groupId>org.springframework</groupId>
-                    <artifactId>spring-aop</artifactId>
-                </dependency>
-        -->
 
         <dependency>
             <groupId>com.cardpay</groupId>
             <artifactId>cardpay-spring</artifactId>
-            <version>1.0.1</version>
+            <version>1.0.11</version>
         </dependency>
 
 
@@ -131,6 +125,11 @@
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
             <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>4.3.6.RELEASE</version>
         </dependency>
 
 

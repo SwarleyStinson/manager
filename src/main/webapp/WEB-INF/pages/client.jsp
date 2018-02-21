@@ -58,35 +58,34 @@
     <sf:form>
         <tr>
             <td>
-                <sf:form>
+                <%--<sf:form>--%>
                     <input type="hidden" value=1 name="currentPage">
                     <input type="submit" value="В начало">
-                </sf:form>
+                <%--</sf:form>--%>
             </td>
 
             <td>
-                <sf:form>
+                <%--<sf:form>--%>
                     <input type="hidden" value=2 name="currentPage">
                     <input type="submit" value="предыдущая">
-                </sf:form>
+                <%--</sf:form>--%>
             </td>
             <td>
-                <sf:form>
+                <%--<sf:form>--%>
                     <input type="hidden" value=3 name="currentPage">
                     <input value="следующая" type="submit">
-                </sf:form>
+                <%--</sf:form>--%>
             </td>
             <td>
-                <sf:form>
+                <%--<sf:form>--%>
                     <input type="hidden" value=4 name="currentPage">
                     <input type="submit" value="В конец">
-                </sf:form>
+                <%--</sf:form>--%>
             </td>
         </tr>
     </sf:form>
 
 </div>
-
 
 <script>
     function toggle() {
