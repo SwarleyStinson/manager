@@ -1,13 +1,11 @@
 package ru.stepanov.db.dao;
 
-import com.cardpay.spring.annotations.MyBatisDao;
 import org.springframework.stereotype.Repository;
 import ru.stepanov.db.domain.Client;
 
 import java.util.List;
 
 @Repository
-@MyBatisDao
 public class ClientDao extends AbstractMyBatisDao {
 
     private int tableSize = 0;

@@ -1,6 +1,5 @@
 package ru.stepanov.db.dao;
 
-import com.cardpay.spring.annotations.MyBatisDao;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
@@ -9,7 +8,6 @@ import ru.stepanov.db.domain.Order;
 import java.util.List;
 
 @Repository
-@MyBatisDao
 public class OrderDao extends AbstractMyBatisDao {
 
     private final Logger log = LoggerFactory.getLogger(getClass());

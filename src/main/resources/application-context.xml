@@ -6,7 +6,6 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
                            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-    <!--<aop:aspectj-autoproxy/>-->
     <context:annotation-config/>
 
     <context:component-scan base-package="ru.stepanov.*">
@@ -19,10 +18,8 @@
     <bean id="txTemplate" class="org.springframework.transaction.support.TransactionTemplate"
           p:transactionManager-ref="transactionManager"/>
 
-    <!-- Aspect Logger -->
-    <!--<bean id="logAspect" class="ru.stepanov.logger.AopLogger"/>-->
 
-    <import resource="gateway-servlet.xml"/>
+    <!--<import resource="gateway-servlet.xml"/>-->
     <import resource="application-security.xml"/>
     <import resource="application-database.xml"/>
     <import resource="mybatis/application-mybatis.xml"/>

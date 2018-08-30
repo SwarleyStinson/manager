@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/TestWebSpringApp.iml" filepath="$PROJECT_DIR$/TestWebSpringApp.iml" />
+      <module fileurl="file://C:\Users\p.stepanov\OneDrive\github\manager\TestWebSpringApp.iml" filepath="C:\Users\p.stepanov\OneDrive\github\manager\TestWebSpringApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/manager.iml" filepath="$PROJECT_DIR$/manager.iml" />
     </modules>
   </component>
 </project>
