@@ -15,7 +15,6 @@ public class MainController {
 
     @RequestMapping(value = {"/"}, method = RequestMethod.GET)
     public ModelAndView defaultPage() {
-
         ModelAndView model = new ModelAndView();
         model.addObject("title", "This is Hello Page");
         model.addObject("message", "Hello, Cardpay's developer!");
@@ -27,7 +26,6 @@ public class MainController {
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public ModelAndView login(@RequestParam(value = "error", required = false) String error,
                               @RequestParam(value = "logout", required = false) String logout) {
-
         ModelAndView model = new ModelAndView();
         if (error != null) {
             model.addObject("error", "Invalid username and password!");
@@ -41,9 +39,9 @@ public class MainController {
         model.setViewName("login");
 
         return model;
+
     }
 
-    //for 403 access denied page
     @RequestMapping(value = "/403", method = RequestMethod.GET)
     public ModelAndView accessDenied() {
 

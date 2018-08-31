@@ -11,7 +11,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="manager" target="1.5" />
+      <module name="manager" target="1.8" />
       <module name="TestWebSpringApp" target="1.8" />
     </bytecodeTargetLevel>
   </component>

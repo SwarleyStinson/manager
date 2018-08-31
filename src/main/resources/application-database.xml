@@ -22,8 +22,4 @@
         <property name="dataSource" ref="dataSource"/>
     </bean>
 
-    <bean id="bankDAO" class="ru.stepanov.db.dao.BankDAO">
-        <constructor-arg ref="jdbcTemplate"/>
-    </bean>
-
 </beans>

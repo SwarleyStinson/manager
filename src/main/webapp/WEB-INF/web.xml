@@ -6,31 +6,36 @@
 
     <display-name>Test Web Spring Application</display-name>
 
-    <!-- Gateway servlet -->
-    <servlet>
-        <servlet-name>gateway</servlet-name>
-        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-        <init-param>
-            <param-name>contextConfigLocation</param-name>
-            <param-value>classpath:gateway-servlet.xml</param-value>
-        </init-param>
-        <load-on-startup>1</load-on-startup>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>gateway</servlet-name>
-        <url-pattern>/</url-pattern>
-    </servlet-mapping>
 
-    <!-- Дескриптор развертывнаия -->
+    <!-- Spring context -->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>
             classpath:application-context.xml
         </param-value>
     </context-param>
-    <listener>
-        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-    </listener>
+
+
+    <!-- Web context -->
+    <servlet>
+        <servlet-name>gateway</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath:mvc-servlet.xml</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>gateway</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
 
     <!-- Spring Security -->
     <filter>

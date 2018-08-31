@@ -11,8 +11,6 @@
 <html>
 <head>
     <title>MANAGER</title>
-    <%--<link rel="stylesheet" href="css/hello.css">--%>
-    <%--<%@ include file="background.jpg" %>--%>
 
     <link href="css/hello.css" rel="stylesheet">
 
