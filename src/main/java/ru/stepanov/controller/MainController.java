@@ -17,8 +17,8 @@ public class MainController {
     public ModelAndView defaultPage() {
         ModelAndView model = new ModelAndView();
         model.addObject("title", "This is Hello Page");
-        model.addObject("message", "Hello, Cardpay's developer!");
-        model.setViewName("hello");
+        model.addObject("message", "Hello, Cardpay's Developer!");
+        model.setViewName("mainPage");
         return model;
 
     }
@@ -36,7 +36,7 @@ public class MainController {
         }
 
         model.addObject("message", "This is Login page!");
-        model.setViewName("login");
+        model.setViewName("loginPage");
 
         return model;
 

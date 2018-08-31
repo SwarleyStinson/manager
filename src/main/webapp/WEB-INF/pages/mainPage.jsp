@@ -1,36 +1,33 @@
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="java.util.Date" %>
-<%@taglib prefix="sec"
-          uri="http://www.springframework.org/security/tags" %>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page session="true" contentType="text/html; charset=utf-8" %>
-
-<%--<jsp:include page="../../css/hello.css" />--%>
-<%--<jsp:include page="/img/background.jpg" />--%>
+<%@ taglib prefix="sec"
+           uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page session="true" contentType="text/html; charset=utf-8" %>
 
 <html>
 <head>
-    <title>MANAGER</title>
+    <title>Forest app</title>
 
-    <link href="css/hello.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
 
 </head>
 
 <body>
 <h1>Title : ${title}<></h1>
 <h1>Message : ${message} </h1>
-<h6>Time: <%= getFormattedDate () %></h6>
+<h6>Time: <%= getFormattedDate() %>
+</h6>
 
 <%!
-    String getFormattedDate ()
-    {
-        SimpleDateFormat sdf = new SimpleDateFormat ("dd.MM.yyyy hh:mm:ss");
-        return sdf.format (new Date());
+    String getFormattedDate() {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy hh:mm:ss");
+        return sdf.format(new Date());
     }
 %>
 
 <p>
-    Для редактирования базы перейдите на <a href="client">/Client</a>, <a href="bank">/Bank</a>, <a href="orders">/Orders</a>
+    Для редактирования базы перейдите налево.
 </p>
 
 <sec:authorize access="hasRole('ROLE_USER')">
