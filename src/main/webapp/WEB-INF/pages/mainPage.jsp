@@ -9,26 +9,32 @@
 <head>
     <title>Forest app</title>
 
-    <link href="css/main.css" rel="stylesheet">
-
+    <link href="/css/main.css" rel="stylesheet">
 </head>
 
 <body>
-<h1>Title : ${title}<></h1>
-<h1>Message : ${message} </h1>
-<h6>Time: <%= getFormattedDate() %>
-</h6>
 
-<%!
-    String getFormattedDate() {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy hh:mm:ss");
-        return sdf.format(new Date());
-    }
-%>
+<div id="main">
 
-<p>
-    Для редактирования базы перейдите налево.
-</p>
+    <div class="center-ver">
+
+        <div class="center-main-logo">
+            <img src="/img/tree.png" alt="tree" class="mainbar-logo">
+        </div>
+
+        <div class="center-main-text">
+            <div class="mainbar">
+                <h1>Title : ${title}<></h1>
+                <h1>Message : ${message} </h1>
+                <h6>Time: <%= getFormattedDate() %>
+                </h6>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
 
 <sec:authorize access="hasRole('ROLE_USER')">
 
@@ -52,5 +58,14 @@
     </c:if>
 
 </sec:authorize>
+
+
+<%!
+    String getFormattedDate() {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy hh:mm:ss");
+        return sdf.format(new Date());
+    }
+%>
+
 </body>
 </html>

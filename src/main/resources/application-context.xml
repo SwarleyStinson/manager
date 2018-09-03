@@ -18,7 +18,6 @@
     <bean id="txTemplate" class="org.springframework.transaction.support.TransactionTemplate"
           p:transactionManager-ref="transactionManager"/>
 
-    <import resource="mvc-servlet.xml"/>
     <import resource="application-security.xml"/>
     <import resource="application-database.xml"/>
     <import resource="mybatis/application-mybatis.xml"/>

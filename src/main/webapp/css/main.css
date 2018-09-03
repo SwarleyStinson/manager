@@ -1,23 +1,42 @@
 body {
-    font-family: Arial, Verdana,  sans-serif;
+    font-family: Helvetica, Arial, sans-serif;
     font-size: 12pt;
     background: url("../img/background.jpg");
     color: #333;
 }
-h1 {
-    color: darkgreen;
-    font-size: 24pt;
-    font-family: Georgia, Times, serif;
-    font-weight: normal;
+
+#main {
+    padding: 1px;
 }
-p {
-    text-align: justify; /* Выравнивание по ширине */
-    margin-left: 60px; /* Отступ слева в пикселах */
-    margin-right: 10px; /* Отступ справа в пикселах */
-    border-left: 1px solid #999; /* Параметры линии слева */
-    border-bottom: 1px solid #999; /* Параметры линии снизу */
-    border-top: 1px solid #999; /* Параметры линии снизу */
-    padding-left: 10px; /* Отступ от линии слева до текста  */
-    padding-bottom: 10px; /* Отступ от линии снизу до текста  */
-    padding-top: 10px; /* Отступ от линии снизу до текста  */
+
+.center-ver {
+    margin-top: 25%;
+    position: relative;
+}
+
+.center-main-logo {
+    float: left;
+    width: 20%;
+    position: absolute;
+}
+
+.mainbar-logo {
+    transform: scale(0.8);
+}
+
+.center-main-text {
+    position: absolute;
+    height: 100%;
+    left: 20%;
+    width: 70%;
+    float: right;
+}
+
+.mainbar {
+    position: absolute;
+    height: 100%;
+
+    font-family: "Georgia", Garamond, serif;
+    font-size: 25pt;
+    color: #333;
 }
